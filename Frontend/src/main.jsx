@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux'
 // import store from './Store/store.js'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Login from './Components/Login.jsx';
-import Register from './Components/Register.jsx';
+import Login from './Components/Login-Register/Login.jsx';
+import Register from './Components/Login-Register/Register.jsx';
 import App from './Components/App.jsx'
 
 import './index.css'
@@ -22,6 +22,13 @@ const router=createBrowserRouter([
   {
     path:"/register",
     element:<Register/>
+  },
+  {
+    path:"/options",
+    element:"</>"
+  },
+  {
+     
   }
 ])
 
