@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from './Components/Login-Register/Login.jsx';
 import Register from './Components/Login-Register/Register.jsx';
 import App from './Components/App.jsx'
+import Options from './Components/Options/Options.jsx'
 
 import './index.css'
 import store from './Store/store.js';
@@ -25,7 +26,7 @@ const router=createBrowserRouter([
   },
   {
     path:"/options",
-    element:"</>"
+    element:<Options/>
   },
   {
      
