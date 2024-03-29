@@ -7,6 +7,9 @@ import Login from './Components/Login-Register/Login.jsx';
 import Register from './Components/Login-Register/Register.jsx';
 import App from './Components/App.jsx'
 import Options from './Components/Options/Options.jsx'
+import Geoguesser from './Components/Options/Geoguesser.jsx'
+import Nearme from './Components/Options/Nearme.jsx'
+import Contribute from './Components/Options/Contribute.jsx'
 
 import './index.css'
 import store from './Store/store.js';
@@ -29,7 +32,16 @@ const router=createBrowserRouter([
     element:<Options/>
   },
   {
-     
+    path:"/geoguesser",
+    element:<Geoguesser/>
+  },
+  {
+    path:"/nearme",
+    element:<Nearme/>
+  },
+  {
+    path:"/contribute",
+    element:<Contribute/>
   }
 ])
 
