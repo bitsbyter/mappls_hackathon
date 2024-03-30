@@ -1,3 +1,5 @@
+import { FaGoogle } from "react-icons/fa6";
+
 const Login=()=>{
   return(
     <>
@@ -9,7 +11,7 @@ const Login=()=>{
                 <a href="/register" className="SignIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Sign Up</a>
                 <a href="/options" className="LogIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Log In</a>
             </div>
-            <a href="" className="GoogleAuth border rounded-lg bg-blue-800 text-black m-4 w-48 h-8 text-center">Login with Google</a>
+            <a href="" className="GoogleAuth border rounded-lg bg-black-800 text-white/70 m-4 w-48 h-8 text-center flex justify-around items-center">Login with Google <FaGoogle /></a>
         </div>
     </div>
     </>
