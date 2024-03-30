@@ -1,5 +1,6 @@
 import React from 'react'
 import Radius from '../Carousel/Radius'
+import { Link } from 'react-router-dom'
 
 const Nearme = () => {
   return (
@@ -7,7 +8,7 @@ const Nearme = () => {
       <span className='m-4'>{`Select your radius ->`}</span>
       <Radius />
 
-      <a href="/Carousel" className='w-20 h-8 border m-4 text-center rounded-lg'>Search</a>
+      <Link to="/Carousel" className='w-20 h-8 border m-4 text-center rounded-lg'>Search</Link>
     </div>
   )
 }

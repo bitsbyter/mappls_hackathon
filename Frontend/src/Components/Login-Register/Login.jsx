@@ -31,7 +31,6 @@ const signInWithGoogle=()=>{
     const errorMessage = error.message;
     const email = error.customData.email;
     const credential = GoogleAuthProvider.credentialFromError(error);
- 
   });
 }
 
@@ -45,7 +44,7 @@ const signInWithGoogle=()=>{
                 <Link to="/register" className="SignIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Sign Up</Link>
                 <Link to="/options" className="LogIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Log In</Link>
             </div>
-            <a href="" className="GoogleAuth border rounded-lg bg-black-800 text-white/70 m-4 w-48 h-8 text-center flex justify-around items-center">Login with Google <FaGoogle /></a>
+            <button onClick={signInWithGoogle} className="GoogleAuth border rounded-lg bg-black-800 text-white/70 m-4 w-48 h-8 text-center flex justify-around items-center">Login with Google <FaGoogle /></button>
         </div>
     </div>
     </>
