@@ -14,7 +14,7 @@ const Geoguesser = () => {
 
       <div className='border w-full h-24 flex justify-center items-center'>   
         <CountdownTimer minutes={3} seconds={0} isRunning={isRunning}/>
-        <button onClick={startGame} className='border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center'>Start</button>
+        {!isRunning ? <button onClick={startGame} className='border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center'>Start</button> : <button onClick={startGame} className='border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center'>Stop</button>}
       </div>
 
       <div className='h-auto w-full'>

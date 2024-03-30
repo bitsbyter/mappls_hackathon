@@ -9,6 +9,7 @@ import App from './Components/App.jsx'
 import Options from './Components/Options/Options.jsx'
 import Geoguesser from './Components/Options/Geoguesser.jsx'
 import Nearme from './Components/Options/Nearme.jsx'
+import Carousel from './Components/Carousel/Carousel.jsx'
 
 
 import './index.css'
@@ -38,6 +39,10 @@ const router=createBrowserRouter([
   {
     path:"/nearme",
     element:<Nearme/>
+  },
+  {
+    path:"/carousel",
+    element:<Carousel />
   },
   
 ])
