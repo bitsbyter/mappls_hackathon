@@ -1,4 +1,3 @@
-
 import { GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
@@ -15,11 +14,13 @@ const provider = new GoogleAuthProvider();
 import { getAuth, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate} from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa6";
-
+import { useSelector } from "react-redux";
 import {useDispatch} from "react-redux";
 import { UserActions } from "../../Store/userSlice";
 
 const Login=()=>{
+  const userCoords=useSelector((store)=>store.userCoords);
+  console.log(userCoords);
   const dispatch=useDispatch();
   const navigate=useNavigate();
 const auth = getAuth();
@@ -40,6 +41,7 @@ const signInWithGoogle=()=>{
     const email = error.customData.email;
     const credential = GoogleAuthProvider.credentialFromError(error);
      console.log(error)
+
   });
 }
 
@@ -53,7 +55,9 @@ const signInWithGoogle=()=>{
                 <Link to="/register" className="SignIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Sign Up</Link>
                 <Link to="/options" className="LogIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Log In</Link>
             </div>
+
             <button className="GoogleAuth border rounded-lg bg-black-800 text-white/70 m-4 w-48 h-8 text-center flex justify-around items-center" onClick={signInWithGoogle}>Login with Google <FaGoogle /></button>
+
         </div>
     </div>
     </>
