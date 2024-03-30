@@ -34,8 +34,8 @@ const Radius = () => {
 
   return (
     <>
-    <div ref={progressBarRef} className="w-64 h-4 bg-gray-200 rounded overflow-hidden">
-      <div className="h-full bg-blue-500" style={{ width: `${progress}%` }} />
+    <div ref={progressBarRef} className="w-64 h-6 bg-gray-200 rounded overflow-hidden">
+      <div className="h-full bg-red-700" style={{ width: `${progress}%` }} />
     </div>
     <span>{`${Math.floor(progress*2)} kms`}</span>
     </>
