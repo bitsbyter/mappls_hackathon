@@ -16,3 +16,7 @@ body{
 ::placeholder{
   text-align: center;
 }
+
+::-webkit-scrollbar{
+  display: none;
+}
