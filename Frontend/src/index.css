@@ -20,3 +20,8 @@ body{
 ::-webkit-scrollbar{
   display: none;
 }
+
+#map{
+  height: 20vh;
+  width: 100%;
+}
