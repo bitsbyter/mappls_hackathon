@@ -9,6 +9,7 @@ const Login=()=>{
                 <a href="/register" className="SignIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Sign Up</a>
                 <a href="/options" className="LogIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Log In</a>
             </div>
+            <a href="" className="GoogleAuth border rounded-lg bg-blue-800 text-black m-4 w-48 h-8 text-center">Login with Google</a>
         </div>
     </div>
     </>
