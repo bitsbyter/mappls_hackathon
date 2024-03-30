@@ -9,7 +9,8 @@ import App from './Components/App.jsx'
 import Options from './Components/Options/Options.jsx'
 import Geoguesser from './Components/Options/Geoguesser.jsx'
 import Nearme from './Components/Options/Nearme.jsx'
-import Contribute from './Components/Options/Contribute.jsx'
+import Carousel from './Components/Carousel/Carousel.jsx'
+
 
 import './index.css'
 import store from './Store/store.js';
@@ -40,8 +41,8 @@ const router=createBrowserRouter([
     element:<Nearme/>
   },
   {
-    path:"/contribute",
-    element:<Contribute/>
+    path:"/carousel",
+    element:<Carousel /> 
   }
 ])
 
