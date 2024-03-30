@@ -1,5 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit"
 import ActiveUserSlice from "./userSlice";
+import UserCoordsSlice from "./userCoordsSlice";
 
 
 
@@ -7,6 +8,7 @@ import ActiveUserSlice from "./userSlice";
 const store=configureStore({
     reducer:{
       activeUser:ActiveUserSlice.reducer,
+      userCoords:UserCoordsSlice.reducer,
     }
 });
 
