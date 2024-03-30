@@ -13,12 +13,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 import { getAuth, signInWithPopup } from "firebase/auth";
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa6";
 
+import {useDispatch} from "react-redux";
+import { UserActions } from "../../Store/userSlice";
 
 const Login=()=>{
-  
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
 const auth = getAuth();
 const signInWithGoogle=()=>{
   signInWithPopup(auth, provider)
@@ -26,11 +29,20 @@ const signInWithGoogle=()=>{
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
+    const email=user.email;
+    const name=user.displayName;
+    dispatch(UserActions.setActiveUser({email,name}))
+    navigate("/options");
+    console.log(user)
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     const email = error.customData.email;
     const credential = GoogleAuthProvider.credentialFromError(error);
+<<<<<<< HEAD
+=======
+     console.log(error)
+>>>>>>> 5dbeb1f619ee12d271a80b8e866123deb174e92e
   });
 }
 
@@ -44,7 +56,11 @@ const signInWithGoogle=()=>{
                 <Link to="/register" className="SignIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Sign Up</Link>
                 <Link to="/options" className="LogIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center">Log In</Link>
             </div>
+<<<<<<< HEAD
             <button onClick={signInWithGoogle} className="GoogleAuth border rounded-lg bg-black-800 text-white/70 m-4 w-48 h-8 text-center flex justify-around items-center">Login with Google <FaGoogle /></button>
+=======
+            <button className="GoogleAuth border rounded-lg bg-black-800 text-white/70 m-4 w-48 h-8 text-center flex justify-around items-center" onClick={signInWithGoogle}>Login with Google <FaGoogle /></button>
+>>>>>>> 5dbeb1f619ee12d271a80b8e866123deb174e92e
         </div>
     </div>
     </>
