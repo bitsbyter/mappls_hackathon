@@ -24,7 +24,7 @@ export default Locations = [
       "Street View Link": "Street View"
   },
   {
-      "Location": "India Gate",
+      "Location": "India Gate", 
       "Latitude": 28.6129,
       "Longitude": 77.2295,
       "Street View Link": "Street View"

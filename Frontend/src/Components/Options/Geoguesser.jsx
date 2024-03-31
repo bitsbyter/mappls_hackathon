@@ -26,5 +26,3 @@ const Geoguesser = () => {
 }
 
 export default Geoguesser
-
-// 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
