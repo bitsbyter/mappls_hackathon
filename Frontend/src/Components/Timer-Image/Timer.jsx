@@ -21,10 +21,8 @@ const CountdownTimer = ({ minutes = 0, seconds = 0, isRunning }) => {
   }, [isRunning, time]);
 
   return (
-    <div>
-      <div>
+    <div className='time-box w-32 h-16 rounded-lg flex justify-center items-center text-3xl bg-[#565656] m-2 text-[#FBBC05]'>
         {time.minutes}:{time.seconds < 10 ? `0${time.seconds}` : time.seconds}
-      </div>
     </div>
   );
 };
