@@ -1,3 +1,5 @@
+
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,7 +7,10 @@ import 'package:go_router/go_router.dart';
 import 'package:mappls_hackathon/homescreen.dart';
 import 'package:flutter/services.dart';
 import 'package:mappls_hackathon/loginscreen.dart';
+import 'package:mappls_hackathon/nearby/carouselscreen.dart';
+import 'package:mappls_hackathon/nearby/nearbyscreen.dart';
 import 'package:mappls_hackathon/splashscreen.dart';
+import 'package:mappls_hackathon/userscreen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -32,7 +37,7 @@ class MyApp extends StatelessWidget {
 
 class MyAppRoutes {
   final GoRouter _router = GoRouter(
-    initialLocation: '/splash',
+    initialLocation: '/',
     errorPageBuilder: (BuildContext context, state) => MaterialPage(
       key: state.pageKey,
       child: Scaffold(
@@ -61,6 +66,18 @@ class MyAppRoutes {
         path: '/home',
         builder: (context, state) => HomeScreen(),
       ),
+      GoRoute(
+        path: '/home/nearby',
+        builder: (context, state) => NearByScreen(),
+      ),
+      GoRoute(
+        path: '/home/nearby/carousel_display',
+        builder: (context, state) => CarouselScreen(),
+      ),
+      GoRoute(
+        path:'/home/user',
+        builder: (context, state) => UserScreen(),
+      )
     ],
   );
 }

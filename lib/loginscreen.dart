@@ -108,6 +108,7 @@ class WelcomePage extends ConsumerWidget {
         ),
         child: Center(
           child: ElevatedButton(
+            
             child: Text('Welcome ${user.displayName}, Lets get started'),
             onPressed: () => pushReplacement(context),
           ),
