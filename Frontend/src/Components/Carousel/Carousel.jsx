@@ -52,8 +52,8 @@ const Carousel = ({ interval = 1000 }) => {
           {data.map(el => {
             return(
               <>
-                <div className='border w-60 min-h-80 justify-center items-center m-6 rounded-xl flex flex-col'> 
-                    <p> {[el.id].text} </p>
+                <div key={el.id} className='border w-60 min-h-80 justify-center items-center m-6 rounded-xl flex flex-col'> 
+                  <p> {el.text} </p>
                 </div>
               </>
             )
