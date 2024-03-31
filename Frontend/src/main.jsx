@@ -9,7 +9,7 @@ import App from './Components/App.jsx'
 import Options from './Components/Options/Options.jsx'
 import Geoguesser from './Components/Options/Geoguesser/Geoguesser.jsx'
 import Nearme from './Components/Options/Nearme.jsx'
-
+import ScoreCard from './Components/Options/Geoguesser/ScoreCard.jsx';
 
 import './index.css'
 import store from './Store/store.js';
@@ -38,14 +38,16 @@ const router=createBrowserRouter([
   {
     path:"/nearme",
     element:<Nearme/>
+  },
+  {
+    path:"/ScoreCard",
+    element:<ScoreCard/>
   }
 ])
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
   <Provider store={store}>
     <RouterProvider router={router}/>
     </Provider>
-</React.StrictMode>
 );
