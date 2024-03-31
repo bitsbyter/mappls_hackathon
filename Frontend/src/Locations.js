@@ -3,26 +3,29 @@ const Locations=[
       "location": "Taj Mahal",
       "latitude": 27.1751,
       "longitude": 78.0421,
-      "street_view_link": "https://www.google.com/maps/@27.1751,78.0421,3a,75y,326.72h,84.59t/data=!3m6!1e1!3m4!1sAF1QipMyhj0XfwdNEo-Io-fHsnINbGzJo5ymLrFv3Jjl!2e10!7i8192!8i4096"
+      "street_view_link": "https://www.google.com/maps/@27.1751,78.0421,3a,75y,326.72h,84.59t/data=!3m6!1e1!3m4!1sAF1QipMyhj0XfwdNEo-Io-fHsnINbGzJo5ymLrFv3Jjl!2e10!7i8192!8i4096",
+      "imgSrc":"Taj"
     },
     {
       "location": "Red Fort",
       "latitude": 28.6562,
       "longitude": 77.241,
-      "street_view_link": "https://www.google.com/maps/@28.6562,77.241,3a,75y,17.27h,88.69t/data=!3m6!1e1!3m4!1sAF1QipPTXcAVYHOMfPjjKu1iP6kyL6Ff5FXwNXi3Cn_U!2e10!7i13312!8i6656"
+      "street_view_link": "https://www.google.com/maps/@28.6562,77.241,3a,75y,17.27h,88.69t/data=!3m6!1e1!3m4!1sAF1QipPTXcAVYHOMfPjjKu1iP6kyL6Ff5FXwNXi3Cn_U!2e10!7i13312!8i6656",
+      "imgSrc":'../../../assets/Images/RedFort1.jpg'
     },
     {
       "location": "Qutub Minar",
       "latitude": 28.5245,
       "longitude": 77.1855,
-      "street_view_link": "https://www.google.com/maps/@28.5245,77.1855,3a,75y,128.88h,90.55t/data=!3m6!1e1!3m4!1sAF1QipM--_e7QkZvKrLekqS0XQ7zzUeYUWXZSb35Y6GP!2e10!7i10240!8i5120"
+      "street_view_link": "https://www.google.com/maps/@28.5245,77.1855,3a,75y,128.88h,90.55t/data=!3m6!1e1!3m4!1sAF1QipM--_e7QkZvKrLekqS0XQ7zzUeYUWXZSb35Y6GP!2e10!7i10240!8i5120",
+      "imgSrc":"../../../assets/Images/IndiaGate.jpg"
     },
     {
       "location": "Gateway of India",
       "latitude": 18.9217,
       "longitude": 72.8347,
       "street_view_link": "https://www.google.com/maps/@18.9217,72.8347,3a,75y,196.56h,81.17t/data=!3m6!1e1!3m4!1sAF1QipM--_e7QkZvKrLekqS0XQ7zzUeYUWXZSb35Y6GP!2e10!7i10240!8i5120",
-      "imgSrc":"../../../../public/images/IndiaGate.jpg"
+      "imgSrc":"../../../assets/Images/IndiaGate.jpg"
     },
     {
       "location": "India Gate",

@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AnswerActions } from "../Store/userAnswerSlice";
 import { useDispatch } from "react-redux";
-
+import axios from "axios"
 
 const Map=()=>{
   const [answerCoords,setAnswerCoords]=useState({lat:"",lng:""});
   const dispatch=useDispatch();
- 
+  const baseUrlReverseGeo="http://apis.mappls.com/advancedmaps/v1"
+  const ApiKey='542dbb0ec43d4e94a956e1e2cbc7f4ff'
   useEffect(() => {
     function renderMap() {
       const map = new mappls.Map('map', {});
@@ -23,7 +24,20 @@ const Map=()=>{
   useEffect(() => {
     if (answerCoords.lat !== "" && answerCoords.lng !== "") {
       try {
-        dispatch(AnswerActions.setUserAnswers(answerCoords));
+        var address;
+        axios.get(`${baseUrlReverseGeo}/${ApiKey}/rev_geocode`,{
+          params:{
+            lat:answerCoords.lat,
+            lng:answerCoords.lng
+          }
+        })
+        .then((response)=>{
+         address=response.data.results[0].formatted_address;
+         dispatch(AnswerActions.setUserAnswers({answerCoords,address}));
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
       } catch(err) {
         console.log(err);
       }
@@ -31,6 +45,11 @@ const Map=()=>{
   }, [answerCoords, dispatch]);
   
   return <>
+
+  <div style={{alignItems:"center",display:"flex",justifyContent:"center",padding:'2px',width:"30%"}}>
+    <div id="map" style={{height:"500px",width:"100%",alignItems:"center",border:"2px solid white",borderRadius:"20px"}}></div>
+  </div>
+
   {/* <div style={{alignItems:"center",display:"flex",justifyContent:"center",padding:'2px'}}>
     <div id="map" style={{height:"500px",width:"60%",alignItems:"center",border:"2px solid white",borderRadius:"20px"}}></div>
   </div> */}
@@ -38,6 +57,7 @@ const Map=()=>{
     <div className="flex items-center justify-center full w-96">
       <div style={{height:"530px"}} id="map" className="items-center w-full rounded-lg"></div>
     </div>
+
       
   </>
 
