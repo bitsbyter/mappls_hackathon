@@ -2,6 +2,10 @@ import { useState,useEffect } from 'react';
 import {useDispatch } from 'react-redux';
 import { CoordActions } from '../Store/userCoordsSlice';
 import { Link } from 'react-router-dom';
+import BackgroundImage from '../assets/Images/background.png'
+import Login from './Login-Register/Login';
+
+
 function  App() {
   const [coords,setCoords]=useState({lat:"",long:""});
   const dispatch=useDispatch();
@@ -38,10 +42,14 @@ function  App() {
 
   return (
     <>
-      <div className='h-screen w-screen flex justify-center items-center flex-col'>
-        <p className='text-3xl m-4'>App Logo</p>
-        <Link className="SignIn border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center" to="/login">Log In to Explore</Link>
-      </div>
+    <div className='background bg-[#FBBC05] w-screen h-screen bg-cover bg-center fixed -z-50'>
+      <img className='w-full h-full' src={BackgroundImage} alt="" />
+    </div>
+    
+    <div className='app-wrapper w-screen h-screen flex justify-center items-center'>
+      <Login />
+    </div>
+
     </>
   )
 }
