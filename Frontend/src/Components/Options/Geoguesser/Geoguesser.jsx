@@ -2,23 +2,18 @@ import React, { useState , useEffect } from 'react'
 import CountdownTimer from '../../Timer-Image/Timer.jsx'
 import QuestionImage from './QuestionImage.jsx'
 import Map from '../../Map.jsx'
+
 import BackgroundImage from '../../../assets/Images/background.png'
 import logo from '../../../assets/Images/logo.png'
 
-import { Link } from 'react-router-dom'
 const Geoguesser = () => {
-  
+
   const [isRunning , setisRunning] = useState(false)
   function startGame () {
     !isRunning ? setisRunning(true) : setisRunning(false)
   }
-
   return (
     <>
-
-    <LogoutComponent/>
-    <div className='w-screen h-screen flex items-center flex-col'>
-
     <div className='background bg-[#FBBC05] w-screen h-screen bg-cover bg-center fixed -z-50'>
       <img className='w-full h-full' src={BackgroundImage} alt="" />
     </div>
@@ -70,14 +65,7 @@ const Geoguesser = () => {
         </div>
 
       </div>
-
-      <div className='flex flex-row items-center justify-evenly w-screen col-span-4 my-4'> 
-      <QuestionImage/>
-      <Map/>
-      </div>
-      <div className=' text-4xl my-10 border-4 border-slate-50 p-5 rounded-2xls'>
-      <Link to="/ScoreCard">Submit</Link>
-      </div>
+      
     </div>
     </>
   )
