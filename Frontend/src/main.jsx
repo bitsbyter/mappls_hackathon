@@ -7,7 +7,7 @@ import Login from './Components/Login-Register/Login.jsx';
 import Register from './Components/Login-Register/Register.jsx';
 import App from './Components/App.jsx'
 import Options from './Components/Options/Options.jsx'
-import Geoguesser from './Components/Options/Geoguesser.jsx'
+import Geoguesser from './Components/Options/Geoguesser/Geoguesser.jsx'
 import Nearme from './Components/Options/Nearme.jsx'
 
 
