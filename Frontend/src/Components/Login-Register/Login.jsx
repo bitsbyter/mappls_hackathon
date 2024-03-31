@@ -64,7 +64,7 @@ const signInWithGoogle=()=>{
               <input id="Password" type="text" className="border w-48 h-10 rounded-lg bg-white/80"/>
             </div>
 
-            <button className='login-with-username w-20 h-7 rounded-lg bg-[#FBBC05] text-black m-4'>Log In</button>
+            <Link to={'./options'} className='login-with-username w-20 h-7 rounded-lg bg-[#FBBC05] text-black m-4 flex justify-center items-center'>Log In</Link>
 
             <div className='m-1 w-auto h-20 flex items-center justify-center'>
               <span className='h-12 w-12 rounded-full bg-white/20 m-2'> <img className='w-full h-full' src={google} alt="" /> </span>
