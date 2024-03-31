@@ -36,8 +36,7 @@ const Map=()=>{
   
   return <>
   <div style={{alignItems:"center",display:"flex",justifyContent:"center",padding:'2px'}}>
-  <div id="map" style={{height:"500px",width:"60%",alignItems:"center",border:"2px solid white",borderRadius:"20px"}}>
-        </div>
+    <div id="map" style={{height:"500px",width:"60%",alignItems:"center",border:"2px solid white",borderRadius:"20px"}}></div>
   </div>
       
   </>
