@@ -7,8 +7,7 @@ import { useDispatch } from "react-redux";
 const Map=()=>{
   const [answerCoords,setAnswerCoords]=useState({lat:"",lng:""});
   const dispatch=useDispatch();
-  const userCoords=useSelector((store)=>store.userCoords);
-  const answer=useSelector((store)=>store.userAnswer);  
+ 
   useEffect(() => {
     function renderMap() {
       const map = new mappls.Map('map', {});

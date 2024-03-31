@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from 'react'
-import CountdownTimer from '../Timer-Image/Timer.jsx'
-import Locationfacts from './Geoguesser/Locationfacts.jsx'
+import CountdownTimer from '../../Timer-Image/Timer.jsx'
+import QuestionImage from './QuestionImage.jsx'
 
 const Geoguesser = () => {
 
@@ -16,10 +16,8 @@ const Geoguesser = () => {
         <CountdownTimer minutes={3} seconds={0} isRunning={isRunning}/>
         {!isRunning ? <button onClick={startGame} className='border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center'>Start</button> : <button onClick={startGame} className='border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center'>Stop</button>}
       </div>
-
-      <div className='h-auto w-full'>
-        <Locationfacts />
-      </div>
+      
+      <QuestionImage/>
     </div>
     </>
   )
