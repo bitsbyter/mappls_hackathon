@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Map from '../Map'
-import { useSelector } from 'react-redux'
-import store from '../../Store/store'
+
 const Options = () => {
 
   return (

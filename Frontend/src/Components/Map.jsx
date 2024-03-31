@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AnswerActions } from "../Store/userAnswerSlice";
 import { useDispatch } from "react-redux";
-import { CoordActions } from "../Store/userCoordsSlice";
+
 
 const Map=()=>{
   const [answerCoords,setAnswerCoords]=useState({lat:"",lng:""});
   const dispatch=useDispatch();
-  const userCoords=useSelector((store)=>store.userCoords);
-  const answer=useSelector((store)=>store.userAnswer);  
+ 
   useEffect(() => {
     function renderMap() {
       const map = new mappls.Map('map', {});
@@ -18,16 +17,13 @@ const Map=()=>{
         setAnswerCoords({ lat: answerLat, lng: answerLng });
       });
     }
-    
     renderMap();
   }, []);
 
   useEffect(() => {
     if (answerCoords.lat !== "" && answerCoords.lng !== "") {
       try {
-        dispatch(CoordActions.setUserCoords(answerCoords));
         dispatch(AnswerActions.setUserAnswers(answerCoords));
-        // console.log(answerCoords)
       } catch(err) {
         console.log(err);
       }
