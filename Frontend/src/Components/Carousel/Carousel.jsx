@@ -47,9 +47,7 @@ const Carousel = ({ interval = 1000 }) => {
     <div className="w-screen h-screen overflow-hidden flex flex-col items-center justify-center">
       <div className='flex justify-center items-center w-auto h-auto'>
         <GrCaretPrevious onClick={previous} className='scale-150 m-2'/>
-        <div className='border w-60 h-96 justify-center items-center m-2 rounded-xl flex flex-col'>
-
-          <p> {data[index].id} </p> 
+        <div className='border w-60 h-96 justify-center items-center m-2 rounded-xl flex flex-col'> 
           <p> {data[index].text} </p>
         </div>
         <GrCaretNext onClick={next} className='scale-150 m-2'/>
