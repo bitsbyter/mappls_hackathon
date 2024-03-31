@@ -22,10 +22,19 @@ const Geoguesser = () => {
 
       <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
 
-        <QuestionImage/>
+        {/* <QuestionImage/> */}
 
-        <div className='w-auto h-full hidden'>
-          <Map />
+        <div className='w-full h-full flex justify-center items-center'>
+          {/* <Map /> */}
+
+          <div className='score w-96 h-44 border flex flex-col justify-between items-center bg-black rounded-2xl'>
+            <span>{`Round ${1}`}</span>
+            <span>{`You earned ${30} points!`}</span>
+            <div  className="w-64 h-3 bg-gray-200 rounded-lg overflow-hidden">
+              <div className="h-full bg-[#FBBC05]" style={{ width: `${50}%` }} />
+            </div>
+            <button className='w-28 h-8 border rounded-3xl flex justify-center items-center bg-[#FBBC05] text-black m-4'>Next</button>
+          </div>  
         </div>
 
       </div>

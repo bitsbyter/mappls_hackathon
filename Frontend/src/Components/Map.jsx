@@ -35,8 +35,8 @@ const Map=()=>{
     <div id="map" style={{height:"500px",width:"60%",alignItems:"center",border:"2px solid white",borderRadius:"20px"}}></div>
   </div> */}
 
-    <div className="flex items-center justify-center full w-96">
-      <div style={{height:"530px"}} id="map" className="items-center w-full rounded-lg"></div>
+    <div className="flex items-center justify-center h-full w-full">
+      <div id="map" className="items-center w-full h-full rounded-lg"></div>
     </div>
       
   </>
