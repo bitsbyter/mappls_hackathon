@@ -8,10 +8,10 @@ import { useEffect, useState } from "react";
 
 function QuestionImage(){
     return <>
+
     <div className="flex flex-col col-span-3">
     <img src={QutubMinar} style={{height:"500px",width:"500px"}}></img>
     </div>
-      
     </>
 
 }
