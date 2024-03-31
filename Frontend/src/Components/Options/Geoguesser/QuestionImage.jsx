@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Locations from "../../../Locations";
 import axios from "axios";
+import taj from '../../../assets/Images/RedFort1.jpg'
 
 const QuestionImage=()=>{
     const userAnswer=useSelector((store)=>store.userAnswerCoords);
@@ -25,7 +26,7 @@ const QuestionImage=()=>{
     })
 
     return <>
-      <img style={{height:"300px",width:"300px"}}></img>
+      <img src={taj} style={{height:"300px",width:"300px"}}></img>
     </>
 
 }
