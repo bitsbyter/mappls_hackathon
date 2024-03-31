@@ -36,9 +36,6 @@ function  App() {
     getUserCoords();
   }, []);
 
-  console.log(coords);
-
-
   return (
     <>
       <div className='h-screen w-screen flex justify-center items-center flex-col'>
