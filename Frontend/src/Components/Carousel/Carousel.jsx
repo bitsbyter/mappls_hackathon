@@ -7,9 +7,11 @@ import logo from '../../assets/Images/logo.png'
 import qutub from '../../assets/Images/QutubMinar2.jpg'
 
 import axios from 'axios'
+import { useSelector } from 'react-redux';
 
 const Carousel = () => {
-
+   const carouselData=useSelector((store)=>store.carouselData);
+   console.log(carouselData)
   const [data , setData] = useState(
     [
       {
@@ -95,7 +97,7 @@ const Carousel = () => {
                 <div className='carousel-text flex flex-col justify-center items-center'>
                   <span className='h-8 w-full lg:text-xl xl:text-2xl text-[#FBBC05]'>{`Qutub Minar`}</span>
                   <span className='w-full h-6 lg:text-[10px] text-xs'>{`Chattarpur, New Delhi`}</span>
-                  <span className='w-full h-auto lg:text-[10px] text-xs text-white/55 '>Lorem ipsum dolor sit amet consectetur adipisicing elita dad w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn qo nqoif3qn </span>
+                  <span className='w-full h-auto lg:text-[10px] text-xs text-white/55 '>Lorem id w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn qo nqoif3qn </span>
                 </div>
                 <button className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-6 font-bold'>Explore</button>
               </div>
