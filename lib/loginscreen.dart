@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mappls_hackathon/models/auth_api_model.dart';
+import 'package:mappls_hackathon/services/apiservice.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,15 +20,59 @@ class LoginScreen extends ConsumerWidget {
     final userAsyncValue = ref.watch(authStateProvider);
 
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: userAsyncValue.when(
-            data: (user) => user != null
-                ? Text('')
-                : const Text(
-                    'Google Sign In',
-                    style: TextStyle(color: Colors.black),
+      // appBar: AppBar(
+      //     backgroundColor: Colors.black,
+      //     title: userAsyncValue.when(
+      //       data: (user) => user != null
+      //           ? Text('')
+      //           : const Text(
+      //               'Google Sign In',
+      //               style: TextStyle(color: Colors.black),
+      //             ),
+      //       loading: () => const CircularProgressIndicator(),
+      //       error: (error, stackTrace) => Column(
+      //         mainAxisAlignment: MainAxisAlignment.center,
+      //         children: [
+      //           Text('Error: $error '),
+      //           Text('StackTrace: $stackTrace'),
+      //         ],
+      //       ),
+      //     )
+      //     // const Text('Google Sign In', style: TextStyle(color: Colors.white)),
+      //     ),
+      body: Stack(
+        children: [
+          Image.asset('/assets/bg1.png'),
+          Container(
+          decoration: const BoxDecoration(color: Colors.black),
+          child: userAsyncValue.when(
+            data: (user) =>
+                user != null ? WelcomePage(user: user) :
+                Center(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 100),
+                      SizedBox(
+                        height: 50,
+                        child: SignInButton(
+                          Buttons.google,
+                          text: 'Sign up with Google',
+                          onPressed: () async{
+                            ref.read(AuthTokenProvider.notifier).state = await auth_token_api()??'';
+                            await _handleGoogleSignIn();
+        
+                            // ref.read(AuthTokenProvider.notifier).state = await auth_token_api()??'';
+        
+                            // _auth.authStateChanges().listen((event) {
+                            //   _user = event;
+        
+                            // });
+                          },
+                        ),
+                      ),
+                    ],
                   ),
+                ),
             loading: () => const CircularProgressIndicator(),
             error: (error, stackTrace) => Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -35,52 +81,13 @@ class LoginScreen extends ConsumerWidget {
                 Text('StackTrace: $stackTrace'),
               ],
             ),
-          )
-          // const Text('Google Sign In', style: TextStyle(color: Colors.white)),
           ),
-      body: Container(
-        decoration: const BoxDecoration(color: Colors.black),
-        child: userAsyncValue.when(
-          data: (user) =>
-              user != null ? WelcomePage(user: user) : _googleSignInButton(),
-          loading: () => const CircularProgressIndicator(),
-          error: (error, stackTrace) => Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Error: $error '),
-              Text('StackTrace: $stackTrace'),
-            ],
-          ),
-        ),
+        ),]
       ),
     );
   }
 
-  Widget _googleSignInButton() {
-    return Center(
-      child: Column(
-        children: [
-          const SizedBox(height: 100),
-          SizedBox(
-            height: 50,
-            child: SignInButton(
-              Buttons.google,
-              text: 'Sign up with Google',
-              onPressed: () {
-                _handleGoogleSignIn();
-                // _auth.authStateChanges().listen((event) {
-                //   _user = event;
-
-                // });
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _handleGoogleSignIn() async {
+  Future<void> _handleGoogleSignIn() async {
     try {
       GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
       _auth.signInWithProvider(_googleAuthProvider);

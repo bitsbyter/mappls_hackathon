@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mappls_hackathon/services/apiservice.dart';
 
 import '../logic.dart';
 
@@ -15,6 +17,28 @@ class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final longitudeProvider = ref.watch(LongitudeProvider);
+    final latitudeProvider = ref.watch(LatitudeProvider);
+
+    double latitude;
+    Position? _currentLocation;
+    late bool servicePermission = false;
+    late LocationPermission permission;
+    Future<Position> _getCurrentLocation() async {
+      servicePermission = await Geolocator.isLocationServiceEnabled();
+      if (!servicePermission) {
+        Future.error('Location services are disabled');
+      }
+      permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          return Future.error('Location Permissions are denied perm');
+        }
+      }
+      return await Geolocator.getCurrentPosition();
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -48,12 +72,41 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    onTap: () {
+                    onTap: () async {
+                      Map<String, dynamic>? map;
+                      map = await executeGameLogic();
+                      ref.read(GuesserProvider.notifier).state = map ??
+                          {
+                            "name": "India",
+                            "address": "India",
+                            "eLoc": "SAC1S3"
+                          };
+                      print(ref.read(GuesserProvider));
+                      Map<String, dynamic> coords = await geocoding_api(
+                              ref.read(GuesserProvider)['address']) ??
+                          {"lat": 24.779478, "lng": 77.549033};
+                      print(coords);
+                      ref.read(LongitudeProvider.notifier).state =
+                          coords['lng'] ?? 77.549033;
+                      ref.read(LatitudeProvider.notifier).state =
+                          coords['lat'] ?? 24.779478;
+                      print(ref.read(LongitudeProvider));
+                      print(ref.read(LatitudeProvider));
                       context.go('/home/guesser');
                     },
                   ),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      await _getCurrentLocation().then((value) {
+                        ref.read(LongitudeProvider.notifier).state =
+                            value.longitude;
+                        ref.read(LatitudeProvider.notifier).state =
+                            value.latitude;
+                      });
+                      print('${longitudeProvider}');
+                      print('${latitudeProvider}');
+                      print('${ref.read(radiusProvider)}');
+                      print('${ref.read(AuthTokenProvider)}');
                       context.go('/home/nearby');
                     },
                     child: Container(
@@ -137,3 +190,8 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 }
+
+final LatitudeProvider = StateProvider<double>(
+    (ref) => 24.779478); // Change int to the type of your variable
+final LongitudeProvider = StateProvider<double>((ref) => 77.549033);
+final RadiusProvider = StateProvider<int>((ref) => 500);

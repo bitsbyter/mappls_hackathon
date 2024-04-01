@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mappls_hackathon/homescreen.dart';
 import 'package:mappls_hackathon/logic.dart';
 // import 'package:mappls_hackathon/nearby/customslider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mappls_hackathon/services/apiservice.dart';
 
 class NearByScreen extends ConsumerWidget {
   double _currentSliderValue = 0;
@@ -51,21 +53,16 @@ class NearByScreen extends ConsumerWidget {
                   style: TextStyle(color: Colors.amber[600]),
                 ),
                 color: Color.fromARGB(255, 51, 51, 51),
-                onPressed: () {
+                onPressed: () async{
+                  // await nearby_api('cafe', ref.read(LatitudeProvider), ref.read(LongitudeProvider), ref.read(radiusProvider));
+                  // await geocoding_api('1/3, Everjoy Apartments, Marol Moroshi Road, Marolgaon, Andheri East, Marol, Mumbai, Maharashtra, 400059');
+                  // context.go('/home/nearby/carousel_display');
+                 // await distance_matrix_api(28.406933, 77.340695, 28.407121, 77.336782);
+                  await executeNearbyLogic(ref.read(LatitudeProvider), ref.read(LongitudeProvider), ref.read(radiusProvider));
                   context.go('/home/nearby/carousel_display');
                 })
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 193, 146, 6),
-        child: const Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          context.go('/home');
-        },
       ),
     );
   }

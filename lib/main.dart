@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mappls_gl/mappls_gl.dart';
 import 'package:mappls_hackathon/guesser/guesserscreen.dart';
 import 'package:mappls_hackathon/guesser/guesserscreen2.dart';
 import 'package:mappls_hackathon/home/homescreen.dart';
@@ -26,10 +27,20 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static const String MAP_SDK_KEY = "3621541d-5b05-490d-9a69-497febc0ed7a";
+  static const String REST_API_KEY = "542dbb0ec43d4e94a956e1e2cbc7f4ff";
+  static const String ATLAS_CLIENT_ID =
+      "96dHZVzsAuveQBGTIIFIkYeraMJFqt9L-06b5-IZHvdE8vEECvvcoGE3eUKOIV_oMbjvJVxHi7WFgRpj6mCo8Q==";
+  static const String ATLAS_CLIENT_SECRET =
+      "lrFxI-iSEg_wXM1SNMY3-6sT4f-sjg_mdhe4x4urdW6rIkLmeQ_09lBxUmGFh8EB-F5HRjtEUZJCEOBzmw5vpwGro5mlEB6d";
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    MapplsAccountManager.setMapSDKKey(MAP_SDK_KEY);
+    MapplsAccountManager.setRestAPIKey(REST_API_KEY);
+    MapplsAccountManager.setAtlasClientId(ATLAS_CLIENT_ID);
+    MapplsAccountManager.setAtlasClientSecret(ATLAS_CLIENT_SECRET);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: MyAppRoutes()._router,
@@ -39,7 +50,7 @@ class MyApp extends StatelessWidget {
 
 class MyAppRoutes {
   final GoRouter _router = GoRouter(
-    initialLocation: '/home/guesser',
+    initialLocation: '/',
     errorPageBuilder: (BuildContext context, state) => MaterialPage(
       key: state.pageKey,
       child: Scaffold(
