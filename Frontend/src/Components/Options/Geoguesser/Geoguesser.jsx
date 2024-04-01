@@ -2,23 +2,18 @@ import React, { useState , useEffect } from 'react'
 import CountdownTimer from '../../Timer-Image/Timer.jsx'
 import QuestionImage from './QuestionImage.jsx'
 import Map from '../../Map.jsx'
+
 import BackgroundImage from '../../../assets/Images/background.png'
 import logo from '../../../assets/Images/logo.png'
 
-import { Link } from 'react-router-dom'
 const Geoguesser = () => {
-  
+
   const [isRunning , setisRunning] = useState(false)
   function startGame () {
     !isRunning ? setisRunning(true) : setisRunning(false)
   }
-
   return (
     <>
-
-    <LogoutComponent/>
-    <div className='w-screen h-screen flex items-center flex-col'>
-
     <div className='background bg-[#FBBC05] w-screen h-screen bg-cover bg-center fixed -z-50'>
       <img className='w-full h-full' src={BackgroundImage} alt="" />
     </div>
@@ -27,10 +22,19 @@ const Geoguesser = () => {
 
       <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
 
-        <QuestionImage/>
+        {/* <QuestionImage/> */}
 
-        <div className='w-auto h-full hidden'>
-          <Map />
+        <div className='w-full h-full flex justify-center items-center'>
+          {/* <Map /> */}
+
+          <div className='score w-96 h-44 border flex flex-col justify-between items-center bg-black rounded-2xl'>
+            <span>{`Round ${1}`}</span>
+            <span>{`You earned ${30} points!`}</span>
+            <div  className="w-64 h-3 bg-gray-200 rounded-lg overflow-hidden">
+              <div className="h-full bg-[#FBBC05]" style={{ width: `${50}%` }} />
+            </div>
+            <button className='w-28 h-8 border rounded-3xl flex justify-center items-center bg-[#FBBC05] text-black m-4'>Next</button>
+          </div>  
         </div>
 
       </div>
@@ -61,14 +65,7 @@ const Geoguesser = () => {
         </div>
 
       </div>
-
-      <div className='flex flex-row items-center justify-evenly w-screen col-span-4 my-4'> 
-      <QuestionImage/>
-      <Map/>
-      </div>
-      <div className=' text-4xl my-10 border-4 border-slate-50 p-5 rounded-2xls'>
-      <Link to="/ScoreCard">Submit</Link>
-      </div>
+      
     </div>
     </>
   )

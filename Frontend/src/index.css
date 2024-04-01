@@ -17,16 +17,9 @@
   display: none;
 }
 
-#map{
-  height: 20vh;
-  width: 100%;
-}
-
-
 .options-button{
   box-shadow: 1px 1px 5px 0 #FBBC05 inset;
   color: #FBBC05;
-  text-decoration: underline;
 }
 
 .timer-box{
