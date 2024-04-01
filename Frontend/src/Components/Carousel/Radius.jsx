@@ -34,7 +34,7 @@ const Radius = () => {
     };
   }, []);
 
-   const handleClick=()=>{
+   const setRadius=()=>{
     const radius=(Math.floor(progress))*500;
     dispatch(radiusActions.setRadius(radius))
    }
@@ -44,8 +44,8 @@ const Radius = () => {
     <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
       <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
     </div>
-    <span>{`${Math.floor(progress*0.5)} kms`}</span>
-    <button onClick={handleClick}>Set Radius</button>
+    <span onChange={setRadius}>{`${Math.floor(progress*0.5)} kms`}</span>
+    {/* <button onClick={handleClick}>Set Radius</button> */}
     </>
   );
 };

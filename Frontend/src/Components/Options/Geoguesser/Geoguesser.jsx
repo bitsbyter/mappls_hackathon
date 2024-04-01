@@ -13,7 +13,7 @@ import ScoreCard from './ScoreCard.jsx'
 function Answermap () {
   return(
     <>
-      <div className='answer-map w-auto h-auto border rounded-2xl absolute right-0 bottom-0 z-10  bg-black'>
+      <div className='answer-map w-auto h-auto border rounded-2xl absolute left-1/4 z-10  bg-black'>
           <div className='w-full h-12 flex justify-center items-center relative'>
             <p className='text-[#FBBC05]'>Place your Marker</p>
             {/* <button className='absolute w-6 h-6 right-0 text-[#FBBC05]'>X</button> */}
@@ -52,8 +52,8 @@ const Geoguesser = () => {
 
       <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
         {showMap ? <Answermap /> : null}
-        {!isRunning ?  <StreetViewMap /> : null}
-       
+        {!isRunning ?   <p>hwllo</p> : null}
+        {/* <StreetViewMap /> */}
         {/* score card ko bhi location select karne ke baad hi render karna h */}
         {/* <ScoreCard /> */}
       </div>
@@ -64,7 +64,7 @@ const Geoguesser = () => {
 
           <img className='w-44 h-10 m-2' src={logo} alt="" />
           <CountdownTimer minutes={3} seconds={0} isRunning={isRunning}/>
-          {!isRunning ? <button onClick={startGame} className='border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center'>Start</button> : null}        
+          {!isRunning ? <button onClick={startGame} className='border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center font-bold shadow-md shadow-white'>Start</button> : null}        
         </div>
 
         <div className='w-full h-1/2 flex flex-col'>
@@ -79,9 +79,9 @@ const Geoguesser = () => {
         </div>
 
         <div className='w-full h-1/3 flex flex-col items-center justify-center'>
-          {!showMap ? <button onClick={toggleMap} className='border w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black'>Show Map</button> : <button onClick={toggleMap} className='border w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black'>Hide Map</button>}
+          {!showMap ? <button onClick={toggleMap} className='w-32 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black font-bold shadow-md shadow-[#FBBC05]'>Show Map</button> : <button onClick={toggleMap} className='w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black font-bold shadow-md shadow-[#FBBC05]'>Hide Map</button>}
           {/* <Link className='border w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl' to={"/ScoreCard"} >Submit</Link> */}
-          <button className='border w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl font-bold'>Submit</button>
+          <button className='w-48 h-12 rounded-xl mb-4 bg-[#FBBC05] text-black text-xl font-bold shadow-md shadow-[#FBBC05] '>Submit</button>
         </div>
 
       </div>

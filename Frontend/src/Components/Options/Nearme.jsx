@@ -58,9 +58,11 @@ const Nearme = () => {
 
           <div className='w-2/3 h-2/5 rounded-xl flex flex-col justify-between items-center bg-black/70  '>
             <img className='h-12 w-96 m-2' src={logo} alt="" />
-            <span className=' text-lg'>{`Explore the loactions near you`}</span>
-            <span className=' text-lg'>{`Please select your radius`}</span>
+            <span className='max-w-60 text-md'>Explore the areas near you ~ Please specify the radius :</span>
             <Radius />
+
+            <option value=""></option>
+
             <Link to={"/carousel"} onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2 flex justify-center items-center'>Explore</Link>
           </div>
         
