@@ -10,7 +10,7 @@ import Options from './Components/Options/Options.jsx'
 import Geoguesser from './Components/Options/Geoguesser/Geoguesser.jsx'
 import Nearme from './Components/Options/Nearme.jsx'
 import ScoreCard from './Components/Options/Geoguesser/ScoreCard.jsx';
-
+import StreetViewMap from './Components/GoogleStreetView/StreetView.jsx';
 import './index.css'
 import store from './Store/store.js';
 
@@ -42,6 +42,10 @@ const router=createBrowserRouter([
   {
     path:"/ScoreCard",
     element:<ScoreCard/>
+  },
+  {
+    path:"/streetView",
+    element:<StreetViewMap/>
   }
 ])
 

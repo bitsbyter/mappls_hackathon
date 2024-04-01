@@ -67,7 +67,7 @@ const signInWithGoogle=()=>{
             <Link to={'./options'} className='login-with-username w-20 h-7 rounded-lg bg-[#FBBC05] text-black m-4 flex justify-center items-center'>Log In</Link>
 
             <div className='m-1 w-auto h-20 flex items-center justify-center'>
-              <span className='h-12 w-12 rounded-full bg-white/20 m-2'> <img className='w-full h-full' src={google} alt="" /> </span>
+              <span className='h-12 w-12 rounded-full bg-white/20 m-2'> <img className='w-full h-full' src={google} alt="" onClick={signInWithGoogle} /> </span>
               <span className='h-12 w-12 rounded-full bg-white/20 m-2'> <img src={profile} alt="" /> </span>
             </div>
 
