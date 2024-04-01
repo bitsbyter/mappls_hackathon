@@ -1,10 +1,9 @@
 import { useState,useEffect } from 'react';
 import {useDispatch } from 'react-redux';
 import { CoordActions } from '../Store/userCoordsSlice';
-import { Link } from 'react-router-dom';
 import BackgroundImage from '../assets/Images/background.png'
 import Login from './Login-Register/Login';
-
+import GetData from './Carousel/CarouselData';
 
 function  App() {
   const [coords,setCoords]=useState({lat:"",long:""});
@@ -49,7 +48,7 @@ function  App() {
     <div className='app-wrapper w-screen h-screen flex justify-center items-center'>
       <Login />
     </div>
-
+   
     </>
   )
 }

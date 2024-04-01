@@ -2,42 +2,41 @@ import React, { useState } from 'react'
 import Radius from '../Carousel/Radius'
 import Carousel from '../Carousel/Carousel'
 import Loader from '../Loader'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from "axios"
 import {Link} from 'react-router-dom'
-
+import { CarouselDataActions } from '../../Store/CarouselDataSlice'
 import BackgroundImage from '../../assets/Images/background.png'
 import logo from '../../assets/Images/logo.png'
-
+import { useEffect } from 'react'
 
 
 const Nearme = () => {
-  const userCoords=useSelector((store)=>store.userCoords);
-  const getData= async ()=>{
-    const bearerToken="013cb2e2-826c-4f58-9586-de51d8efc584";
-    const lat=userCoords.lat;
-    const lng=userCoords.long
-    const baseUrl="https://atlas.mappls.com/api/places/nearby/json"
-    try{
-      const response=await axios.get(`${baseUrl}`,{
-        params:{
-          keywords:"cafe",
-          refLocation:`${lat},${lng}`,
-          radius:5000
-        },
-        headers:{
-          'Authorization': `Bearer ${bearerToken}`,
-          'Content-Type': 'application/json'
+  const dispatch=useDispatch();
+  const userCoords = useSelector((store) => store.userCoords);
+    const radius=useSelector((store)=>store.userRadius)
+    
+        const getCarouselData = () => {
+            axios.get("http://localhost:3000",{
+                params:{
+                    lat:userCoords.lat,
+                    lng:userCoords.long,
+                    radius:radius
+                }
+            })
+            .then((response)=>{
+              
+              const carouselData=(response.data.suggestedLocations);
+                dispatch(CarouselDataActions.setCarouselData(carouselData))
+            })
+            .catch((error)=>{
+               console.log(error)
+            })
         }
-      })
-      console.log(response.data);
-    }catch(error){
-      console.log(error)
-    }
-  }
+  
   const [isCarousel , setIsCarousel] = useState(false)
   function loadCarousel () {
-    getData();
+    getCarouselData();
     !isCarousel ? setIsCarousel(true) : setIsCarousel(false)
   }
   
@@ -61,7 +60,7 @@ const Nearme = () => {
             <span className=' text-lg'>{`Explore the loactions near you`}</span>
             <span className=' text-lg'>{`Please select your radius`}</span>
             <Radius />
-            <Link to={"/carousel"} onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2 flex justify-center items-center'>Explore</Link>
+            <Link to="/carousel" onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2 flex justify-center items-center'>Explore</Link>
           </div>
         
         </div>
