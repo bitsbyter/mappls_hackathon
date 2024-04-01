@@ -3,10 +3,9 @@ import { useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import Taj from "../../../assets/Images/QutubMinar1.jpg"
 import axios from "axios";
-import Locations from "../../../Locations";
-import { QuestionAction } from "../../../Store/AskedPlaceSlice";
+
 const ScoreCard=()=>{
-    const dispatch=useDispatch();
+    const questionObject=useSelector((store)=>store.askedPlace)
     const userAnswer=useSelector((store)=>store.userAnswerCoords);
     console.log(userAnswer)
     const userLat=userAnswer.answerCoords.lat;
@@ -15,12 +14,8 @@ const ScoreCard=()=>{
   const [points,setPoints]=useState(0);
    useEffect(() => {
     const fetchData = async () => {
-        const size = Locations.length;
-        const number = Math.floor(Math.random() * size + 1);
-        const questionObject = Locations[number];
-        dispatch(QuestionAction.setQuestionedPlace(questionObject));
-        const lat = questionObject.latitude;
-        const long = questionObject.longitude;
+        const long=questionObject.longitude;
+        const lat=questionObject.latitude;        
         const baseUrl = "http://apis.mappls.com/advancedmaps/v1";
         const MapplsApiKEy = "b977a114567d823ff35753212dec68cb";
 
