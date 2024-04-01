@@ -20,14 +20,11 @@ const Geoguesser = () => {
 
     <div className='w-screen h-screen flex justify-between items-center bg-transparent/40'>
 
-      <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
+      <div className='map-box w-3/5 md:w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
 
-        {/* <QuestionImage/> */}
-
-        <div className='w-full h-full flex justify-center items-center'>
-          {/* <Map /> */}
-
-          <div className='score w-96 h-44 border flex flex-col justify-between items-center bg-black rounded-2xl'>
+        <div className='w-full h-full flex justify-center items-center absolute'>
+          <Map />
+          <div className='score w-96 h-44 border flex flex-col justify-between items-center bg-black rounded-2xl absolute'>
             <span>{`Round ${1}`}</span>
             <span>{`You earned ${30} points!`}</span>
             <div  className="w-64 h-3 bg-gray-200 rounded-lg overflow-hidden">
@@ -39,7 +36,7 @@ const Geoguesser = () => {
 
       </div>
 
-      <div className='timer-box w-1/5 h-5/6 flex flex-col rounded-2xl justify-center items-center bg-black'> 
+      <div className='timer-box w-2/5 md:w-1/5 h-5/6 flex flex-col rounded-2xl justify-center items-center bg-black'> 
 
         <div className='w-full h-1/3 flex flex-col justify-center items-center'>
 
@@ -49,7 +46,7 @@ const Geoguesser = () => {
 
         </div>
 
-        <div className='w-full h-1/2 flex flex-col'>
+        <div className='w-full h-1/2 flex flex-col'>  
           <div className='w-full h-16 flex flex-col p-4'>
             <span className='text-[#FBBC05] text-lg'>Map :</span>
             <p className='text-lg'>Cities of India</p>

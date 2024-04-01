@@ -46,9 +46,9 @@ const Map=()=>{
   
   return <>
 
-  <div style={{alignItems:"center",display:"flex",justifyContent:"center",padding:'2px',width:"30%"}}>
+  {/* <div style={{alignItems:"center",display:"flex",justifyContent:"center",padding:'2px',width:"30%"}}>
     <div id="map" style={{height:"500px",width:"100%",alignItems:"center",border:"2px solid white",borderRadius:"20px"}}></div>
-  </div>
+  </div> */}
 
   {/* <div style={{alignItems:"center",display:"flex",justifyContent:"center",padding:'2px'}}>
     <div id="map" style={{height:"500px",width:"60%",alignItems:"center",border:"2px solid white",borderRadius:"20px"}}></div>
@@ -56,9 +56,7 @@ const Map=()=>{
 
     <div className="flex items-center justify-center h-full w-full">
       <div id="map" className="items-center w-full h-full rounded-lg"></div>
-    </div>
-
-      
+    </div>  
   </>
 
 }

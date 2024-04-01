@@ -19,7 +19,7 @@ const Options = () => {
 
       <div className='logo-container flex flex-col justify-center items-center w-full h-1/4'>
         <img className='w-96 m-2' src={logo} alt="" />
-        <p className='italic m-2 text-lg'>{`"Explore the world one click at a time."`}</p>
+        <p id='satisfy-regular' className='m-2 text-lg'>{`"Explore the world one click at a time."`}</p>
       </div>
 
       <div className='mt-1/2 w-full h-3/4 flex justify-center items-center'> 
