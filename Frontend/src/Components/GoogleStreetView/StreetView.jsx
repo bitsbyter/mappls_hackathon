@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Streetview from "react-google-streetview";
 import { useSelector } from "react-redux";
 
-
 function StreetViewMap() {
   const googleMapsKey = "AIzaSyASqzcdHWxbrOVChwFv3aYjOqjdjXV7OO0";
-  const questionObject=useSelector((store)=>store.askedPlace)
+   const questionObject=useSelector((store)=>store.askedPlace);
+  const lat=questionObject.latitude;
+  const lng=questionObject.longitude;
+  console.log(lat,lng)
   const StreetMapOptions = {
-    position: { lat:28.579799484690042, lng:77.24733543672261 },
+    position: { lat:parseFloat(lat), lng:parseFloat(lng) },
     pov: { heading: 100, pitch: 0 },
     zoom: 1,
   };
