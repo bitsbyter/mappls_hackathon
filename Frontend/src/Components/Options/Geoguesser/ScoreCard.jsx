@@ -27,13 +27,14 @@ const ScoreCard=()=>{
             console.log(distance)
             if(totalDistance<11){
                 setPoints(1000);
-              }else if(points>=11 && points<100){
+              }else if(totalDistance>=11 && totalDistance<100){
                   setPoints(500);
-              }else if(points>=100 && points<400){
+              }else if(totalDistance>=100 && totalDistance<400){
                   setPoints(250)
               }else{
                   setPoints(100);
               }
+              console.log(points)
         } catch (err) {
             console.log(err);
         }
