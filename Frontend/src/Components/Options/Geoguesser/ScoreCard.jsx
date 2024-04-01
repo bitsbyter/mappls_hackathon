@@ -21,7 +21,7 @@ const ScoreCard=()=>{
 
         try {
             const response = await axios.get(`${baseUrl}/${MapplsApiKEy}/distance_matrix/walking/${long},${lat};${userLong},${userLat}`);
-            const distance = response.data.results.distances[0][1] / 1000;
+            const distance = response.data.results.distances[0][1]/1000;
             setDistance(distance);
             console.log(questionObject)
         } catch (err) {
