@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector} from "react-redux";
-import Taj from "../../../assets/Images/QutubMinar1.jpg"
+import { useSelector} from "react-redux";
+
 import axios from "axios";
 
 const ScoreCard=()=>{
@@ -24,6 +24,16 @@ const ScoreCard=()=>{
             const distance = response.data.results.distances[0][1]/1000;
             setDistance(distance);
             console.log(questionObject)
+            console.log(distance)
+            if(totalDistance<11){
+                setPoints(1000);
+              }else if(points>=11 && points<100){
+                  setPoints(500);
+              }else if(points>=100 && points<400){
+                  setPoints(250)
+              }else{
+                  setPoints(100);
+              }
         } catch (err) {
             console.log(err);
         }
@@ -33,31 +43,19 @@ const ScoreCard=()=>{
     if (userLat !== "" && userLong !== "") {
         fetchData();
     }
-    if(totalDistance<11){
-      setPoints(1000);
-    }else if(points>=11 && points<100){
-        setPoints(500);
-    }else if(points>=100 && points<400){
-        setPoints(250)
-    }else{
-        setPoints(100);
-    }
+    
 }, [userLat, userLong]);
  
  
     
    return (
-   <>
-    <div className="flex justify-center">
-      <div className="border-4 p-5 rounded-lg my-40 w-4/5 flex flex-row">
-        <img src={Taj} ></img>
-        <div className="flex flex-col ">               
-          <h3>The Distance U guessed was {totalDistance}km away from the Location</h3>
-          <h3>The Guessed Location according to you was: {userAnswer.address}</h3>
-        </div>
-      </div>
-    </div>
-   
+   <>   
+   <div className="z-12 relative h-2/5 w-2/5">
+   <h2>Round 1</h2>
+   <p>You earned {points} points!</p>
+   <button className="bg-[#FBBC05]">Next</button>
+   </div>
+  
    </>
    )
 }
