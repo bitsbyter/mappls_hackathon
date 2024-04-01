@@ -27,7 +27,7 @@ const Geoguesser = () => {
       <StreetViewMap/>
       </div>
 
-      <div className='timer-box w-1/5 h-5/6 flex flex-col rounded-2xl justify-center items-center bg-black'> 
+      <div className='timer-box w-2/5 md:w-1/5 h-5/6 flex flex-col rounded-2xl justify-center items-center bg-black'> 
 
         <div className='w-full h-1/3 flex flex-col justify-center items-center'>
 
@@ -37,7 +37,7 @@ const Geoguesser = () => {
 
         </div>
 
-        <div className='w-full h-1/2 flex flex-col'>
+        <div className='w-full h-1/2 flex flex-col'>  
           <div className='w-full h-16 flex flex-col p-4'>
             <span className='text-[#FBBC05] text-lg'>Map :</span>
             <p className='text-lg'>Cities of India</p>
@@ -49,7 +49,7 @@ const Geoguesser = () => {
         </div>
 
         <div className='w-full h-1/3 flex items-end justify-center'>
-          <Link className='border w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl' to="/ScoreCard" >Submit</Link>
+          <Link className='border w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl flex justify-center items-center' to="/ScoreCard" >Submit</Link>
         </div>
 
       </div>
