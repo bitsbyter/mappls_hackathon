@@ -3,7 +3,7 @@ import Streetview from "react-google-streetview";
 import { useSelector } from "react-redux";
 
 function StreetViewMap() {
-  // const googleMapsKey = "AIzaSyASqzcdHWxbrOVChwFv3aYjOqjdjXV7OO0";
+  const googleMapsKey = "AIzaSyASqzcdHWxbrOVChwFv3aYjOqjdjXV7OO0";
    const questionObject=useSelector((store)=>store.askedPlace);
   const lat=questionObject.latitude;
   const lng=questionObject.longitude;
@@ -16,15 +16,9 @@ function StreetViewMap() {
   console.log("street View")
   return (
     <div>
-      <div
-        style={{
-          width: "1200px",
-          height: "750px",
-          backgroundColor: "#cccccc",
-        }}
-      >
+      <div className="w-full h-full">
         <Streetview
-          // apiKey={googleMapsKey}
+          apiKey={googleMapsKey}
           streetViewPanoramaOptions={StreetMapOptions}
         />
       </div>
@@ -32,3 +26,9 @@ function StreetViewMap() {
   );
 }
 export default StreetViewMap;
+
+// style={{
+//   width: "1200px",
+//   height: "750px",
+//   backgroundColor: "#cccccc",
+// }}

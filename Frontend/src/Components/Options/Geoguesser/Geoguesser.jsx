@@ -52,7 +52,7 @@ const Geoguesser = () => {
 
       <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
         {showMap ? <Answermap /> : null}
-        {!isRunning ?   <p>hwllo</p> : null}
+        {!isRunning ?   <StreetViewMap /> : null}
         {/* <StreetViewMap /> */}
         {/* score card ko bhi location select karne ke baad hi render karna h */}
         {/* <ScoreCard /> */}
@@ -64,7 +64,7 @@ const Geoguesser = () => {
 
           <img className='w-44 h-10 m-2' src={logo} alt="" />
           <CountdownTimer minutes={3} seconds={0} isRunning={isRunning}/>
-          {!isRunning ? <button onClick={startGame} className='border rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center font-bold shadow-md shadow-white'>Start</button> : null}        
+          {!isRunning ? <button onClick={startGame} className='rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center font-bold shadow-md shadow-white'>Start</button> : null}        
         </div>
 
             <div className='w-full h-1/2 flex flex-col'>
@@ -79,8 +79,8 @@ const Geoguesser = () => {
             </div>
 
             <div className='w-full h-1/3 flex flex-col items-center justify-center'>
-              {!showMap ? <button onClick={toggleMap} className='border w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black'>Show Map</button> : <button onClick={toggleMap} className='border w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black'>Hide Map</button>}
-              <button onClick={handleShowScoreCard} className='border w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl font-bold'>Submit</button>
+              {!showMap ? <button onClick={toggleMap} className='w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black  shadow-md shadow-[#FBBC05]'>Show Map</button> : <button onClick={toggleMap} className='w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black shadow-md shadow-[#FBBC05 ]'>Hide Map</button>}
+              <button onClick={handleShowScoreCard} className='w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl font-bold shadow-md shadow-[#FBBC05]'>Submit</button>
             </div>
 
           </div>

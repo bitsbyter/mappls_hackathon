@@ -10,6 +10,25 @@ import BackgroundImage from '../../assets/Images/background.png'
 import logo from '../../assets/Images/logo.png'
 
 
+function LocationType() {
+  const [locationType , setLocationType] = useState('');
+
+  const handleChange = (e) => {
+    setLocationType(e.target.value);
+    console.log(e.target.value)
+  };
+
+  return (
+    <div className="dropdown">
+      <select className='bg-[#FBBC05] rounded-md text-black w-auto' value={locationType} onChange={handleChange} >
+        <option disabled value="">Select the type of location you want to visit</option>
+        <option className='bg-[#FBBC05] text-black' value="landscapes">Landcapes</option>
+        <option className='bg-[#FBBC05] text-black' value="cafe">Cafe</option>
+        <option className='bg-[#FBBC05] text-black' value="famous-locations">Famous Locations</option>
+      </select>
+    </div>
+  );
+}
 
 const Nearme = () => {
   const userCoords=useSelector((store)=>store.userCoords);
@@ -61,7 +80,7 @@ const Nearme = () => {
             <span className='max-w-60 text-md'>Explore the areas near you ~ Please specify the radius :</span>
             <Radius />
 
-            <option value=""></option>
+            <LocationType />
 
             <Link to={"/carousel"} onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2 flex justify-center items-center'>Explore</Link>
           </div>
