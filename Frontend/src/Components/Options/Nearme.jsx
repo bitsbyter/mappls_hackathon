@@ -4,6 +4,7 @@ import Carousel from '../Carousel/Carousel'
 import Loader from '../Loader'
 import { useSelector } from 'react-redux'
 import axios from "axios"
+import {Link} from 'react-router-dom'
 
 import BackgroundImage from '../../assets/Images/background.png'
 import logo from '../../assets/Images/logo.png'
@@ -16,33 +17,33 @@ const Nearme = () => {
     const bearerToken="013cb2e2-826c-4f58-9586-de51d8efc584";
     const lat=userCoords.lat;
     const lng=userCoords.long
-   const baseUrl="https://atlas.mappls.com/api/places/nearby/json"
-   try{
-    const response=await axios.get(`${baseUrl}`,{
+    const baseUrl="https://atlas.mappls.com/api/places/nearby/json"
+    try{
+      const response=await axios.get(`${baseUrl}`,{
         params:{
-            keywords:"cafe",
-            refLocation:`${lat},${lng}`,
-            radius:5000
+          keywords:"cafe",
+          refLocation:`${lat},${lng}`,
+          radius:5000
         },
         headers:{
-            'Authorization': `Bearer ${bearerToken}`,
-            'Content-Type': 'application/json'
+          'Authorization': `Bearer ${bearerToken}`,
+          'Content-Type': 'application/json'
         }
-    })
-    console.log(response.data);
-   }catch(error){
-    console.log(error)
-   }
-}
+      })
+      console.log(response.data);
+    }catch(error){
+      console.log(error)
+    }
+  }
   const [isCarousel , setIsCarousel] = useState(false)
-//Onkar make an navbar typeof thing for user to search for the category of things they want to search
   function loadCarousel () {
     getData();
     !isCarousel ? setIsCarousel(true) : setIsCarousel(false)
   }
-   
+  
+  //Onkar make an navbar typeof thing for user to search for the category of things they want to search
   return (
-
+    
     <> 
     <div className='background bg-[#FBBC05] w-screen h-screen bg-cover bg-center fixed -z-50'>
       <img className='w-full h-full' src={BackgroundImage} alt="" />
@@ -60,8 +61,7 @@ const Nearme = () => {
             <span className=' text-lg'>{`Explore the loactions near you`}</span>
             <span className=' text-lg'>{`Please select your radius`}</span>
             <Radius />
-            {!isCarousel ? <button onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2'>Explore</button> : <button onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md'>Back</button>}
-            {isCarousel ? <Carousel /> : <h1 className=''>Nothing to display yet</h1>}
+            <Link to={"/carousel"} onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2 flex justify-center items-center'>Explore</Link>
           </div>
         
         </div>
@@ -74,7 +74,7 @@ const Nearme = () => {
 
     </>
     
-  )
-}
-
-export default Nearme
+    )
+  }
+  
+  export default Nearme

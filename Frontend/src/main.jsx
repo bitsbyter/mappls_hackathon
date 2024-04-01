@@ -13,6 +13,7 @@ import ScoreCard from './Components/Options/Geoguesser/ScoreCard.jsx';
 import StreetViewMap from './Components/GoogleStreetView/StreetView.jsx';
 import './index.css'
 import store from './Store/store.js';
+import Carousel from './Components/Carousel/Carousel.jsx';
 
 const router=createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router=createBrowserRouter([
   {
     path:"/streetView",
     element:<StreetViewMap/>
+  },
+  {
+    path:"/carousel",
+    element : <Carousel/>
   }
 ])
 
