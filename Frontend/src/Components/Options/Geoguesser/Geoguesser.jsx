@@ -60,7 +60,7 @@ const Geoguesser = () => {
         </div>
 
         <div className='w-full h-1/3 flex items-end justify-center'>
-          <Link className='border w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl' to="/ScoreCard" >Submit</Link>
+          <Link className='border w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl flex justify-center items-center' to="/ScoreCard" >Submit</Link>
         </div>
 
       </div>
