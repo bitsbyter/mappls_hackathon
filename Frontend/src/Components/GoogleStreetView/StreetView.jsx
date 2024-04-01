@@ -24,7 +24,7 @@ function StreetViewMap() {
         }}
       >
         <Streetview
-          apiKey={googleMapsKey}
+          // apiKey={googleMapsKey}
           streetViewPanoramaOptions={StreetMapOptions}
         />
       </div>
