@@ -10,6 +10,24 @@ import logo from '../../../assets/Images/logo.png'
 
 import ScoreCard from './ScoreCard.jsx'
 
+function Answermap () {
+  return(
+    <>
+      <div className='answer-map w-auto h-auto border rounded-2xl absolute right-0 bottom-0 z-10  bg-black'>
+          <div className='w-full h-12 flex justify-center items-center relative'>
+            <p className='text-[#FBBC05]'>Place your Marker</p>
+            {/* <button className='absolute w-6 h-6 right-0 text-[#FBBC05]'>X</button> */}
+          </div>
+          <div className='w-96 h-96 ml-4 mr-4 mb-4'>
+          <Map />
+          </div>
+      </div>
+    </>
+  )
+}
+
+
+
 const Geoguesser = () => {
   const [isRunning , setisRunning] = useState(false)
   const [showMap , setShowMap] = useState(false)
@@ -34,8 +52,8 @@ const Geoguesser = () => {
 
       <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
         {showMap ? <Answermap /> : null}
-        {!isRunning ? <p>USE THE STREETVIEW MAP COMPONENT HERE. MERI SCREEN PE DISPLAY NAHI HO RAHA THA EK BAAR DEKH LENA</p> : null}
-        {/* <StreetViewMap /> */}
+        {!isRunning ?  <StreetViewMap /> : null}
+       
         {/* score card ko bhi location select karne ke baad hi render karna h */}
         {/* <ScoreCard /> */}
       </div>
@@ -73,20 +91,6 @@ const Geoguesser = () => {
   )
 }
 
-function Answermap () {
-  return(
-    <>
-      <div className='answer-map w-auto h-auto border rounded-2xl absolute right-0 bottom-0'>
-          <div className='w-full h-12 flex justify-center items-center relative'>
-            <p className='text-[#FBBC05]'>Place your Marker</p>
-            {/* <button className='absolute w-6 h-6 right-0 text-[#FBBC05]'>X</button> */}
-          </div>
-          <div className='w-96 h-96 ml-4 mr-4 mb-4'>
-          <Map />
-          </div>
-      </div>
-    </>
-  )
-}
+
 
 export default Geoguesser
