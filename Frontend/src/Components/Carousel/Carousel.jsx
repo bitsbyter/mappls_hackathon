@@ -85,16 +85,44 @@ const Carousel = () => {
     </div>
 
       <div className='flex justify-center items-center w-screen h-screen'>
-        <div className='w-auto h-auto hidden lg:flex min-h-96 justify-center items-center'>
+        <div className='w-auto hidden lg:flex min-h-96 justify-center items-center relative'>
 
-          <div onClick={previous} className='z-0 first-line: left-1/4 absolute border w-60 h-96 justify-center items-center m-2 rounded-xl flex flex-col'> {data[index.prev].text} </div>
-          <div className='z-10 absolute border w-60 h-96 justify-center items-center m-2 rounded-xl flex flex-col'> {data[index.curr].text} </div>
-          <div onClick={next} className='z-0 first-line: right-1/4 absolute border w-60 h-96 justify-center items-center m-2 rounded-xl flex flex-col'> {data[index.nxt].text} </div>
+          <div onClick={previous} className=' z-0 absolute lg:right-2/3 border w-80 h-96 justify-center items-center m-2 rounded-xl flex bg-black/80'>
+            <div className='carousel-image w-3/5 h-4/5 border rounded-lg'></div>
+              <div className='w-2/5 h-4/5 border rounded-lg flex flex-col'>
+                <div className='carousel-text flex flex-col'>
+                  <span className='h-24 w-40 text-2xl'>{`Qutub Minar`}</span>
+                  <span>{`Chattarpur, New Delhi`}</span>
+                  <span>Lorem ipsum dolor sit amet consectetur adipisicing elita  dad w  b  </span>
+                </div>
+                <button className='carousel-btn'></button>
+              </div>
+          </div>
+
+          <div className='z-10 border w-80 h-96 justify-center items-center m-2 rounded-xl flex bg-black'>
+          <div className='w-2/5 h-4/5 border rounded-lg flex flex-col'>
+                <div className='carousel-text flex flex-col'>
+                  <span className='h-24 w-40 text-2xl'>{`Qutub Minar`}</span>
+                  <span>{`Chattarpur, New Delhi`}</span>
+                  <span>Lorem ipsum dolor sit amet consectetur adipisicing elita  dad w  b  </span>
+                </div>
+                <button className='carousel-btn'></button>
+              </div>
+          </div>
+
+          <div onClick={next} className=' z-0 absolute lg:left-2/3 border w-80 h-96 justify-center items-center m-2 rounded-xl flex bg-black/80'>
+            <div className='carousel-image w-3/5 h-4/5 border rounded-lg'></div>
+            <div className='w-2/5 h-4/5 border rounded-lg flex flex-col'>
+                <div className='carousel-text flex flex-col'>
+                  <span className='h-24 w-40 text-2xl'>{`Qutub Minar`}</span>
+                  <span>{`Chattarpur, New Delhi`}</span>
+                  <span>Lorem ipsum dolor sit amet consectetur adipisicing elita  dad w  b  </span>
+                </div>
+                <button className='carousel-btn'></button>
+              </div>
+          </div>
 
         </div>
-
-
-
 
         <div className='flex items-center w-auto h-auto lg:hidden'>
           <GrCaretPrevious onClick={previous} className='scale-150 m-2'/>
