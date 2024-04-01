@@ -4,6 +4,7 @@ import { GrCaretNext } from "react-icons/gr";
 
 import BackgroundImage from '../../assets/Images/background.png'
 import logo from '../../assets/Images/logo.png'
+import qutub from '../../assets/Images/QutubMinar2.jpg'
 
 import axios from 'axios'
 
@@ -85,40 +86,43 @@ const Carousel = () => {
     </div>
 
       <div className='flex justify-center items-center w-screen h-screen'>
-        <div className='w-auto hidden lg:flex min-h-96 justify-center items-center relative'>
 
-          <div onClick={previous} className=' z-0 absolute lg:right-2/3 border w-80 h-96 justify-center items-center m-2 rounded-xl flex bg-black/80'>
-            <div className='carousel-image w-3/5 h-4/5 border rounded-lg'></div>
-              <div className='w-2/5 h-4/5 border rounded-lg flex flex-col'>
-                <div className='carousel-text flex flex-col'>
-                  <span className='h-24 w-40 text-2xl'>{`Qutub Minar`}</span>
-                  <span>{`Chattarpur, New Delhi`}</span>
-                  <span>Lorem ipsum dolor sit amet consectetur adipisicing elita  dad w  b  </span>
+        <div className=' w-11/12 hidden lg:flex min-h-96 justify-center items-center relative'>
+
+          <div onClick={previous} className='z-0 absolute lg:right-2/4 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black opacity-60'>
+          <div className='carousel-image w-3/5 h-4/5 rounded-lg m-4 flex justify-center items-center'> <img className='h-full rounded-3xl' src={qutub} alt="" /></div>
+              <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
+                <div className='carousel-text flex flex-col justify-center items-center'>
+                  <span className='h-8 w-full lg:text-xl xl:text-2xl text-[#FBBC05]'>{`Qutub Minar`}</span>
+                  <span className='w-full h-6 lg:text-[10px] text-xs'>{`Chattarpur, New Delhi`}</span>
+                  <span className='w-full h-auto lg:text-[10px] text-xs text-white/55 '>Lorem ipsum dolor sit amet consectetur adipisicing elita dad w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn qo nqoif3qn </span>
                 </div>
-                <button className='carousel-btn'></button>
+                <button className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-6 font-bold'>Explore</button>
               </div>
           </div>
 
-          <div className='z-10 border w-80 h-96 justify-center items-center m-2 rounded-xl flex bg-black'>
-          <div className='w-2/5 h-4/5 border rounded-lg flex flex-col'>
-                <div className='carousel-text flex flex-col'>
-                  <span className='h-24 w-40 text-2xl'>{`Qutub Minar`}</span>
-                  <span>{`Chattarpur, New Delhi`}</span>
-                  <span>Lorem ipsum dolor sit amet consectetur adipisicing elita  dad w  b  </span>
+          <div className='z-10 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black'>
+              <div className='carousel-image w-3/5 h-4/5 rounded-lg m-4 flex justify-center items-center'> <img className='h-full rounded-3xl' src={qutub} alt="" /></div>
+
+              <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
+                <div className='carousel-text flex flex-col justify-center items-center'>
+                  <span className='h-8 w-full lg:text-xl xl:text-2xl text-[#FBBC05]'>{`Qutub Minar`}</span>
+                  <span className='w-full h-6 lg:text-[10px] text-xs'>{`Chattarpur, New Delhi`}</span>
+                  <span className='w-full h-auto lg:text-[10px] text-xs text-white/55 '>Lorem ipsum dolor sit amet consectetur adipisicing elita dad w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn qo nqoif3qn </span>
                 </div>
-                <button className='carousel-btn'></button>
+                <button className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-6 font-bold'>Explore</button>
               </div>
           </div>
 
-          <div onClick={next} className=' z-0 absolute lg:left-2/3 border w-80 h-96 justify-center items-center m-2 rounded-xl flex bg-black/80'>
-            <div className='carousel-image w-3/5 h-4/5 border rounded-lg'></div>
-            <div className='w-2/5 h-4/5 border rounded-lg flex flex-col'>
-                <div className='carousel-text flex flex-col'>
-                  <span className='h-24 w-40 text-2xl'>{`Qutub Minar`}</span>
-                  <span>{`Chattarpur, New Delhi`}</span>
-                  <span>Lorem ipsum dolor sit amet consectetur adipisicing elita  dad w  b  </span>
+          <div onClick={next} className='z-0 absolute lg:left-2/4 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black opacity-60'>
+          <div className='carousel-image w-3/5 h-4/5 rounded-lg m-4 flex justify-center items-center'> <img className='h-full rounded-3xl' src={qutub} alt="" /></div>
+            <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
+                <div className='carousel-text flex flex-col justify-center items-center'>
+                  <span className='h-8 w-full lg:text-xl xl:text-2xl text-[#FBBC05]'>{`Qutub Minar`}</span>
+                  <span className='w-full h-6 lg:text-[10px] text-xs'>{`Chattarpur, New Delhi`}</span>
+                  <span className='w-full h-auto lg:text-[10px] text-xs text-white/55 '>Lorem ipsum dolor sit amet consectetur adipisicing elita dad w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn qo nqoif3qn </span>
                 </div>
-                <button className='carousel-btn'></button>
+                <button className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-6 font-bold'>Explore</button>
               </div>
           </div>
 
