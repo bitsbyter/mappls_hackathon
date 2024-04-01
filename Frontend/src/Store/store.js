@@ -4,6 +4,7 @@ import UserCoordsSlice from "./userCoordsSlice";
 import UserAnswerSlice from "./userAnswerSlice";
 import CarouselDataSlice from "./CarouselDataSlice";
 import AskedPlace from "./AskedPlaceSlice";
+import userRadiusSlice from "./userRadiusSlice";
 
 
 const store=configureStore({
@@ -12,7 +13,8 @@ const store=configureStore({
       userCoords:UserCoordsSlice.reducer,
       userAnswerCoords:UserAnswerSlice.reducer,
       carouselData:CarouselDataSlice.reducer,
-      askedPlace:AskedPlace.reducer
+      askedPlace:AskedPlace.reducer,
+      userRadius:userRadiusSlice.reducer
     }
 });
 
