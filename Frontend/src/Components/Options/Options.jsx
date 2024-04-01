@@ -29,7 +29,7 @@ const Options = () => {
          </span>
          <span className='options-button flex justify-center items-center rounded-md m-2 w-44 h-12 bg-black'>
           <img className='h-6 w-6 m-2' src={locator} alt="" />
-          <Link className='m-2' to={'/nearme'}>Near-me</Link>
+          <Link className='m-2' to="/nearme">Near-me</Link>
          </span>
       </div>
       

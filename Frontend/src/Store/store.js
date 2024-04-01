@@ -3,7 +3,7 @@ import ActiveUserSlice from "./userSlice";
 import UserCoordsSlice from "./userCoordsSlice";
 import UserAnswerSlice from "./userAnswerSlice";
 import CarouselDataSlice from "./CarouselDataSlice";
-
+import AskedPlace from "./AskedPlaceSlice";
 
 
 const store=configureStore({
@@ -11,7 +11,8 @@ const store=configureStore({
       activeUser:ActiveUserSlice.reducer,
       userCoords:UserCoordsSlice.reducer,
       userAnswerCoords:UserAnswerSlice.reducer,
-      carouselData:CarouselDataSlice.reducer
+      carouselData:CarouselDataSlice.reducer,
+      askedPlace:AskedPlace.reducer
     }
 });
 
