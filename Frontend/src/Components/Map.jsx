@@ -51,7 +51,7 @@ const Map=()=>{
   </div> */}
 
 
-    <div className="flex items-center justify-center h-full w-full">
+    <div className="flex w-full h-full">
       <div id="map" className="items-center w-full h-full rounded-lg"></div>
     </div>  
   </>

@@ -46,20 +46,19 @@ const ScoreCard=()=>{
  
  
     
-   return <>
-   <div className="flex justify-center">
-   <div className="border-4 p-5 rounded-lg my-40 w-4/5 flex flex-row">
-     <img src={Taj} ></img>
-     <div className="flex flex-col ">
-        
-     <h3>The Distance U guessed was {totalDistance}km away from the Location</h3>
-     <h3>The Guessed Location according to you was: {userAnswer.address}</h3>
-     </div>
-     </div>
-
-   </div>
+   return (
+   <>
+    <div className="flex justify-center">
+      <div className="border-4 p-5 rounded-lg my-40 w-4/5 flex flex-row">
+        <img src={Taj} ></img>
+        <div className="flex flex-col ">               
+          <h3>The Distance U guessed was {totalDistance}km away from the Location</h3>
+          <h3>The Guessed Location according to you was: {userAnswer.address}</h3>
+        </div>
+      </div>
+    </div>
    
    </>
-
+   )
 }
 export default ScoreCard;
