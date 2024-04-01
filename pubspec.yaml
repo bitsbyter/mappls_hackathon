@@ -43,6 +43,7 @@ dependencies:
   dio: ^5.4.2+1
   flutter_riverpod: ^2.5.1
   salomon_bottom_bar: ^3.3.2
+  circular_countdown_timer: ^0.2.3
 
 dev_dependencies:
   flutter_test:

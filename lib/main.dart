@@ -1,16 +1,18 @@
-
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mappls_hackathon/homescreen.dart';
+import 'package:mappls_hackathon/guesser/guesserscreen.dart';
+import 'package:mappls_hackathon/guesser/guesserscreen2.dart';
+import 'package:mappls_hackathon/home/homescreen.dart';
 import 'package:flutter/services.dart';
+import 'package:mappls_hackathon/home/searchscreen.dart';
 import 'package:mappls_hackathon/loginscreen.dart';
 import 'package:mappls_hackathon/nearby/carouselscreen.dart';
 import 'package:mappls_hackathon/nearby/nearbyscreen.dart';
+import 'package:mappls_hackathon/home/settings_screen.dart';
 import 'package:mappls_hackathon/splashscreen.dart';
-import 'package:mappls_hackathon/userscreen.dart';
+import 'package:mappls_hackathon/home/userscreen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
 
 class MyAppRoutes {
   final GoRouter _router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/home/guesser',
     errorPageBuilder: (BuildContext context, state) => MaterialPage(
       key: state.pageKey,
       child: Scaffold(
@@ -75,9 +77,25 @@ class MyAppRoutes {
         builder: (context, state) => CarouselScreen(),
       ),
       GoRoute(
-        path:'/home/user',
+        path: '/home/user',
         builder: (context, state) => UserScreen(),
-      )
+      ),
+      GoRoute(
+        path: '/home/settings',
+        builder: (context, state) => SettingsScreen(),
+      ),
+      GoRoute(
+        path: '/home/search',
+        builder: (context, state) => SearchScreen(),
+      ),
+      GoRoute(
+        path: '/home/guesser',
+        builder: (context, state) => GuesserScreen(),
+      ),
+      GoRoute(
+        path: '/home/guesser/mapview',
+        builder: (context, state) => GuesserScreenMap(),
+      ),
     ],
   );
 }

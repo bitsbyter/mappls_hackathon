@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'logic.dart';
+import '../logic.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -48,6 +48,9 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
                     ),
+                    onTap: () {
+                      context.go('/home/guesser');
+                    },
                   ),
                   GestureDetector(
                     onTap: () {
@@ -87,17 +90,41 @@ class HomeScreen extends ConsumerWidget {
             child: IconButton(
               iconSize: 50,
               color: Colors.amber,
-              icon: Icon(Icons.person_pin_circle_outlined),
+              icon: const Icon(Icons.person_pin_circle_outlined),
               onPressed: () {
                 context.go('/home/user');
               },
             ),
           ),
+          Positioned(
+            top: 10,
+            right: 10,
+            child: IconButton(
+              iconSize: 50,
+              color: Colors.amber,
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                context.go('/home/settings');
+              },
+            ),
+          ),
+          Positioned(
+            top: 10,
+            right: (MediaQuery.of(context).size.width) / 2,
+            child: IconButton(
+              iconSize: 50,
+              color: Colors.amber,
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                context.go('/home/search');
+              },
+            ),
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 193, 146, 6),
-        child: Icon(
+        child: const Icon(
           Icons.arrow_back,
           color: Colors.white,
         ),

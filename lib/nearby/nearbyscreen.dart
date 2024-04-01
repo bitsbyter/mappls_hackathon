@@ -57,6 +57,16 @@ class NearByScreen extends ConsumerWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromARGB(255, 193, 146, 6),
+        child: const Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ),
+        onPressed: () {
+          context.go('/home');
+        },
+      ),
     );
   }
 

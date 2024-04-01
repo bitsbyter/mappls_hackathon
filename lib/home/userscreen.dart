@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'logic.dart';
+import '../logic.dart';
 
 User? user;
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -26,18 +26,19 @@ class UserScreen extends ConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      context.go('/home');
-                    },
-                    icon: Icon(Icons.arrow_back),
-                    color: Colors.amber,
-                  ),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     context.go('/home');
+                  //   },
+                  //   icon: Icon(Icons.arrow_back),
+                  //   color: Colors.amber,
+                  // ),
                   MaterialButton(
                     color: Color.fromARGB(255, 228, 53, 53),
                     child: const Text('Sign Out'),
                     onPressed: () {
                       _auth.signOut();
+                      context.go('/login');
                     },
                   ),
                 ],
@@ -73,6 +74,16 @@ class UserScreen extends ConsumerWidget {
             // ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromARGB(255, 193, 146, 6),
+        child: const Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ),
+        onPressed: () {
+          context.go('/home');
+        },
       ),
     );
   }
