@@ -61,6 +61,7 @@ const Nearme = () => {
             <span className=' text-lg'>{`Please select your radius`}</span>
             <Radius />
             {!isCarousel ? <button onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2'>Explore</button> : <button onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md'>Back</button>}
+            {isCarousel ? <Carousel /> : <h1 className=''>Nothing to display yet</h1>}
           </div>
         
         </div>

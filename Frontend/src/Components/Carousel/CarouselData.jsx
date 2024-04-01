@@ -6,7 +6,7 @@ const getData= async ()=>{
     const bearerToken="0e989555-2211-4d0a-98d8-bce369d7286f";
     const lat=userCoords.lat;
     const lng=userCoords.long
-   const baseUrl="https://atlas.mappls.com/api/places/nearby/json"
+    const baseUrl="https://atlas.mappls.com/api/places/nearby/json"
    try{
     const response=await axios.get(`${baseUrl}`,{
         params:{

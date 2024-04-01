@@ -24,7 +24,7 @@ const Geoguesser = () => {
     <div className='w-screen h-screen flex justify-between items-center bg-transparent/40'>
 
       <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
-      <StreetViewMap/>
+      {/* <StreetViewMap/> */}
       </div>
 
       <div className='timer-box w-2/5 md:w-1/5 h-5/6 flex flex-col rounded-2xl justify-center items-center bg-black'> 
