@@ -32,7 +32,7 @@ app.get("/",async(req,res)=>{
      const lng=parseFloat(req.query.lng);
      console.log(lat,lng)
      const radius=req.query.radius
-    const bearerToken = "b7caeb5a-c9ce-4268-9ca0-a0fc3684ae3d";
+    const bearerToken = "d71f9ba5-79d0-488a-a462-83bf40f7a378";
     try {
         const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=cafe&refLocation=${lat},${lng}&radius=${radius}`, {
             headers: {
