@@ -36,7 +36,7 @@ const Nearme = () => {
     const radius=useSelector((store)=>store.userRadius)
     
         const getCarouselData = () => {
-            axios.get("http://localhost:3000",{
+            axios.get("https://localhost:3000",{
                 params:{
                     lat:userCoords.lat,
                     lng:userCoords.long,
