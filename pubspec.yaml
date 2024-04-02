@@ -76,6 +76,23 @@ flutter:
   assets:
      - assets/symbols/custom-icon.png
      - assets/bg1.png
+     - assets/logo_small.png
+     - assets/logo_big.png
+     - assets/google_logo.png
+     - assets/menu_button.png
+     - assets/search_button.png
+     - assets/globe.png
+     - assets/pin.png
+     - assets/button.png
+     - assets/lines.png
+     - assets/home_button.png
+     - assets/logo_smallish.png
+     - assets/pin2.png
+     - assets/logo_smol.png
+     - assets/arrow.png
+     - assets/taj.jpg
+
+     
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -89,10 +106,17 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+     - family: Montserrat
+       fonts:
+         - asset: fonts/MontserratAlternates-SemiBold.ttf
+     - family: Montserrat-reg
+       fonts:
+         - asset: fonts/MontserratAlternates-Regular.ttf
+         
+     - family: Beth Ellan
+       fonts:
+         - asset: fonts/BethEllen-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

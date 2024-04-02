@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mappls_hackathon/homescreen.dart';
 import 'package:mappls_hackathon/logic.dart';
@@ -16,54 +18,148 @@ class NearByScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final sliderValue = ref.watch(radiusProvider);
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      body: Container(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 70, 70, 70),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text(
-                'Radius: ${sliderValue.round()}',
-                style: TextStyle(fontSize: 20, color: Colors.amber[600]),
-              ),
-            ),
-            Slider(
-              activeColor: Color.fromARGB(255, 39, 48, 107),
-              thumbColor: Colors.amber[600],
-              value: _currentSliderValue,
-              max: 200,
-              // min: 0.5,
-              divisions: 40,
-              onChanged: (double value) {
-                print(value);
-                ref.read(radiusProvider.notifier).state = value;
-                _currentSliderValue = value;
-              },
-            ),
-            SizedBox(height: 40),
-            MaterialButton(
-                child: Text(
-                  'Done',
-                  style: TextStyle(color: Colors.amber[600]),
-                ),
-                color: Color.fromARGB(255, 51, 51, 51),
-                onPressed: () async{
-                  // await nearby_api('cafe', ref.read(LatitudeProvider), ref.read(LongitudeProvider), ref.read(radiusProvider));
-                  // await geocoding_api('1/3, Everjoy Apartments, Marol Moroshi Road, Marolgaon, Andheri East, Marol, Mumbai, Maharashtra, 400059');
-                  // context.go('/home/nearby/carousel_display');
-                 // await distance_matrix_api(28.406933, 77.340695, 28.407121, 77.336782);
-                  await executeNearbyLogic(ref.read(LatitudeProvider), ref.read(LongitudeProvider), ref.read(radiusProvider));
-                  context.go('/home/nearby/carousel_display');
-                })
-          ],
+      backgroundColor: Colors.transparent,
+      body: Stack(children: [
+        FittedBox(
+          child: Image.asset('assets/bg1.png'),
+          fit: BoxFit.fitWidth,
         ),
-      ),
+        Center(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black54,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 20,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            height: 250,
+            width: 600,
+            padding: EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/logo_smol.png',
+                  scale: 4,
+                ),
+                SizedBox(height: 20,),
+                Text(
+                  'Explore the locations near you',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'Please specify radius:',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Container(
+                  height: 20,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 485,
+                      ),
+                      Text(
+                        '${sliderValue.toInt()}km',
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontSize: 16,
+                            color: Color(0xffFBBC05)),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 35),
+                  child: Slider(
+                    activeColor: Color.fromARGB(255, 39, 48, 107),
+                    thumbColor: Colors.amber[600],
+                    value: _currentSliderValue,
+                    max: 200,
+                    // min: 0.5,
+                    divisions: 40,
+                    onChanged: (double value) {
+                      print(value);
+                      ref.read(radiusProvider.notifier).state = value;
+                      _currentSliderValue = value;
+                    },
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    
+                    // await executeNearbyLogic(ref.read(LatitudeProvider),
+                    //     ref.read(LongitudeProvider), ref.read(radiusProvider));
+                    // context.go('/home/nearby/carousel_display');
+                    Map<String, dynamic>? map;
+                      map = await executeGameLogic();
+                      ref.read(GuesserProvider.notifier).state = map ??
+                          {
+                            "name": "India",
+                            "address": "India",
+                            "eLoc": "SAC1S3"
+                          };
+                      print(ref.read(GuesserProvider));
+                      Map<String, dynamic> coords = await geocoding_api(
+                              ref.read(GuesserProvider)['address']) ??
+                          {"lat": 24.779478, "lng": 77.549033};
+                      print(coords);
+                      ref.read(LongitudeProvider.notifier).state =
+                          coords['lng'] ?? 77.549033;
+                      ref.read(LatitudeProvider.notifier).state =
+                          coords['lat'] ?? 24.779478;
+                      print(ref.read(LongitudeProvider));
+                      print(ref.read(LatitudeProvider));
+                      context.go('/home/guesser/card');
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      color: Color(0xffFBBC05),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          topRight: Radius.circular(50),
+                          bottomLeft: Radius.circular(50),
+                          bottomRight: Radius.circular(50)),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Explore',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Montserrat',
+                            fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ]),
     );
   }
 

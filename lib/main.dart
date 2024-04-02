@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mappls_gl/mappls_gl.dart';
 import 'package:mappls_hackathon/guesser/guesserscreen.dart';
 import 'package:mappls_hackathon/guesser/guesserscreen2.dart';
+import 'package:mappls_hackathon/guesser/guesserscreen3.dart';
 import 'package:mappls_hackathon/home/homescreen.dart';
 import 'package:flutter/services.dart';
 import 'package:mappls_hackathon/home/searchscreen.dart';
@@ -21,6 +22,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   runApp(ProviderScope(
     child: MyApp(),
   ));
@@ -106,6 +108,10 @@ class MyAppRoutes {
       GoRoute(
         path: '/home/guesser/mapview',
         builder: (context, state) => GuesserScreenMap(),
+      ),
+      GoRoute(
+        path: '/home/guesser/card',
+        builder: (context, state) => GuesserCard(),
       ),
     ],
   );

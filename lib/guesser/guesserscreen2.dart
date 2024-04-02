@@ -55,15 +55,15 @@ class GuesserScreenMap extends ConsumerWidget {
       },
       child: Scaffold(
         backgroundColor: Colors.black,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 193, 146, 6),
-          child: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            context.go('/home');
-          },
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   backgroundColor: const Color.fromARGB(255, 193, 146, 6),
+        //   child: const Icon(Icons.arrow_back, color: Colors.white),
+        //   onPressed: () {
+        //     context.go('/home');
+        //   },
+        // ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(0),
           child: Stack(
             children: [
               Container(
@@ -85,7 +85,7 @@ class GuesserScreenMap extends ConsumerWidget {
                         ref.read(GuessLatitudeProvider),
                         ref.read(GuessLongitudeProvider));
                     ref.read(DistanceProvider.notifier).state = dist ?? 0.0;
-                    context.go('/home/nearby/carousel_display');
+                    context.go('/home/guesser/card');
                   },
                   onStyleLoadedCallback: () {
                     // addMarker();
@@ -107,7 +107,18 @@ class GuesserScreenMap extends ConsumerWidget {
               //     ),
               //   ),
               // ),
+              Positioned(
+              top: 30,
+              left: 45,
+                child: GestureDetector(
+              onTap: () {
+                context.go('/home');
+              },
+              child: Image.asset('assets/home_button.png', scale: 4),
+            ))
             ],
+            
+
           ),
         ),
       ),
