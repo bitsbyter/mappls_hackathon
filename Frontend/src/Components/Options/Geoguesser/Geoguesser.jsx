@@ -6,6 +6,7 @@ import BackgroundImage from '../../../assets/Images/background.png';
 import StreetViewMap from '../../GoogleStreetView/StreetView.jsx';
 import logo from '../../../assets/Images/logo.png';
 import ScoreCard from './ScoreCard.jsx';
+import home from '../../../assets/Images/home.png'
 
 function Answermap() {
   return (
@@ -44,7 +45,9 @@ const Geoguesser = () => {
 
   return (
     <>
-      <div className='w-screen h-screen flex items-center flex-col'>
+      <div className='w-screen h-screen flex items-center flex-col relative'>
+        
+        <Link to={'../options'} className='absolute top-0 left-0 w-8 h-8'><img src={home} alt="" /></Link>
 
         <div className='background bg-[#FBBC05] w-screen h-screen bg-cover bg-center fixed -z-50'>
           <img className='w-full h-full' src={BackgroundImage} alt="" />

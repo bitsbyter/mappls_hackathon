@@ -3,7 +3,6 @@ import {useDispatch } from 'react-redux';
 import { CoordActions } from '../Store/userCoordsSlice';
 import BackgroundImage from '../assets/Images/background.png'
 import Login from './Login-Register/Login';
-import GetData from './Carousel/CarouselData';
 
 function  App() {
   const [coords,setCoords]=useState({lat:"",long:""});

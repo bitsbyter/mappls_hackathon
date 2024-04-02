@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Radius from '../Carousel/Radius'
-import Carousel from '../Carousel/Carousel'
 import Loader from '../Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from "axios"
@@ -8,6 +7,7 @@ import {Link} from 'react-router-dom'
 import { CarouselDataActions } from '../../Store/CarouselDataSlice'
 import BackgroundImage from '../../assets/Images/background.png'
 import logo from '../../assets/Images/logo.png'
+import home from '../../assets/Images/home.png'
 
 
 function LocationType() {
@@ -66,6 +66,7 @@ const Nearme = () => {
       <img className='w-full h-full' src={BackgroundImage} alt="" />
     </div>
 
+    <Link to={'../options'} className='absolute top-0 left-0 w-8 h-8'><img src={home} alt="" /></Link>
 
     <div className='w-screen h-screen flex justify-center items-center'>
 

@@ -51,7 +51,7 @@ const signInWithGoogle=()=>{
 
   return(
     <>
-        <div className="w-auto rounded-2xl h-auto flex flex-col items-center border bg-black/70">
+        <div className="w-auto rounded-2xl h-auto flex flex-col items-center bg-black/70">
 
             <img className='m-8' src={logo} alt="" />
 
@@ -65,7 +65,7 @@ const signInWithGoogle=()=>{
             </div> */}
 
             {/* <Link to={'./options'} className='login-with-username w-20 h-7 rounded-lg bg-[#FBBC05] text-black m-4 flex justify-center items-center'>Log In</Link> */}
-              <p className='monseratt mb-6'>Please choose your login method</p>
+              <p className='monseratt mb-6 lg:text-lg'>Please choose your login method</p>
             
               <Link onClick={signInWithGoogle} className='h-12 w-80 rounded-full bg-white/90 m-2 flex items-center mb-2'> <img className='w-12 h-12 m-2' src={google} alt=""  /> <p className='text-black font-semibold p-6 text-lg'>Continue with google</p> </Link>
               <Link to="/options" className='h-12 w-80 rounded-full bg-white/90 m-2 flex items-center mb-8'> <img className='w-12 h-12 m-2' src={profile} alt="" /> <p className='text-black font-semibold p-6 text-lg'>Contiinue as a guest</p> </Link>
