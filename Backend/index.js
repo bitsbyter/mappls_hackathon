@@ -2,7 +2,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import axios from "axios"
-import functions from "firebase-functions"
 const app = express();
 const port = 3000;
 app.use(cors());
