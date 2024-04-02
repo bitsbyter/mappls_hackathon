@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector} from "react-redux";
 
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ScoreCard=()=>{
     const questionObject=useSelector((store)=>store.askedPlace)
@@ -50,15 +51,15 @@ const ScoreCard=()=>{
     
    return (
    <>   
-    <div className="z-20 relative h-44 w-96 flex flex-col justify-between items-center border bg-black rounded-xl">
-        <p className="text-[#FBBC05] text-2xl">Round 1</p>
-        <p className="text-md">You earned {points} points!</p>
-
-        {/* <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
-         <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
+    <div className="z-20 absolute top-1/3 h-44 w-96 flex flex-col justify-between items-center border bg-black rounded-xl">
+        <p className="text-[#FBBC05] monseratt text-2xl">Round 1</p>
+        <p className="text-xl monseratt">You earned {points} points!</p>
+{/* 
+        <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
+          <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
         </div> */}
 
-        <button className="bg-[#FBBC05]">Next</button>
+        <Link className="bg-[#FBBC05] w-28 h-8 flex justify-center items-center rounded-md monseratt text-black">Next</ Link >
     </div>
    </>
    )

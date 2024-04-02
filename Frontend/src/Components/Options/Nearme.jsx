@@ -66,7 +66,7 @@ const Nearme = () => {
       <img className='w-full h-full' src={BackgroundImage} alt="" />
     </div>
 
-    <Link to={'../options'} className='absolute top-0 left-0 w-8 h-8'><img src={home} alt="" /></Link>
+    <Link to={'../options'} className='absolute top-0 left-0 w-8 h-8 m-4'><img src={home} alt="" /></Link>
 
     <div className='w-screen h-screen flex justify-center items-center'>
 
