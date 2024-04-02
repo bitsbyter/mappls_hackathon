@@ -16,7 +16,7 @@ const ScoreCard=()=>{
     const fetchData = async () => {
         const long=questionObject.longitude;
         const lat=questionObject.latitude;        
-        const baseUrl = "http://apis.mappls.com/advancedmaps/v1";
+        const baseUrl = "https://apis.mappls.com/advancedmaps/v1";
         const MapplsApiKEy = "b977a114567d823ff35753212dec68cb";
 
         try {
@@ -54,9 +54,9 @@ const ScoreCard=()=>{
         <p className="text-[#FBBC05] text-2xl">Round 1</p>
         <p className="text-md">You earned {points} points!</p>
 
-        <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
+        {/* <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
          <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
-        </div>
+        </div> */}
 
         <button className="bg-[#FBBC05]">Next</button>
     </div>

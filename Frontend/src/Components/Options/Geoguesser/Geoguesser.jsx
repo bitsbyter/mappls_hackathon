@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import CountdownTimer from '../../Timer-Image/Timer.jsx';
 import Map from '../../Map.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BackgroundImage from '../../../assets/Images/background.png';
 import StreetViewMap from '../../GoogleStreetView/StreetView.jsx';
 import logo from '../../../assets/Images/logo.png';
@@ -25,7 +25,7 @@ function Answermap() {
 }
 
 const Geoguesser = () => {
-  
+  const navigate=useNavigate();
   const [isRunning, setisRunning] = useState(true);
   const [showMap, setShowMap] = useState(false);
   const [showScoreCard, setShowScoreCard] = useState(false);
@@ -42,7 +42,7 @@ const Geoguesser = () => {
     setisRunning(false)
     setShowScoreCard(true);
   }
-
+  
   return (
     <>
       <div className='w-screen h-screen flex items-center flex-col relative'>
@@ -57,11 +57,11 @@ const Geoguesser = () => {
 
       <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-center relative'>
         {showMap ? <Answermap /> : null}
-        {!isRunning ?   <StreetViewMap /> : null}
+        {isRunning ?   <StreetViewMap /> : null}
         {/* <StreetViewMap /> */}
         {/* score card ko bhi location select karne ke baad hi render karna h */}
         {/* <ScoreCard /> */}
-        {/* {showScoreCard ? <ScoreCard /> : null} */}
+        {showScoreCard ? <ScoreCard /> : null}
       </div>
 
           <div className='timer-box w-1/5 h-5/6 flex flex-col rounded-2xl justify-center items-center bg-black'>
@@ -92,7 +92,7 @@ const Geoguesser = () => {
           </div>
         </div>
       </div>
-      {showScoreCard && <ScoreCard />}
+      
     </>
   );
 }
