@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import axios from "axios"
 const app = express();
 const port = 3000;
 app.use(cors());
@@ -25,6 +26,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
     
   })
   
+app.get("/",async(req,res)=>{
+     const lat=parseFloat(req.query.lat);
+     const lng=parseFloat(req.query.lng);
+     console.log(lat,lng)
+     const radius=req.query.radius
+    const bearerToken = "b7caeb5a-c9ce-4268-9ca0-a0fc3684ae3d";
+
+    // try {
+    //     const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=cafe&refLocation=${lat},${lng}&radius=${radius}`, {
+    //         headers: {
+    //             'Authorization': `bearer ${bearerToken}`,
+    //             'Content-Type': 'application/json'
+    //         }
+    //     });
+    //     res.send(response.data)
+    // } catch (error) {
+    //     console.log(error);
+    // }
+  
+})
+
 
 
 app.listen(port, () => {

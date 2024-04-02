@@ -18,7 +18,7 @@ function StreetViewMap() {
     <div className={`w-full h-full rounded-lg`}>
       <div className="w-full h-full rounded-lg">
         <Streetview
-          apiKey={googleMapsKey}
+          // apiKey={googleMapsKey}
           streetViewPanoramaOptions={StreetMapOptions}
         />
       </div>
