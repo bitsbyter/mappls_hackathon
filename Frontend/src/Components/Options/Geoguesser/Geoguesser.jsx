@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import CountdownTimer from '../../Timer-Image/Timer.jsx';
 import Map from '../../Map.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BackgroundImage from '../../../assets/Images/background.png';
 import StreetViewMap from '../../GoogleStreetView/StreetView.jsx';
 import logo from '../../../assets/Images/logo.png';
@@ -25,8 +25,8 @@ function Answermap() {
 }
 
 const Geoguesser = () => {
-  
-  const [isRunning, setisRunning] = useState(true);
+  const navigate=useNavigate();
+  const [isRunning, setisRunning] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [showScoreCard, setShowScoreCard] = useState(false);
 
@@ -42,7 +42,7 @@ const Geoguesser = () => {
     setisRunning(false)
     setShowScoreCard(true);
   }
-
+  
   return (
     <>
       <div className='w-screen h-screen flex items-center flex-col relative'>

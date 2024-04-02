@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import axios from "axios"
+import functions from "firebase-functions"
 const app = express();
 const port = 3000;
 app.use(cors());
@@ -32,7 +33,6 @@ app.get("/",async(req,res)=>{
      console.log(lat,lng)
      const radius=req.query.radius
     const bearerToken = "b7caeb5a-c9ce-4268-9ca0-a0fc3684ae3d";
-
     // try {
     //     const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=cafe&refLocation=${lat},${lng}&radius=${radius}`, {
     //         headers: {
@@ -53,3 +53,4 @@ app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
   });
   
+exports.api=functions.https.onRequest(app);

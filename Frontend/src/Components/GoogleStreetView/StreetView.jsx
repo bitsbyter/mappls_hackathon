@@ -12,13 +12,14 @@ function StreetViewMap() {
     position: { lat:parseFloat(lat), lng:parseFloat(lng) },
     pov: { heading: 100, pitch: 0 },
     zoom: 1,
+    disableDefaultUI: true,
   };
   console.log("street View")
   return (
     <div className={`w-full h-full rounded-lg`}>
       <div className="w-full h-full rounded-lg">
         <Streetview
-          // apiKey={googleMapsKey}
+          apiKey={googleMapsKey}
           streetViewPanoramaOptions={StreetMapOptions}
         />
       </div>
