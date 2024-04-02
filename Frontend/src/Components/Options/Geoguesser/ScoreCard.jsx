@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector} from "react-redux";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const ScoreCard=()=>{
@@ -10,7 +10,7 @@ const ScoreCard=()=>{
     console.log(userAnswer)
     const userLat=userAnswer.answerCoords.lat;
     const userLong=userAnswer.answerCoords.lng;
-    const [totalDistance,setDistance]=useState("");
+    
     const [points,setPoints]=useState(0);
    useEffect(() => {
     const fetchData = async () => {
@@ -22,14 +22,13 @@ const ScoreCard=()=>{
         try {
             const response = await axios.get(`${baseUrl}/${MapplsApiKEy}/distance_matrix/walking/${long},${lat};${userLong},${userLat}`);
             const distance = response.data.results.distances[0][1]/1000;
-            setDistance(distance);
             console.log(questionObject)
             console.log(distance)
-            if(totalDistance<11){
+            if(distance<11){
                 setPoints(1000);
-              }else if(totalDistance>=11 && totalDistance<100){
+              }else if(distance>=11 && distance<100){
                   setPoints(500);
-              }else if(totalDistance>=100 && totalDistance<400){
+              }else if(distance>=100 && distance<400){
                   setPoints(250)
               }else{
                   setPoints(100);
@@ -58,7 +57,7 @@ const ScoreCard=()=>{
          <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
         </div> */}
 
-        <button className="bg-[#FBBC05]">Next</button>
+        <Link className="bg-[#FBBC05]" to="/">Next</Link>
     </div>
    </>
    )
