@@ -33,17 +33,17 @@ app.get("/",async(req,res)=>{
      console.log(lat,lng)
      const radius=req.query.radius
     const bearerToken = "b7caeb5a-c9ce-4268-9ca0-a0fc3684ae3d";
-    // try {
-    //     const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=cafe&refLocation=${lat},${lng}&radius=${radius}`, {
-    //         headers: {
-    //             'Authorization': `bearer ${bearerToken}`,
-    //             'Content-Type': 'application/json'
-    //         }
-    //     });
-    //     res.send(response.data)
-    // } catch (error) {
-    //     console.log(error);
-    // }
+    try {
+        const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=cafe&refLocation=${lat},${lng}&radius=${radius}`, {
+            headers: {
+                'Authorization': `bearer ${bearerToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        res.send(response.data)
+    } catch (error) {
+        console.log(error);
+    }
   
 })
 
@@ -53,4 +53,3 @@ app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
   });
   
-exports.api=functions.https.onRequest(app);

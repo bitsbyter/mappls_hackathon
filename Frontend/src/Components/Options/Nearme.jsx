@@ -36,7 +36,7 @@ const Nearme = () => {
     const radius=useSelector((store)=>store.userRadius)
     
         const getCarouselData = () => {
-            axios.get("https://localhost:3000",{
+            axios.get("backend-kohl-chi.vercel.app",{
                 params:{
                     lat:userCoords.lat,
                     lng:userCoords.long,
