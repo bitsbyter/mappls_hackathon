@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
   })
   
 app.get("/",async(req,res)=>{
+  console.log("I have been Called");
      const lat=parseFloat(req.query.lat);
      const lng=parseFloat(req.query.lng);
      console.log(lat,lng)
@@ -53,3 +54,4 @@ app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
   });
   
+module.exports=app;
