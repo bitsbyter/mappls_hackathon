@@ -4,7 +4,12 @@ import cors from "cors";
 import axios from "axios"
 const app = express();
 const port = 3000;
-app.use(cors());
+const corsOptions = {
+  origin: "https://mappls-hackathon-frontend.vercel.app", // Change this to the specific origin of your frontend app
+  methods: "GET,POST", // Add other methods as needed
+  allowedHeaders: "Content-Type,Authorization", // Add other headers as needed
+};
+app.use(cors(corsOptions));
 app.use(express.static("public"));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
