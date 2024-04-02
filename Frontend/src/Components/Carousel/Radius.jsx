@@ -14,14 +14,12 @@ const Radius = () => {
       const width = rect.width;
       const newProgress = Math.min(100, Math.max(0, (deltaX / width) * 100));
       setProgress(newProgress);
-
     };
 
     const handleMouseUp = () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-
     progressBar.addEventListener('mousedown', (event) => {
       event.preventDefault();
       document.addEventListener('mousemove', handleMouseMove);
@@ -44,7 +42,7 @@ const Radius = () => {
     <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
       <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
     </div>
-    <span onChange={setRadius}>{`${Math.floor(progress*0.5)} kms`}</span>
+    <span className='monseratt' onChange={setRadius}>{`${Math.floor(progress*0.5)} kms`}</span>
     {/* <button onClick={handleClick}>Set Radius</button> */}
     </>
   );

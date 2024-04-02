@@ -21,10 +21,10 @@ function LocationType() {
   return (
     <div className="dropdown">
       <select className='bg-[#FBBC05] rounded-md text-black w-auto' value={locationType} onChange={handleChange} >
-        <option disabled value="">Select the type of location you want to visit</option>
-        <option className='bg-[#FBBC05] text-black' value="landscapes">Landcapes</option>
-        <option className='bg-[#FBBC05] text-black' value="cafe">Cafe</option>
-        <option className='bg-[#FBBC05] text-black' value="famous-locations">Famous Locations</option>
+        <option className=' monseratt text-center' value="all-locations">All Locations</option>
+        <option className='bg-[#FBBC05] text-black monseratt text-center' value="landscapes">Landcapes</option>
+        <option className='bg-[#FBBC05] text-black monseratt text-center' value="cafe">Cafe</option>
+        <option className='bg-[#FBBC05] text-black monseratt text-center' value="famous-locations">Famous Locations</option>
       </select>
     </div>
   );
@@ -59,8 +59,7 @@ const Nearme = () => {
     getData();
     !isCarousel ? setIsCarousel(true) : setIsCarousel(false)
   }
-  
-  //Onkar make an navbar typeof thing for user to search for the category of things they want to search
+
   return (
     
     <> 
@@ -75,14 +74,14 @@ const Nearme = () => {
 
         <div className='w-screen h-screen flex justify-center items-center flex-col'>
 
-          <div className='w-2/3 h-2/5 rounded-xl flex flex-col justify-between items-center bg-black/70  '>
-            <img className='h-12 w-96 m-2' src={logo} alt="" />
-            <span className='max-w-60 text-md'>Explore the areas near you ~ Please specify the radius :</span>
+          <div className='w-2/3 h-2/5 lg:w-5/12 rounded-xl flex flex-col justify-between items-center bg-black/70'>
+            <img className='h-12 w-60 m-2' src={logo} alt="" />
+            <span className='max-w-60 text-sm monseratt text-center'>Explore the areas near you ~ Please specify the radius :</span>
             <Radius />
 
             <LocationType />
 
-            <Link to={"/carousel"} onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2 flex justify-center items-center'>Explore</Link>
+            <Link to={"/carousel"} onClick={loadCarousel} className='w-24 h-7 mb-2 bg-[#FBBC05] text-black rounded-md m-2 flex justify-center items-center monseratt font-bold'>Explore</Link>
           </div>
         
         </div>

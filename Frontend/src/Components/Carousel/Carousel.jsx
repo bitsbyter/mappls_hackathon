@@ -89,7 +89,7 @@ const Carousel = () => {
 
         <div className=' w-11/12 hidden lg:flex min-h-96 justify-center items-center relative'>
 
-          <div onClick={previous} className='z-0 absolute lg:right-2/4 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black opacity-60'>
+          <div onClick={previous} className='z-0 absolute lg:right-2/4 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black opacity-60 shadow-sm shadow-[#FBBC05]'>
           <div className='carousel-image w-3/5 h-4/5 rounded-lg m-4 flex justify-center items-center'> <img className='h-full rounded-3xl' src={qutub} alt="" /></div>
               <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
                 <div className='carousel-text flex flex-col justify-center items-center'>
@@ -101,9 +101,8 @@ const Carousel = () => {
               </div>
           </div>
 
-          <div className='z-10 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black'>
+          <div className='z-10 scale-125 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black shadow-sm shadow-[#FBBC05]'>
               <div className='carousel-image w-3/5 h-4/5 rounded-lg m-4 flex justify-center items-center'> <img className='h-full rounded-3xl' src={qutub} alt="" /></div>
-
               <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
                 <div className='carousel-text flex flex-col justify-center items-center'>
                   <span className='h-8 w-full lg:text-xl xl:text-2xl text-[#FBBC05]'>{`Qutub Minar`}</span>
@@ -114,7 +113,7 @@ const Carousel = () => {
               </div>
           </div>
 
-          <div onClick={next} className='z-0 absolute lg:left-2/4 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black opacity-60'>
+          <div onClick={next} className='z-0 absolute lg:left-2/4 w-2/5 h-80 justify-center items-center m-2 rounded-xl flex bg-black opacity-60 shadow-sm shadow-[#FBBC05]'>
           <div className='carousel-image w-3/5 h-4/5 rounded-lg m-4 flex justify-center items-center'> <img className='h-full rounded-3xl' src={qutub} alt="" /></div>
             <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
                 <div className='carousel-text flex flex-col justify-center items-center'>
@@ -130,8 +129,14 @@ const Carousel = () => {
 
         <div className='flex items-center w-auto h-auto lg:hidden'>
           <GrCaretPrevious onClick={previous} className='scale-150 m-2'/>
-              <div className='border w-60 h-96 justify-center items-center m-2 rounded-xl flex flex-col'> 
-                <p> {data[index.prev].text} </p>
+            <div className='carousel-image w-3/5 h-4/5 rounded-lg m-4 flex justify-center items-center'> <img className='h-full rounded-3xl' src={qutub} alt="" /></div>
+              <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
+                <div className='carousel-text flex flex-col justify-center items-center'>
+                  <span className='h-8 w-full lg:text-xl xl:text-2xl text-[#FBBC05]'>{`Qutub Minar`}</span>
+                  <span className='w-full h-6 lg:text-[10px] text-xs'>{`Chattarpur, New Delhi`}</span>
+                  <span className='w-full h-auto lg:text-[10px] text-xs text-white/55 '>Lorem ipsum dolor sit amet consectetur adipisicing elita dad w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn qo nqoif3qn </span>
+                </div>
+                <button className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-6 font-bold'>Explore</button>
               </div>
             <GrCaretNext onClick={next} className='scale-150 m-2'/>
         </div>

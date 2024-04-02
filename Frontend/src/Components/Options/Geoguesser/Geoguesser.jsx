@@ -24,19 +24,21 @@ function Answermap() {
 }
 
 const Geoguesser = () => {
-  const [isRunning, setisRunning] = useState(false);
+  
+  const [isRunning, setisRunning] = useState(true);
   const [showMap, setShowMap] = useState(false);
   const [showScoreCard, setShowScoreCard] = useState(false);
 
-  function startGame() {
-    !isRunning ? setisRunning(true) : setisRunning(false);
-  }
+  // function startGame() {
+  //   !isRunning ? setisRunning(true) : setisRunning(false);
+  // }
 
   function toggleMap() {
     !showMap ? setShowMap(true) : setShowMap(false);
   }
 
   function handleShowScoreCard() {
+    setisRunning(false)
     setShowScoreCard(true);
   }
 
@@ -50,12 +52,13 @@ const Geoguesser = () => {
 
         <div className='w-screen h-screen flex justify-between items-center bg-transparent/40'>
 
-      <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-between relative'>
+      <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-center relative'>
         {showMap ? <Answermap /> : null}
         {!isRunning ?   <StreetViewMap /> : null}
         {/* <StreetViewMap /> */}
         {/* score card ko bhi location select karne ke baad hi render karna h */}
         {/* <ScoreCard /> */}
+        {/* {showScoreCard ? <ScoreCard /> : null} */}
       </div>
 
           <div className='timer-box w-1/5 h-5/6 flex flex-col rounded-2xl justify-center items-center bg-black'>
@@ -64,23 +67,23 @@ const Geoguesser = () => {
 
           <img className='w-44 h-10 m-2' src={logo} alt="" />
           <CountdownTimer minutes={3} seconds={0} isRunning={isRunning}/>
-          {!isRunning ? <button onClick={startGame} className='rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center font-bold shadow-md shadow-white'>Start</button> : null}        
+          {/* {!isRunning ? <button onClick={startGame} className='rounded-lg bg-slate-100 text-black m-4 w-16 h-8 text-center font-bold shadow-md shadow-white'>Start</button> : null}         */}
         </div>
 
             <div className='w-full h-1/2 flex flex-col'>
               <div className='w-full h-16 flex flex-col p-4'>
-                <span className='text-[#FBBC05] text-lg'>Map :</span>
-                <p className='text-lg'>Cities of India</p>
+                <span className='text-[#FBBC05] text-lg monseratt'>Map :</span>
+                <p className='text-lg monseratt'>Cities of India</p>
               </div>
               <div className='w-full h-16 flex flex-col p-4'>
-                <span className='text-[#FBBC05] text-lg'>Round :</span>
-                <p className='text-lg'>Level 1/10</p>
+                <span className='text-[#FBBC05] text-lg monseratt'>Round :</span>
+                <p className='text-lg monseratt'>1 / 10</p>
               </div>
             </div>
 
             <div className='w-full h-1/3 flex flex-col items-center justify-center'>
-              {!showMap ? <button onClick={toggleMap} className='w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black  shadow-md shadow-[#FBBC05]'>Show Map</button> : <button onClick={toggleMap} className='w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black shadow-md shadow-[#FBBC05 ]'>Hide Map</button>}
-              <button onClick={handleShowScoreCard} className='w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl font-bold shadow-md shadow-[#FBBC05]'>Submit</button>
+              {!showMap ? <button onClick={toggleMap} className='w-20 h-auto rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black  shadow-md shadow-[#FBBC05] monseratt p-2 font-bold'>Show Map</button> : <button onClick={toggleMap} className='w-20 h-8 rounded-3xl text-sm mb-4 bg-[#FBBC05] text-black shadow-md shadow-[#FBBC05] monseratt'>Hide Map</button>}
+              <button onClick={handleShowScoreCard} className='w-32 h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl font-bold shadow-md shadow-[#FBBC05] monseratt'>Submit</button>
             </div>
 
           </div>
