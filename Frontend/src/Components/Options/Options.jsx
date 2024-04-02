@@ -47,13 +47,14 @@ const Options = () => {
       </div>
 
       <div className='mt-1/2 w-full h-3/4 flex justify-center items-center'> 
-         <span className='options-button flex justify-center items-center rounded-md m-2 w-44 h-12 bg-black'>
-          <img className='h-6 w-6 m-2' src={geoguess} alt="" />
-          <Link className='m-2' to={'/geoguesser'}>Geoguesser</Link>
+         <span className='options-button flex justify-center items-center rounded-md m-2 w-60 h-16 xl:w-72 xl:h-20 bg-black'>
+          <img className='h-8 w-8 m-2 xl:h-12 xl:w-12' src={geoguess} alt="" />
+          <Link className='m-2 text-2xl xl:text-3xl' to={'/geoguesser'}>Geoguesser</Link>
          </span>
-         <span className='options-button flex justify-center items-center rounded-md m-2 w-44 h-12 bg-black'>
-          <img className='h-6 w-6 m-2' src={locator} alt="" />
-          <Link className='m-2' to="/nearme">Near-me</Link>
+         <span className='options-button flex justify-center items-center rounded-md m-2 w-60 h-16 xl:w-72 xl:h-20 bg-black'>
+          <img className='h-8 w-8 m-2 xl:h-12 xl:w-12' src={locator} alt="" />
+          <Link className='m-2 text-2xl xl:text-3xl' to="/nearme">NearMe</Link>
+
          </span>
       </div>
       

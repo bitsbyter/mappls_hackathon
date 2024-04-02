@@ -15,14 +15,8 @@ function StreetViewMap() {
   };
   console.log("street View")
   return (
-    <div>
-      <div
-        style={{
-          width: "1200px",
-          height: "750px",
-          backgroundColor: "#cccccc",
-        }}
-      >
+    <div className={`w-full h-full rounded-lg`}>
+      <div className="w-full h-full rounded-lg">
         <Streetview
           // apiKey={googleMapsKey}
           streetViewPanoramaOptions={StreetMapOptions}

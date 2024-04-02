@@ -10,8 +10,8 @@ const ScoreCard=()=>{
     console.log(userAnswer)
     const userLat=userAnswer.answerCoords.lat;
     const userLong=userAnswer.answerCoords.lng;
-   const [totalDistance,setDistance]=useState("");
-  const [points,setPoints]=useState(0);
+    const [totalDistance,setDistance]=useState("");
+    const [points,setPoints]=useState(0);
    useEffect(() => {
     const fetchData = async () => {
         const long=questionObject.longitude;
@@ -47,16 +47,19 @@ const ScoreCard=()=>{
     
 }, [userLat, userLong]);
  
- 
     
    return (
    <>   
-   <div className="z-12 relative h-2/5 w-2/5">
-   <h2>Round 1</h2>
-   <p>You earned {points} points!</p>
-   <button className="bg-[#FBBC05]">Next</button>
-   </div>
-  
+    <div className="z-20 relative h-44 w-96 flex flex-col justify-between items-center border bg-black rounded-xl">
+        <p className="text-[#FBBC05] text-2xl">Round 1</p>
+        <p className="text-md">You earned {points} points!</p>
+
+        <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
+         <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
+        </div>
+
+        <button className="bg-[#FBBC05]">Next</button>
+    </div>
    </>
    )
 }
