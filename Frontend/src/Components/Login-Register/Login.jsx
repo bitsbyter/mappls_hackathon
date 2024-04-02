@@ -68,7 +68,7 @@ const signInWithGoogle=()=>{
               <p className='monseratt mb-6 lg:text-lg'>Please choose your login method</p>
             
               <Link onClick={signInWithGoogle} className='h-12 w-80 rounded-full bg-white/90 m-2 flex items-center mb-2'> <img className='w-12 h-12 m-2' src={google} alt=""  /> <p className='text-black font-semibold p-6 text-lg'>Continue with google</p> </Link>
-              <Link to="/options" className='h-12 w-80 rounded-full bg-white/90 m-2 flex items-center mb-8'> <img className='w-12 h-12 m-2' src={profile} alt="" /> <p className='text-black font-semibold p-6 text-lg'>Contiinue as a guest</p> </Link>
+              <Link to="/options" className='h-12 w-80 rounded-full bg-white/90 m-2 flex items-center mb-8'> <img className='w-12 h-12 m-2' src={profile} alt="" /> <p className='text-black font-semibold p-6 text-lg'>Continue as a guest</p> </Link>
             
 
             {/* <Link className='underline mb-2' to={'./register'}>Create a new account</Link> */}
