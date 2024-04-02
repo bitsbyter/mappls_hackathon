@@ -46,6 +46,9 @@ app.get("/",async(req,res)=>{
     }
   
 })
+app.get("/testing",(req,res)=>{
+  res.send("Hello there test successful")
+})
 
 
 
