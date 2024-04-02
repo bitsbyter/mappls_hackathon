@@ -7,7 +7,7 @@ import axios from "axios"
 const Map=()=>{
   const [answerCoords,setAnswerCoords]=useState({lat:"",lng:""});
   const dispatch=useDispatch();
-  const baseUrlReverseGeo="http://apis.mappls.com/advancedmaps/v1"
+  const baseUrlReverseGeo="https://apis.mappls.com/advancedmaps/v1"
   const ApiKey='542dbb0ec43d4e94a956e1e2cbc7f4ff'
   useEffect(() => {
     function renderMap() {
