@@ -67,8 +67,8 @@ const signInWithGoogle=()=>{
             {/* <Link to={'./options'} className='login-with-username w-20 h-7 rounded-lg bg-[#FBBC05] text-black m-4 flex justify-center items-center'>Log In</Link> */}
               <p className='monseratt mb-6 lg:text-lg'>Please choose your login method</p>
             
-              <Link onClick={signInWithGoogle} className='h-12 w-80 rounded-full bg-white/90 m-2 flex items-center mb-2'> <img className='w-12 h-12 m-2' src={google} alt=""  /> <p className='text-black font-semibold p-6 text-lg'>Continue with google</p> </Link>
-              <Link to="/options" className='h-12 w-80 rounded-full bg-white/90 m-2 flex items-center mb-8'> <img className='w-12 h-12 m-2' src={profile} alt="" /> <p className='text-black font-semibold p-6 text-lg'>Continue as a guest</p> </Link>
+              <Link onClick={signInWithGoogle} className='h-12 w-80 rounded-full bg-blue-800 m-2 flex items-center mb-2'> <img className='w-12 h-12 m-2' src={google} alt=""  /> <p className='text-black/85 monseratt font-semibold p-6 text-lg'>Continue with google</p> </Link>
+              <Link to="/options" className='h-12 w-80 rounded-full bg-yellow-400 m-2 flex items-center mb-8'> <img className='w-12 h-12 m-2' src={profile} alt="" /> <p className='text-black/85 monseratt font-semibold p-6 text-lg'>Continue as a guest</p> </Link>
             
 
             {/* <Link className='underline mb-2' to={'./register'}>Create a new account</Link> */}

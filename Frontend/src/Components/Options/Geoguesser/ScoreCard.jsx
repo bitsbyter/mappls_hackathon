@@ -54,12 +54,12 @@ const ScoreCard=()=>{
     <div className="z-20 absolute top-1/3 h-44 w-96 flex flex-col justify-between items-center border bg-black rounded-xl">
         <p className="text-[#FBBC05] monseratt text-2xl">Round 1</p>
         <p className="text-xl monseratt">You earned {points} points!</p>
-{/* 
-        <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
-          <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
-        </div> */}
 
-        <Link className="bg-[#FBBC05] w-28 h-8 flex justify-center items-center rounded-md monseratt text-black">Next</ Link >
+        <div className="w-60 h-3 bg-gray-200 rounded-2xl overflow-hidden">
+          <div className="h-full bg-[#FBBC05]" style={{ width: `${points/1000}%` }} />
+        </div>
+
+        <Link className="bg-[#FBBC05] w-28 h-8 flex justify-center items-center rounded-md monseratt text-black m-2">Next</ Link >
     </div>
    </>
    )
