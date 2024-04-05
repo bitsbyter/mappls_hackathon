@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const ScoreCard=()=>{
     const questionObject=useSelector((store)=>store.askedPlace)
@@ -58,7 +57,7 @@ const ScoreCard=()=>{
           <div className="h-full bg-[#FBBC05]" style={{ width: `${points/1000}%` }} />
         </div>
 
-        <Link className="bg-[#FBBC05]" to="/">Next</Link>
+        {/* <Link className="bg-[#FBBC05]" to="./">Next</Link> */}
     </div>
    </>
    )
