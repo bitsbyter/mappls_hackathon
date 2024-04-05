@@ -14,7 +14,7 @@ function StreetViewMap() {
     zoom: 1,
     disableDefaultUI: true,
   };
-  console.log("street View")
+  // console.log("street View")
   return (
     <div className={`w-full h-full rounded-lg`}>
       <div className="w-full h-full rounded-lg">
