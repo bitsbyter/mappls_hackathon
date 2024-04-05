@@ -11,7 +11,7 @@ import axios from 'axios'
 import { useSelector } from 'react-redux';
 
 const Carousel = () => {
-   const carouselData=useSelector((store)=>store.carouselData);
+   const carouselData=useSelector((store)=>store.carouselData);  //Onkar yeh raha tera data saara carousel ke liye 10 items hai pls isko carousel mei feed karke carousel bana de
    console.log(carouselData);
   const [data , setData] = useState(
     [

@@ -2,10 +2,14 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import axios from "axios"
-import functions from "firebase-functions"
 const app = express();
 const port = 3000;
-app.use(cors());
+const corsOptions = {
+  origin: "https://mappls-hackathon-frontend.vercel.app", // Change this to the specific origin of your frontend app
+  methods: "GET,POST", // Add other methods as needed
+  allowedHeaders: "Content-Type,Authorization, Access-Control-Allow-Origin", // Add other headers as needed
+};
+app.use(cors(corsOptions));
 app.use(express.static("public"));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,23 +32,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
   })
   
 app.get("/",async(req,res)=>{
+  console.log("I have been Called");
      const lat=parseFloat(req.query.lat);
      const lng=parseFloat(req.query.lng);
      console.log(lat,lng)
      const radius=req.query.radius
-    const bearerToken = "b7caeb5a-c9ce-4268-9ca0-a0fc3684ae3d";
-    // try {
-    //     const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=cafe&refLocation=${lat},${lng}&radius=${radius}`, {
-    //         headers: {
-    //             'Authorization': `bearer ${bearerToken}`,
-    //             'Content-Type': 'application/json'
-    //         }
-    //     });
-    //     res.send(response.data)
-    // } catch (error) {
-    //     console.log(error);
-    // }
+    const bearerToken = "d71f9ba5-79d0-488a-a462-83bf40f7a378";
+    try {
+        const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=cafe&refLocation=${lat},${lng}&radius=${radius}`, {
+            headers: {
+                'Authorization': `bearer ${bearerToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        res.send(response.data)
+    } catch (error) {
+        console.log(error);
+    }
   
+})
+app.get("/testing",(req,res)=>{
+  res.send("Hello there test successful")
 })
 
 
@@ -53,4 +61,4 @@ app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
   });
   
-exports.api=functions.https.onRequest(app);
+export default app;
