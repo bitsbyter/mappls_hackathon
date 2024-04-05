@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { radiusActions } from '../../Store/userRadiusSlice';
 import { useDispatch } from 'react-redux';
 const Radius = () => {
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(20);
   const progressBarRef = useRef(null);
   const dispatch=useDispatch();
   useEffect(() => {
