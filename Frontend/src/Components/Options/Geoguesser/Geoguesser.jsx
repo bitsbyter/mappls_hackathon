@@ -39,9 +39,12 @@ const Geoguesser = () => {
     !showMap ? setShowMap(true) : setShowMap(false);
   }
 
+  const [round , setRound] = useState(1)
+
   function handleShowScoreCard() {
     setisRunning(false)
     setShowScoreCard(true);
+    setRound(round + 1)
   }
   
   return (
@@ -81,7 +84,7 @@ const Geoguesser = () => {
               </div>
               <div className='w-full h-auto flex flex-col p-4'>
                 <span className='text-[#FBBC05] text-lg monseratt'>Round :</span>
-                <p className='text-lg monseratt'>1 / 10</p>
+                <p className='text-lg monseratt'>{`${round} / 10`}</p>
               </div>
             </div>
 
