@@ -59,7 +59,7 @@ const ScoreCard=()=>{
           <div className="h-full bg-[#FBBC05]" style={{ width: `${points/1000}%` }} />
         </div>
 
-        <Link className="bg-[#FBBC05] w-28 h-8 flex justify-center items-center rounded-md monseratt text-black m-2">Next</ Link >
+        {/* <Link className="bg-[#FBBC05] w-28 h-8 flex justify-center items-center rounded-md monseratt text-black m-2">Next</ Link > */}
     </div>
    </>
    )
