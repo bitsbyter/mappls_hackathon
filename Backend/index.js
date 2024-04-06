@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import axios from "axios"
+import mongoose from "mongoose";
 const app = express();
 const port = 3000;
 const corsOptions = {
@@ -13,6 +14,29 @@ app.use(cors(corsOptions));
 app.use(express.static("public"));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+async function main() {
+    
+  try {
+     await mongoose.connect("mongodb+srv://f20220457:@userdatabase.xnpq27g.mongodb.net/?retryWrites=true&w=majority&appName=userDatabase")
+     console.log("Connected to MongoDb")
+     const UserScoreSchema= new mongoose.Schema({
+     userEmail:String,
+     totalScore:Number,
+     NTCBCH:Number,
+     NTCLAK:Number,
+     NTCWLS:Number,
+     NTCFAL:Number,
+     NTCHLS:Number,
+     NTCISL:Number,
+     NTCNPK:Number,
+     })
+     const UserScore = mongoose.model("UserScore", UserScoreSchema);
+    
+    app.post("/ScoreBoard",async(req,res)=>{
+
+    })
 
   app.post("/Register", async(req,res)=>{
      console.log(" I received Something")
@@ -30,7 +54,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     
     
   })
-  
+
 app.get("/",async(req,res)=>{
   console.log("I have been Called");
      const lat=parseFloat(req.query.lat);
@@ -60,5 +84,11 @@ app.get("/testing",(req,res)=>{
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
   });
+
+ } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+}
+main();
   
 export default app;
