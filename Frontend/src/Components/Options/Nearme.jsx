@@ -81,7 +81,7 @@ const Nearme = () => {
 
         <div className='w-screen h-screen flex justify-center items-center flex-col'>
 
-          <div className='w-2/3 lg:w-1/3 h-2/5 rounded-xl flex flex-col justify-between items-center bg-black/70 monseratt'>
+          <div className='w-2/3 lg:w-1/3 h-auto rounded-xl flex flex-col justify-between items-center bg-black/70 monseratt'>
             <img className='w-48 h-8 sm:h-12 sm:w-64 m-6' src={logo} alt="" />
             <span className='monseratt text-xs sm:text-lg'>{`Explore the loactions near you`}</span>
             <span className='monseratt text-xs sm:text-lg'>{`Please select your radius`}</span>
