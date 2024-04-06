@@ -6,7 +6,7 @@ import CarouselDataSlice from "./CarouselDataSlice";
 import AskedPlace from "./AskedPlaceSlice";
 import userRadiusSlice from "./userRadiusSlice";
 import NearByChoice from "./UserChoiceSlice";
-
+import RoutingPlace from "./RoutingPlace";
 
 const store=configureStore({
     reducer:{
@@ -16,7 +16,8 @@ const store=configureStore({
       carouselData:CarouselDataSlice.reducer,
       askedPlace:AskedPlace.reducer,
       userRadius:userRadiusSlice.reducer,
-      nearbyChoice:NearByChoice.reducer
+      nearbyChoice:NearByChoice.reducer,
+      routingPlace:RoutingPlace.reducer
     }
 });
 

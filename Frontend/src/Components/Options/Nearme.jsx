@@ -11,6 +11,8 @@ import logo from '../../assets/Images/logo.png'
 import { useEffect } from 'react'
 import home from '../../assets/Images/home.png'
 import { choiceActions } from '../../Store/UserChoiceSlice'
+import { routingActions } from '../../Store/RoutingPlace'
+
 
 function LocationType() {
   const dispatch=useDispatch();
