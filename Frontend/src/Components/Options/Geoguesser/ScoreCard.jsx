@@ -57,9 +57,9 @@ const ScoreCard=()=>{
           <div className="h-full bg-[#FBBC05]" style={{ width: `${points/10}%` }} />
         </div>
 
-        <Link className="bg-[#FBBC05]" to="/options">Next</Link>
+        
         {/* <Link className="bg-[#FBBC05]" to="./">Next</Link> */}
-        <Link to={'/geoguesser'} className="bg-[#FBBC05] w-24 h-8 flex rounded-xl m-2 justify-center items-center monseratt">Next</Link>
+        <Link to={'/options'} className="bg-[#FBBC05] w-24 h-8 flex rounded-xl m-2 justify-center items-center monseratt">Next</Link>
     </div>
    </>
    )

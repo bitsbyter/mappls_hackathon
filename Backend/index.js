@@ -5,7 +5,7 @@ import axios from "axios"
 const app = express();
 const port = 3000;
 const corsOptions = {
-  origin: "https://mappls-hackathon-frontend.vercel.app", // Change this to the specific origin of your frontend app
+  origin: "http://localhost:5173", // Change this to the specific origin of your frontend app
   methods: "GET,POST", // Add other methods as needed
   allowedHeaders: "Content-Type,Authorization, Access-Control-Allow-Origin", // Add other headers as needed
 };
@@ -34,10 +34,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/",async(req,res)=>{
   console.log("I have been Called");
      const lat=parseFloat(req.query.lat);
-     const lng=parseFloat(req.query.lng);
      const choice=req.query.type;
+     const lng=parseFloat(req.query.lng);  
      const radius=parseFloat(req.query.radius);
-    const bearerToken = "d71f9ba5-79d0-488a-a462-83bf40f7a378";
+    const bearerToken = "bdf8b2f1-5810-4bc6-8670-54fd77535888";
     try {
         const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=${choice}&refLocation=${lat},${lng}&radius=${radius}`, {
             headers: {
