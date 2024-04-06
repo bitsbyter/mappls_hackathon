@@ -6,16 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="fd142b2e-d024-4a28-9645-10d807ec260c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/bg1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bg1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/guesser/guesserscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/guesser/guesserscreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/guesser/guesserscreen2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/guesser/guesserscreen2.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/guesser/guesserscreen3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/guesser/guesserscreen3.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/home/homescreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home/homescreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/homescreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/homescreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/logic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/logic.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/loginscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/loginscreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/nearby/nearbyscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nearby/nearbyscreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/apiservice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/apiservice.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/splashscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/splashscreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

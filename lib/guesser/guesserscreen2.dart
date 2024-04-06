@@ -12,15 +12,21 @@ import 'package:mappls_gl/mappls_gl.dart';
 import 'package:mappls_hackathon/home/homescreen.dart';
 import 'package:mappls_hackathon/logic.dart';
 
-class GuesserScreenMap extends ConsumerWidget {
-  GuesserScreenMap({super.key});
+class GuesserScreenMap extends ConsumerStatefulWidget {
+  GuesserScreenMap({Key? key}) : super(key: key);
+
+  @override
+  _GuesserScreenMapState createState() => _GuesserScreenMapState();
+}
+
+class _GuesserScreenMapState extends ConsumerState<GuesserScreenMap> {
   static const CameraPosition _kInitialPosition = CameraPosition(
     target: LatLng(24.779478, 77.549033),
     zoom: 3.0,
   );
   LatLng bruh = new LatLng(0.0, 0.0);
   late MapplsMapController mapController;
-  static const String MAP_SDK_KEY = "3621541d-5b05-490d-9a69-497febc0ed7a";
+
   static const String REST_API_KEY = "542dbb0ec43d4e94a956e1e2cbc7f4ff";
   static const String ATLAS_CLIENT_ID =
       "96dHZVzsAuveQBGTIIFIkYeraMJFqt9L-06b5-IZHvdE8vEECvvcoGE3eUKOIV_oMbjvJVxHi7WFgRpj6mCo8Q==";
@@ -39,7 +45,7 @@ class GuesserScreenMap extends ConsumerWidget {
 
   @override
   void initState() {
-    MapplsAccountManager.setMapSDKKey(MAP_SDK_KEY);
+    MapplsAccountManager.setMapSDKKey(ref.read(accessTokenProvider));
     MapplsAccountManager.setRestAPIKey(REST_API_KEY);
     MapplsAccountManager.setAtlasClientId(ATLAS_CLIENT_ID);
     MapplsAccountManager.setAtlasClientSecret(ATLAS_CLIENT_SECRET);
@@ -48,7 +54,7 @@ class GuesserScreenMap extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return PopScope(
       onPopInvoked: (didPop) {
         context.go('/home');
@@ -72,19 +78,28 @@ class GuesserScreenMap extends ConsumerWidget {
                   onMapCreated: (mapController) {
                     this.mapController = mapController;
                   },
-                  onMapClick: (point, coordinates) async {
+                  onMapClick: (point, coordinates) {
                     addMarker(coordinates.longitude, coordinates.latitude);
                     ref.read(GuessLatitudeProvider.notifier).state =
                         coordinates.latitude;
                     ref.read(GuessLongitudeProvider.notifier).state =
                         coordinates.longitude;
+                    ref.read(logicProvider.notifier).state.lat1 =
+                        ref.read(LatitudeProvider);
+                    ref.read(logicProvider.notifier).state.long1 =
+                        ref.read(LongitudeProvider);
+                    ref.read(logicProvider.notifier).state.lat2 =
+                        ref.read(GuessLatitudeProvider);
+                    ref.read(logicProvider.notifier).state.long2 =
+                        ref.read(GuessLongitudeProvider);
+                    // ref.invalidate(executeChatGPTProvider);
+                    // ref.read(executeChatGPTProvider);
 
-                    double? dist = await calculateDistance(
-                        ref.read(LatitudeProvider),
-                        ref.read(LongitudeProvider),
-                        ref.read(GuessLatitudeProvider),
-                        ref.read(GuessLongitudeProvider));
-                    ref.read(DistanceProvider.notifier).state = dist ?? 0.0;
+                    // ref.read(DistanceProvider.notifier).state = dist ?? 0.0;
+                    ref.read(cardStateProvider.notifier).state.cardState =
+                        false;
+                    ref.invalidate(executeGameLogicProvider);
+                    ref.read(executeGameLogicProvider);
                     context.go('/home/guesser/card');
                   },
                   onStyleLoadedCallback: () {
@@ -108,17 +123,15 @@ class GuesserScreenMap extends ConsumerWidget {
               //   ),
               // ),
               Positioned(
-              top: 30,
-              left: 45,
-                child: GestureDetector(
-              onTap: () {
-                context.go('/home');
-              },
-              child: Image.asset('assets/home_button.png', scale: 4),
-            ))
+                  top: 30,
+                  left: 45,
+                  child: GestureDetector(
+                    onTap: () {
+                      context.go('/home');
+                    },
+                    child: Image.asset('assets/home_button.png', scale: 4),
+                  ))
             ],
-            
-
           ),
         ),
       ),

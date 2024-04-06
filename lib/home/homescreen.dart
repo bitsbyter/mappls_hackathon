@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mappls_hackathon/controllers/text_search_controller.dart';
+import 'package:mappls_hackathon/repo/text_search_repo.dart';
 import 'package:mappls_hackathon/services/apiservice.dart';
 
 import '../logic.dart';
@@ -17,34 +19,18 @@ class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final longitudeProvider = ref.watch(LongitudeProvider);
-    final latitudeProvider = ref.watch(LatitudeProvider);
+    final textSearchAsync = ref.watch(textSearchControllerProvider);
 
     double latitude;
-    Position? _currentLocation;
-    late bool servicePermission = false;
-    late LocationPermission permission;
-    Future<Position> _getCurrentLocation() async {
-      servicePermission = await Geolocator.isLocationServiceEnabled();
-      if (!servicePermission) {
-        Future.error('Location services are disabled');
-      }
-      permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          return Future.error('Location Permissions are denied perm');
-        }
-      }
-      return await Geolocator.getCurrentPosition();
-    }
 
     return Scaffold(
       body: Stack(
         children: [
-          FittedBox(
-            child: Image.asset('assets/bg1.png'),
-            fit: BoxFit.fitWidth,
+          Positioned.fill(
+            child: FittedBox(
+              child: Image.asset('assets/bg1.png'),
+              fit: BoxFit.fitWidth,
+            ),
           ),
           Container(
             color: Colors.transparent,
@@ -80,59 +66,46 @@ class HomeScreen extends ConsumerWidget {
                 children: [
                   GestureDetector(
                     onTap: () async {
-                      Map<String, dynamic>? map;
-                      map = await executeGameLogic();
-                      ref.read(GuesserProvider.notifier).state = map ??
-                          {
-                            "name": "India",
-                            "address": "India",
-                            "eLoc": "SAC1S3"
-                          };
-                      print(ref.read(GuesserProvider));
-                      Map<String, dynamic> coords = await geocoding_api(
-                              ref.read(GuesserProvider)['address']) ??
-                          {"lat": 24.779478, "lng": 77.549033};
-                      print(coords);
-                      ref.read(LongitudeProvider.notifier).state =
-                          coords['lng'] ?? 77.549033;
-                      ref.read(LatitudeProvider.notifier).state =
-                          coords['lat'] ?? 24.779478;
-                      print(ref.read(LongitudeProvider));
-                      print(ref.read(LatitudeProvider));
+                      ref.refresh(executeGameLogicProvider);
                       context.go('/home/guesser');
                     },
                     child: Container(
                       height: 50,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Stack(
-                          children: [
-                            Image.asset('assets/button.png', scale: 4,),
-                          
-                            Center(
-                              child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(width: 7,),
-                                Image.asset(
-                                  'assets/globe.png',
-                                  scale: 4,
-                                ),
-                                SizedBox(
-                                  width: 7,
-                                ),
-                                Text(
-                                  "Guess the location",
-                                  style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      color: Color(0xffFBBC05),
-                                      fontSize: 13.5),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                                                        ),
-                            ),]
-                        ),
+                        child: Stack(children: [
+                          Image.asset(
+                            'assets/button.png',
+                            scale: 4,
+                          ),
+                          Center(
+                            child: ref.watch(logicProvider).status == 'loaded'
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width: 7,
+                                      ),
+                                      Image.asset(
+                                        'assets/globe.png',
+                                        scale: 4,
+                                      ),
+                                      SizedBox(
+                                        width: 7,
+                                      ),
+                                      Text(
+                                        "Guess the location",
+                                        style: TextStyle(
+                                            fontFamily: 'Montserrat',
+                                            color: Color(0xffFBBC05),
+                                            fontSize: 13.5),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
+                                  )
+                                : Center(child: CircularProgressIndicator()),
+                          ),
+                        ]),
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
@@ -146,35 +119,29 @@ class HomeScreen extends ConsumerWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await _getCurrentLocation().then((value) {
-                        ref.read(LongitudeProvider.notifier).state =
-                            value.longitude;
-                        ref.read(LatitudeProvider.notifier).state =
-                            value.latitude;
-                      });
-                      print('${longitudeProvider}');
-                      print('${latitudeProvider}');
-                      print('${ref.read(radiusProvider)}');
-                      print('${ref.read(AuthTokenProvider)}');
+                      ref.refresh(executeLocationProvider);
                       context.go('/home/nearby');
                     },
                     child: Container(
                       height: 50,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Stack(
-
-                          children: [
-                            Image.asset('assets/button.png', scale: 4,),
-                            Center(
-                              child: Row(
+                        child: Stack(children: [
+                          Image.asset(
+                            'assets/button.png',
+                            scale: 4,
+                          ),
+                          Center(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
                                   width: 7,
                                 ),
-                                SizedBox(width: 5,),
+                                SizedBox(
+                                  width: 5,
+                                ),
                                 Image.asset(
                                   'assets/pin.png',
                                   scale: 4,
@@ -185,16 +152,15 @@ class HomeScreen extends ConsumerWidget {
                                 Text(
                                   "Explore near me",
                                   style: TextStyle(
-                                              
                                       fontFamily: 'Montserrat',
                                       color: Color(0xffFBBC05),
                                       fontSize: 13.5),
                                   textAlign: TextAlign.center,
                                 ),
                               ],
-                                                        ),
-                            ),]
-                        ),
+                            ),
+                          ),
+                        ]),
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
@@ -309,7 +275,7 @@ class HomeScreen extends ConsumerWidget {
               top: 40,
               right: 90,
               child: GestureDetector(
-                onTap: () => context.go('/home/user'),
+                onTap: () => context.go('/home/search'),
                 child: Image.asset(
                   'assets/search_button.png',
                   scale: 4,

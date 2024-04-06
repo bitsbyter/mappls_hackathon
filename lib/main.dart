@@ -8,6 +8,7 @@ import 'package:mappls_hackathon/guesser/guesserscreen2.dart';
 import 'package:mappls_hackathon/guesser/guesserscreen3.dart';
 import 'package:mappls_hackathon/home/homescreen.dart';
 import 'package:flutter/services.dart';
+import 'package:mappls_hackathon/home/search.dart';
 import 'package:mappls_hackathon/home/searchscreen.dart';
 import 'package:mappls_hackathon/loginscreen.dart';
 import 'package:mappls_hackathon/nearby/carouselscreen.dart';
@@ -29,7 +30,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static const String MAP_SDK_KEY = "3621541d-5b05-490d-9a69-497febc0ed7a";
+  static const String MAP_SDK_KEY = "a259485b-0efa-466d-883c-ada758ec2e0f";
   static const String REST_API_KEY = "542dbb0ec43d4e94a956e1e2cbc7f4ff";
   static const String ATLAS_CLIENT_ID =
       "96dHZVzsAuveQBGTIIFIkYeraMJFqt9L-06b5-IZHvdE8vEECvvcoGE3eUKOIV_oMbjvJVxHi7WFgRpj6mCo8Q==";
@@ -112,6 +113,10 @@ class MyAppRoutes {
       GoRoute(
         path: '/home/guesser/card',
         builder: (context, state) => GuesserCard(),
+      ),
+      GoRoute(
+        path: '/home/search',
+        builder: (context, state) => SearchScreen(),
       ),
     ],
   );
