@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { radiusActions } from '../../Store/userRadiusSlice';
 import { useDispatch } from 'react-redux';
+
 const Radius = () => {
   const [progress, setProgress] = useState(20);
   const progressBarRef = useRef(null);
@@ -32,18 +33,24 @@ const Radius = () => {
     };
   }, []);
 
-   const setRadius=()=>{
-    const radius=(Math.floor(progress))*500;
+  //  const setRadius=()=>{
+  //   const radius=(Math.floor(progress))*500;
+  //   console.log(radius)
+  // }
+  
+  useEffect(()=>{
+    const radius=(Math.floor(progress))*2000;
+    console.log(radius)
     dispatch(radiusActions.setRadius(radius))
-   }
+   } , [progress])
 
   return (
     <>
     <div ref={progressBarRef} className="w-40 sm:w-80 h-3 bg-gray-200 rounded-md overflow-hidden">
       <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%`}} />
     </div>
-    <button onClick={setRadius}>Set Radius</button>
-    <span className='monseratt'>{`${Math.floor(progress*0.5)} kms`}</span>
+    {/* <button onClick={setRadius}>Set Radius</button> */}
+    <span className='monseratt'>{`${Math.floor(progress*2)} kms`}</span>
     {/* <button onClick={handleClick}>Set Radius</button> */}
     </>
   );
