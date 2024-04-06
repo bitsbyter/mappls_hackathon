@@ -11,7 +11,7 @@ const ScoreCard=()=>{
     const userLat=userAnswer.answerCoords.lat;
     const userLong=userAnswer.answerCoords.lng;
     
-    const [points,setPoints]=useState(0);
+    const [points,setPoints]=useState(null);
    useEffect(() => {
     const fetchData = async () => {
         const long=questionObject.longitude;
@@ -24,7 +24,7 @@ const ScoreCard=()=>{
             const distance = response.data.results.distances[0][1]/1000;
             console.log(questionObject)
             console.log(distance)
-            if(distance<11){
+             if(distance<11){
                 setPoints(1000);
               }else if(distance>=11 && distance<100){
                   setPoints(500);
@@ -57,6 +57,7 @@ const ScoreCard=()=>{
           <div className="h-full bg-[#FBBC05]" style={{ width: `${points/10}%` }} />
         </div>
 
+        <Link className="bg-[#FBBC05]" to="/options">Next</Link>
         {/* <Link className="bg-[#FBBC05]" to="./">Next</Link> */}
         <Link to={'/geoguesser'} className="bg-[#FBBC05] w-24 h-8 flex rounded-xl m-2 justify-center items-center monseratt">Next</Link>
     </div>

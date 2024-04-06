@@ -35,11 +35,11 @@ app.get("/",async(req,res)=>{
   console.log("I have been Called");
      const lat=parseFloat(req.query.lat);
      const lng=parseFloat(req.query.lng);
-     console.log(lat,lng)
-     const radius=req.query.radius
+     const choice=req.query.type;
+     const radius=parseFloat(req.query.radius);
     const bearerToken = "d71f9ba5-79d0-488a-a462-83bf40f7a378";
     try {
-        const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=cafe&refLocation=${lat},${lng}&radius=${radius}`, {
+        const response = await axios.get(`https://atlas.mappls.com/api/places/nearby/json?keywords=${choice}&refLocation=${lat},${lng}&radius=${radius}`, {
             headers: {
                 'Authorization': `bearer ${bearerToken}`,
                 'Content-Type': 'application/json'

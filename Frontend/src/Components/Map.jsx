@@ -11,7 +11,7 @@ const Map=()=>{
   const ApiKey='542dbb0ec43d4e94a956e1e2cbc7f4ff'
   useEffect(() => {
     function renderMap() {
-      const map = new mappls.Map('map', {});
+      const map = new mappls.Map('map', {zoom:3});
       map.addListener("click", function(e) {   
         const answerLat = e.lngLat.lat;
         const answerLng = e.lngLat.lng;
