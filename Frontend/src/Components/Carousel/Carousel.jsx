@@ -117,7 +117,7 @@ const Carousel = () => {
                     {/* Lorem ipsum dolor sit amet consectetur adipisicing elita dad w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn nqoif3qn  */}
                   </span>
                 </div>
-                <button className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-10 font-bold monseratt'>Explore</button>
+                <Link to={'/routingMap'} className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-10 font-bold monseratt flex justify-center items-center'>Explore</Link>
               </div>
           </div>
 
