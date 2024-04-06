@@ -14,7 +14,7 @@ import CarouselData from '../../../CarouselData'
 
 const Carousel = () => {
    const carouselData=useSelector((store)=>store.carouselData);  //Onkar yeh raha tera data saara carousel ke liye 10 items hai pls isko carousel mei feed karke carousel bana de
-   console.log(CarouselData);
+  //  console.log(CarouselData);
 
   const [data , setData] = useState(
     CarouselData
@@ -127,7 +127,7 @@ const Carousel = () => {
           </div>
             <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
                 <div className='carousel-text flex flex-col justify-center items-center'>
-                  <span className='h-8 w-full lg:text-xl xl:text-2xl text-[#FBBC05]'>
+                  <span className='h-8 w-full lg:text-xl xl:text-2xl text-[#FBBC05] monseratt'>
                     {data[index.nxt].placeName}
                     {/* {`Qutub Minar`} */}
                     </span>
@@ -150,7 +150,7 @@ const Carousel = () => {
 
         <div className ='w-screen h-screen flex justify-center lg:hidden items-center '>
             <GrCaretPrevious onClick={previous} className='h-14 w-14 m-2'/>
-          <div className=' sm:flex items-center w-7/12 h-2/3 bg-black rounded-3xl shadow-md shadow-[#FBBC05]'>
+          <div className=' sm:flex items-center w-7/12 h-auto bg-black rounded-3xl shadow-md shadow-[#FBBC05]'>
               <div className='carousel-image h-2/5 sm:w-3/5 sm:h-4/5 rounded-lg m-4 flex justify-center items-center'> 
               {/* <img className='h-full rounded-3xl' src={qutub} alt="" /> */}
               </div>
@@ -168,7 +168,7 @@ const Carousel = () => {
                       {/* Lorem ipsum dolor sit amet consectetur adipisicing elita daerd w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn qo nqoif3qn */}
                      </span>
                   </div>
-                  <button className='sm:self-start monseratt carousel-btn rounded-lg w-24 sm:w-7/12 sm:h-12 h-10 bg-[#FBBC05] text-black text-md sm:text-lg lg:text-xl mt-4 sm:mt-10 font-bold sm:mb-4 sm:m-2 flex self-center justify-center items-center'>Explore</button>
+                  <button className='sm:self-start monseratt carousel-btn rounded-lg w-20 sm:w-7/12 sm:h-12 h-8 bg-[#FBBC05] text-black text-md sm:text-lg lg:text-xl mt-4 mb-4 sm:mt-10 font-bold sm:mb-4 sm:m-2 flex self-center justify-center items-center'>Explore</button>
                 </div>
           </div>
               <GrCaretNext onClick={next} className='h-14 w-14 m-2'/>
