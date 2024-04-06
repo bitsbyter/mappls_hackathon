@@ -5,6 +5,7 @@ import UserAnswerSlice from "./userAnswerSlice";
 import CarouselDataSlice from "./CarouselDataSlice";
 import AskedPlace from "./AskedPlaceSlice";
 import userRadiusSlice from "./userRadiusSlice";
+import NearByChoice from "./UserChoiceSlice";
 
 
 const store=configureStore({
@@ -14,7 +15,8 @@ const store=configureStore({
       userAnswerCoords:UserAnswerSlice.reducer,
       carouselData:CarouselDataSlice.reducer,
       askedPlace:AskedPlace.reducer,
-      userRadius:userRadiusSlice.reducer
+      userRadius:userRadiusSlice.reducer,
+      nearbyChoice:NearByChoice.reducer
     }
 });
 

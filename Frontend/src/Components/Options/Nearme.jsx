@@ -10,12 +10,15 @@ import BackgroundImage from '../../assets/Images/background.png'
 import logo from '../../assets/Images/logo.png'
 import { useEffect } from 'react'
 import home from '../../assets/Images/home.png'
+import { choiceActions } from '../../Store/UserChoiceSlice'
 function LocationType() {
+  const dispatch=useDispatch();
   const [locationType , setLocationType] = useState('');
 
   const handleChange = (e) => {
     setLocationType(e.target.value);
     console.log(e.target.value)
+    dispatch(choiceActions.setChoice(e.target.value));
   };
 
   return (
@@ -33,6 +36,7 @@ function LocationType() {
 
 const Nearme = () => {
   const dispatch=useDispatch();
+  const choice=useSelector((store)=>store.nearByChoice);
   const userCoords = useSelector((store) => store.userCoords);
     const radius=useSelector((store)=>store.userRadius)
     
@@ -41,7 +45,8 @@ const Nearme = () => {
                 params:{
                     lat:userCoords.lat,
                     lng:userCoords.long,
-                    radius:5000
+                    radius:radius,
+                    type:choice
                 }
             })
             .then((response)=>{
