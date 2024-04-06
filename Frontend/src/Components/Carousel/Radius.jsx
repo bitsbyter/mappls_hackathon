@@ -39,8 +39,8 @@ const Radius = () => {
 
   return (
     <>
-    <div ref={progressBarRef} className="w-96 h-3 bg-gray-200 rounded overflow-hidden">
-      <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%` }} />
+    <div ref={progressBarRef} className="w-40 sm:w-80 h-3 bg-gray-200 rounded-md overflow-hidden">
+      <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%`}} />
     </div>
     <button onClick={setRadius}>Set Radius</button>
     <span className='monseratt'>{`${Math.floor(progress*0.5)} kms`}</span>

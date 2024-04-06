@@ -54,11 +54,9 @@ const ScoreCard=()=>{
         <p className="text-xl monseratt">You earned {points} points!</p>
 
         <div className="w-60 h-3 bg-gray-200 rounded-2xl overflow-hidden">
-          <div className="h-full bg-[#FBBC05]" style={{ width: `${points/10}%` }} />
+          <div className="h-full bg-[#FBBC05]" style={{ width: `${points/10}%` , borderRadius: '100' }} />
         </div>
 
-        
-        {/* <Link className="bg-[#FBBC05]" to="./">Next</Link> */}
         <Link to={'/options'} className="bg-[#FBBC05] w-24 h-8 flex rounded-xl m-2 justify-center items-center monseratt">Next</Link>
     </div>
    </>
