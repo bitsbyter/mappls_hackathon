@@ -7,7 +7,7 @@ import axios from "axios";
 const ScoreCard=()=>{
     const questionObject=useSelector((store)=>store.askedPlace)
     const userAnswer=useSelector((store)=>store.userAnswerCoords);
-    console.log(userAnswer)
+     const activeUser=useSelector((store)=>store.activeUser);
     const userLat=userAnswer.answerCoords.lat;
     const userLong=userAnswer.answerCoords.lng;
     
@@ -34,6 +34,11 @@ const ScoreCard=()=>{
                   setPoints(100);
               }
               console.log(points)
+              const result=await axios.post("http://localhost:3000/ScoreCard",{
+                points:points,
+                user:activeUser.email,
+              })
+              console.log(result.data)
         } catch (err) {
             console.log(err);
         }

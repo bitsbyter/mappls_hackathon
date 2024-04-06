@@ -11,11 +11,11 @@ import home from '../../../assets/Images/home.png'
 function Answermap() {
   return (
     <>
-      <div className='answer-map w-3/4 h-full rounded-2xl absolute left-1/4 z-10 flex flex-col justify-center items-center bg-black'>
+      <div className='answer-map w-3/4 h-3/4 rounded-2xl absolute z-10 flex flex-col justify-center items-center bg-black pb-4 mt-2'>
 
           <div className='w-full h-12 flex justify-center items-center'>
             <p className='text-[#FBBC05] monseratt font-semibold text-lg'>Place your Marker</p>
-            {/* <button className='absolute w-6 h-6 right-0 text-[#FBBC05]'>X</button> */}
+            
           </div>
           <div className='h-5/6 w-full pl-4 pr-4'>
             <Map />
@@ -30,10 +30,6 @@ const Geoguesser = () => {
   const [isRunning, setisRunning] = useState(true);
   const [showMap, setShowMap] = useState(false);
   const [showScoreCard, setShowScoreCard] = useState(false);
-
-  // function startGame() {
-  //   !isRunning ? setisRunning(true) : setisRunning(false);
-  // }
 
   function toggleMap() {
     !showMap ? setShowMap(true) : setShowMap(false);

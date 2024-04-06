@@ -49,8 +49,8 @@ const Radius = () => {
     <div ref={progressBarRef} className="w-40 sm:w-80 h-3 bg-gray-200 rounded-md overflow-hidden">
       <div className="h-full bg-[#FBBC05]" style={{ width: `${progress}%`}} />
     </div>
-    {/* <button onClick={setRadius}>Set Radius</button> */}
-    <span className='monseratt'>{`${Math.floor(progress*2)} kms`}</span>
+    <button onClick={setRadius} className='bg-[#FBBC05] p-2 rounded-md text-black  monseratt font-bold'>Set Radius</button>
+    <span className='monseratt'>{`${Math.floor(progress*0.5)} kms`}</span>
     {/* <button onClick={handleClick}>Set Radius</button> */}
     </>
   );
