@@ -3,6 +3,7 @@ import {useDispatch } from 'react-redux';
 import { CoordActions } from '../Store/userCoordsSlice';
 import BackgroundImage from '../assets/Images/background.png'
 import Login from './Login-Register/Login';
+import { Landscape } from './Login-Register/Landscape';
 
 function  App() {
   const [coords,setCoords]=useState({lat:"",long:""});
@@ -44,8 +45,11 @@ function  App() {
       <img className='w-full h-full' src={BackgroundImage} alt="" />
     </div>
     
-    <div className='app-wrapper w-screen h-screen flex justify-center items-center'>
+    <div className='hidden app-wrapper w-screen h-screen xs:flex justify-center items-center'>
       <Login />
+    </div>
+    <div className='xs:hidden app-wrapper w-screen h-screen flex justify-center items-center'>
+    <Landscape />
     </div>
    
     </>

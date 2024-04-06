@@ -47,3 +47,22 @@
 .time-box{
   box-shadow: 0 0 1rem #565656;
 }
+
+@keyframes rotate-90 {
+  0% {
+      transform: rotate(0deg);
+  }
+  60% {
+      transform: rotate(90deg);
+  }
+  80%{
+    transform: rotate(90deg);
+  }
+  100% {
+      transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: rotate-90 2s linear infinite;
+}
