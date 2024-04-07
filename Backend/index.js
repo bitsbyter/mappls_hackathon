@@ -9,7 +9,7 @@ const port = 3000;
 const corsOptions = {
   origin: "https://mappls-hackathon-frontend.vercel.app", // Change this to the specific origin of your frontend app
   methods: "GET,POST", // Add other methods as needed
-  allowedHeaders: "Content-Type,Authorization, Access-Control-Allow-Origin", // Add other headers as needed
+  allowedHeaders: "Content-Type,Authorization", // Add other headers as needed
 };
 app.use(cors(corsOptions));
 app.use(express.static("public"));
