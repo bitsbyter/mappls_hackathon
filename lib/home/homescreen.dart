@@ -8,6 +8,9 @@ import 'package:go_router/go_router.dart';
 import 'package:mappls_hackathon/controllers/text_search_controller.dart';
 import 'package:mappls_hackathon/repo/text_search_repo.dart';
 import 'package:mappls_hackathon/services/apiservice.dart';
+import 'package:mappls_hackathon/home/userscreen.dart';
+
+
 
 import '../logic.dart';
 
@@ -79,8 +82,7 @@ class HomeScreen extends ConsumerWidget {
                             scale: 4,
                           ),
                           Center(
-                            child: ref.watch(logicProvider).status == 'loaded'
-                                ? Row(
+                            child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
@@ -103,7 +105,7 @@ class HomeScreen extends ConsumerWidget {
                                       ),
                                     ],
                                   )
-                                : Center(child: CircularProgressIndicator()),
+                                
                           ),
                         ]),
                       ),
@@ -119,7 +121,9 @@ class HomeScreen extends ConsumerWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      ref.refresh(executeLocationProvider);
+
+                      ref.invalidate(executeLocationProvider);
+                      ref.read(executeLocationProvider);
                       context.go('/home/nearby');
                     },
                     child: Container(
@@ -241,15 +245,20 @@ class HomeScreen extends ConsumerWidget {
             ),
           ),
           Positioned(
-              top: 40,
-              right: 30,
-              child: GestureDetector(
-                onTap: () => context.go('/home/user'),
-                child: Image.asset(
-                  'assets/menu_button.png',
-                  scale: 4,
-                ),
-              )),
+            top: 40,
+            right: 30,
+            child: GestureDetector(
+              onTap: () {
+                // ref.read(userTotalScoreProvider.notifier).state =
+                //     (await fetchUserScore(user?.email ?? 'guest')) ?? 0;
+                context.go('/home/user');
+              },
+              child: Image.asset(
+                'assets/menu_button.png',
+                scale: 4,
+              ),
+            ),
+          ),
           //   child: IconButton(
           //     iconSize: 50,
           //     color: Colors.amber,
@@ -280,7 +289,19 @@ class HomeScreen extends ConsumerWidget {
                   'assets/search_button.png',
                   scale: 4,
                 ),
-              ))
+              )),
+              Positioned(
+            bottom: 20,
+            right: 20,
+            child: GestureDetector(
+              onTap: () => GoRouter.of(context).go('/home/help'),
+              child: Icon(
+                Icons.help,
+                color: Colors.amber.withOpacity(0.8),
+                size: 30,
+              ),
+            ),
+          ),
         ],
       ),
       // floatingActionButton: FloatingActionButton(

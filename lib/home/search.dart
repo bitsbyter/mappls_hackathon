@@ -111,7 +111,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       ref.read(executeSearchButtonLogicProvider);
                       // ref.read(cardStateProvider.notifier).state.cardState =
                           // true;
-                      context.go('/home/nearby');
+                      context.go('/home/nearbyy');
                     },
                     child: SizedBox(
                       height: 55,

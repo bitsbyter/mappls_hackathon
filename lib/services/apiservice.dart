@@ -54,9 +54,9 @@ Future<String> auth_token_api() async {
   Map<String, dynamic> data = {
     'grant_type': 'client_credentials',
     'client_id':
-        '96dHZVzsAuveQBGTIIFIkYeraMJFqt9L-06b5-IZHvdE8vEECvvcoGE3eUKOIV_oMbjvJVxHi7WFgRpj6mCo8Q==',
+        '96dHZVzsAutUS6SzMai1FcOGd7iKEpc2ffbGz9Nhd9iUFld9eXC1jLluDxwwEU5QwBBuQ2R8dAxGlNZ2Ut0MPuxZgQW5q5ni',
     'client_secret':
-        'lrFxI-iSEg_wXM1SNMY3-6sT4f-sjg_mdhe4x4urdW6rIkLmeQ_09lBxUmGFh8EB-F5HRjtEUZJCEOBzmw5vpwGro5mlEB6d',
+        'lrFxI-iSEg_HPOwMuCs0F_6X49v8WscvtVS_gNl_xcUhxDlWuAhGUk_FJpbxT6MJh7_BMAEo0oXsvPynQqXlDVptGhwduhr_gowauMj4gns=',
   };
   // Making POST request
   Response response = await dio.post(
@@ -205,10 +205,10 @@ Future<Map<String, dynamic>?> geocoding_api(String address) async {
 }
 
 Future<double?> distance_matrix_api(
-    double lat1, double long1, double lat2, double long2, String token) async {
-  String accessToken = token;
+    double lat1, double long1, double lat2, double long2) async {
+  
   String apiUrl =
-      'https://apis.mappls.com/advancedmaps/v1/${accessToken}/distance_matrix/walking/${long1},${lat1};${long2},${lat2}';
+      'https://apis.mappls.com/advancedmaps/v1/542dbb0ec43d4e94a956e1e2cbc7f4ff/distance_matrix/walking/${long1},${lat1};${long2},${lat2}';
 
   try {
     Dio dio = Dio();

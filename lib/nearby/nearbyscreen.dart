@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mappls_hackathon/custom_loader.dart';
 import 'package:mappls_hackathon/home/homescreen.dart';
-import 'package:mappls_hackathon/homescreen.dart';
+// import 'package:mappls_hackathon/homescreen.dart';
 import 'package:mappls_hackathon/logic.dart';
 // import 'package:mappls_hackathon/nearby/customslider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,18 +25,20 @@ class _NearByScreenState extends ConsumerState<NearByScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // Trigger the FutureProvider when the screen is added to the context
 
-      // ref.watch(executeLocationProvider);
+      ref.watch(executeLocationProvider);
+      // ref.watch(executeSearchButtonLogicProvider);
+
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(stateProvider);
+    final state = ref.watch(logicProvider);
     final sliderValue = ref.watch(radiusProvider);
     print(sliderValue);
     return Scaffold(
         backgroundColor: Colors.transparent,
-        body: state.llState
+        body: state.status == 'loaded'
             ? Stack(children: [
                 FittedBox(
                   child: Image.asset('assets/bg1.png'),
@@ -150,13 +152,29 @@ class _NearByScreenState extends ConsumerState<NearByScreen> {
                             //       coords['lat'] ?? 24.779478;
                             //   print(ref.read(LongitudeProvider));
                             //   print(ref.read(LatitudeProvider));
-                            ref
-                                .read(cardStateProvider.notifier)
-                                .state
-                                .cardState = true;
+                            ref.read(cardStateProvider).changeCardState(true);
                             //  ref.read(cardStateProvider.notifier).state.notifyListeners();
+                            ref.invalidate(executeChatGPTProvider);
+                            ref.read(executeChatGPTProvider);
                             ref.invalidate(executeNearbyLogicProvider);
                             ref.read(executeNearbyLogicProvider);
+                            // final user = ref.watch(authStateProvider).value;
+                            // ref.read(userScoreProvider.notifier).state =
+                            //     (ref.read(DistanceProvider) / 1000).toInt() >=
+                            //             400
+                            //         ? 100
+                            //         : ((ref.read(DistanceProvider) / 1000)
+                            //                     .toInt() >=
+                            //                 100
+                            //             ? 250
+                            //             : ((ref.read(DistanceProvider) / 1000)
+                            //                         .toInt() >=
+                            //                     11
+                            //                 ? 500
+                            //                 : 1000));
+                            // final newScore = ref.read(userScoreProvider);
+                            // // addOrUpdateUserScore(user?.email ?? 'guest', newScore);
+                            // print('scores updated');
 
                             context.go('/home/guesser/card');
                           },

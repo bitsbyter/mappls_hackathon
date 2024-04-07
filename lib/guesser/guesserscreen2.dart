@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'dart:ffi';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -27,11 +28,11 @@ class _GuesserScreenMapState extends ConsumerState<GuesserScreenMap> {
   LatLng bruh = new LatLng(0.0, 0.0);
   late MapplsMapController mapController;
 
-  static const String REST_API_KEY = "542dbb0ec43d4e94a956e1e2cbc7f4ff";
+  static const String REST_API_KEY = "fa8e6897f3e0a523a6562f248dfe4208";
   static const String ATLAS_CLIENT_ID =
-      "96dHZVzsAuveQBGTIIFIkYeraMJFqt9L-06b5-IZHvdE8vEECvvcoGE3eUKOIV_oMbjvJVxHi7WFgRpj6mCo8Q==";
+      "96dHZVzsAutUS6SzMai1FcOGd7iKEpc2ffbGz9Nhd9iUFld9eXC1jLluDxwwEU5QwBBuQ2R8dAxGlNZ2Ut0MPuxZgQW5q5ni";
   static const String ATLAS_CLIENT_SECRET =
-      "lrFxI-iSEg_wXM1SNMY3-6sT4f-sjg_mdhe4x4urdW6rIkLmeQ_09lBxUmGFh8EB-F5HRjtEUZJCEOBzmw5vpwGro5mlEB6d";
+      "lrFxI-iSEg_HPOwMuCs0F_6X49v8WscvtVS_gNl_xcUhxDlWuAhGUk_FJpbxT6MJh7_BMAEo0oXsvPynQqXlDVptGhwduhr_gowauMj4gns=";
 
   void setPermission() async {
     if (!kIsWeb) {
@@ -84,23 +85,6 @@ class _GuesserScreenMapState extends ConsumerState<GuesserScreenMap> {
                         coordinates.latitude;
                     ref.read(GuessLongitudeProvider.notifier).state =
                         coordinates.longitude;
-                    ref.read(logicProvider.notifier).state.lat1 =
-                        ref.read(LatitudeProvider);
-                    ref.read(logicProvider.notifier).state.long1 =
-                        ref.read(LongitudeProvider);
-                    ref.read(logicProvider.notifier).state.lat2 =
-                        ref.read(GuessLatitudeProvider);
-                    ref.read(logicProvider.notifier).state.long2 =
-                        ref.read(GuessLongitudeProvider);
-                    // ref.invalidate(executeChatGPTProvider);
-                    // ref.read(executeChatGPTProvider);
-
-                    // ref.read(DistanceProvider.notifier).state = dist ?? 0.0;
-                    ref.read(cardStateProvider.notifier).state.cardState =
-                        false;
-                    ref.invalidate(executeGameLogicProvider);
-                    ref.read(executeGameLogicProvider);
-                    context.go('/home/guesser/card');
                   },
                   onStyleLoadedCallback: () {
                     // addMarker();
@@ -130,6 +114,38 @@ class _GuesserScreenMapState extends ConsumerState<GuesserScreenMap> {
                       context.go('/home');
                     },
                     child: Image.asset('assets/home_button.png', scale: 4),
+                  )),
+              Positioned(
+                  bottom: 30,
+                  right: 45,
+                  child: GestureDetector(
+                    onTap: () {
+                      ref.read(logicProvider.notifier).state.lat1 =
+                          ref.read(LatitudeProvider);
+                      ref.read(logicProvider.notifier).state.long1 =
+                          ref.read(LongitudeProvider);
+                      ref.read(logicProvider.notifier).state.lat2 =
+                          ref.read(GuessLatitudeProvider);
+                      ref.read(logicProvider.notifier).state.long2 =
+                          ref.read(GuessLongitudeProvider);
+                      ref.invalidate(executeChatGPTProvider);
+                      // ref.read(executeChatGPTProvider);
+
+                      // ref.read(DistanceProvider.notifier).state = dist ?? 0.0;
+                      ref.read(cardStateProvider).changeCardState(false);
+                      // ref.read(logicProvider).setLoading();
+                      // ref.refresh(executeGameLogicProvider);
+                      ref.invalidate(executeCalculateDistanceProvider);
+                      ref.read(executeCalculateDistanceProvider);
+                      // ref.read(executeLocationProvider);
+                      Future.delayed(const Duration(milliseconds: 1500),
+                          () => context.go('/home/guesser/card'));
+                    },
+                    child:
+                        SizedBox(
+                          height: 60,
+                          width: 60,
+                          child: Center(child: Image.asset('assets/tick.png', scale: 4))),
                   ))
             ],
           ),

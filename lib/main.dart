@@ -6,6 +6,7 @@ import 'package:mappls_gl/mappls_gl.dart';
 import 'package:mappls_hackathon/guesser/guesserscreen.dart';
 import 'package:mappls_hackathon/guesser/guesserscreen2.dart';
 import 'package:mappls_hackathon/guesser/guesserscreen3.dart';
+import 'package:mappls_hackathon/home/helpscreen.dart';
 import 'package:mappls_hackathon/home/homescreen.dart';
 import 'package:flutter/services.dart';
 import 'package:mappls_hackathon/home/search.dart';
@@ -14,8 +15,10 @@ import 'package:mappls_hackathon/loginscreen.dart';
 import 'package:mappls_hackathon/nearby/carouselscreen.dart';
 import 'package:mappls_hackathon/nearby/nearbyscreen.dart';
 import 'package:mappls_hackathon/home/settings_screen.dart';
+import 'package:mappls_hackathon/nearby/nearbyscreen2.dart';
 import 'package:mappls_hackathon/splashscreen.dart';
 import 'package:mappls_hackathon/home/userscreen.dart';
+import 'package:mappls_hackathon/trans.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -68,56 +71,151 @@ class MyAppRoutes {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => SplashScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: SplashScreen(),
+        ),
+        // builder: (context, state) => SplashScreen(),
       ),
       GoRoute(
         path: '/splash',
-        builder: (context, state) => SplashScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: SplashScreen(),
+        ),
+        // builder: (context, state) => SplashScreen(),
       ),
       GoRoute(
         path: '/login',
-        builder: (context, state) => LoginScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: LoginScreen(),
+        ),
+        // builder: (context, state) => LoginScreen(),
       ),
       GoRoute(
         path: '/home',
-        builder: (context, state) => HomeScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: HomeScreen(),
+        ),
+        // builder: (context, state) => HomeScreen(),
       ),
       GoRoute(
         path: '/home/nearby',
-        builder: (context, state) => NearByScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: NearByScreen(),
+        ),
+        // builder: (context, state) => NearByScreen(),
       ),
       GoRoute(
         path: '/home/nearby/carousel_display',
-        builder: (context, state) => CarouselScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: CarouselScreen(),
+        ),
+        // builder: (context, state) => CarouselScreen(),
       ),
       GoRoute(
         path: '/home/user',
-        builder: (context, state) => UserScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: UserScreen(),
+        ),
+        // builder: (context, state) => UserScreen(),
+      ),
+      GoRoute(
+        path: '/home/help',
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: HelpScreen(),
+        ),
       ),
       GoRoute(
         path: '/home/settings',
-        builder: (context, state) => SettingsScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: SettingsScreen(),
+        ),
+        // builder: (context, state) => SettingsScreen(),
       ),
       GoRoute(
         path: '/home/search',
-        builder: (context, state) => SearchScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: SearchScreen(),
+        ),
+        // builder: (context, state) => SearchScreen(),
       ),
       GoRoute(
         path: '/home/guesser',
-        builder: (context, state) => GuesserScreen(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: GuesserScreen(),
+        ),
+        // builder: (context, state) => GuesserScreen(),
       ),
       GoRoute(
         path: '/home/guesser/mapview',
-        builder: (context, state) => GuesserScreenMap(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+            context: context, state: state, child: GuesserScreenMap()),
+        // builder: (context, state) => GuesserScreenMap(),
       ),
       GoRoute(
         path: '/home/guesser/card',
-        builder: (context, state) => GuesserCard(),
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: GuesserCard(),
+        ),
+        // builder: (context, state) => GuesserCard(),
       ),
       GoRoute(
-        path: '/home/search',
-        builder: (context, state) => SearchScreen(),
+        path: '/home/nearbyy',
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: NearByScreen2(),
+        ),
+        // builder: (context, state) => GuesserCard(),
       ),
+       GoRoute(
+        path: '/home/trans',
+        pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: transScreen(),
+        ),
+        // builder: (context, state) => GuesserCard(),
+      ),
+      
+        // builder: (context, state) => SearchScreen(),
+     
     ],
+  );
+}
+
+CustomTransitionPage buildPageWithDefaultTransition<T>({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<T>(
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+        FadeTransition(opacity: animation, child: child),
   );
 }

@@ -1,4 +1,4 @@
-// import 'dart:js';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,70 +13,139 @@ class UserScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(authStateProvider);
-
+    final user = ref.watch(authStateProvider).value;
+    final totalScore = ref.watch(userTotalScoreProvider);
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Container(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Container(
-              height: 80,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // IconButton(
-                  //   onPressed: () {
-                  //     context.go('/home');
-                  //   },
-                  //   icon: Icon(Icons.arrow_back),
-                  //   color: Colors.amber,
-                  // ),
-                  MaterialButton(
-                    color: Color.fromARGB(255, 228, 53, 53),
-                    child: const Text('Sign Out'),
-                    onPressed: () {
-                      _auth.signOut();
-                      context.go('/login');
-                    },
-                  ),
-                ],
+      body: Stack(
+        children: [
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Image.asset(
+              'assets/bg1.png',
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Container(
+                width: 500,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.6),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(user!.photoURL ??
+                                    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F49461908%2Fimagemagick-creating-blank-transparent-squares-according-to-width&psig=AOvVaw0z85m_VAWlANARo_LjX3Y1&ust=1712412862282000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKiUw5ahq4UDFQAAAAAdAAAAABAE')
+                                // child: UserImage(
+                                //     imageUrl: user!.photoURL,
+                                //     defaultAssetImage: 'assets/user_default.png'),
+                                ),
+                          ),
+                        ),
+                        Column(
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Hello, ${user.displayName}',
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              '${user.email}',
+                              style: TextStyle(
+                                color: Colors.amber,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Divider(
+                        height: 3,
+                        color: Colors.amber,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                      child: Center(
+                        child: Text(
+                          'Your Total Score: ${ref.read(scoreProvider).map['total']}',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Divider(
+                        height: 3,
+                        color: Colors.amber,
+                      ),
+                    ),
+                    const SizedBox(height: 80),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Divider(
+                        height: 3,
+                        color: Colors.amber,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 20),
+                        SizedBox(
+                          width: 120,
+                          child: MaterialButton(
+                            color: Colors.amber,
+                            onPressed: () {
+                              _auth.signOut();
+                              context.go('/login');
+                            },
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.logout_rounded,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(width: 10),
+                                Text(
+                                  'Log Out',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: 20),
-            // Container(
-            //   child: SingleChildScrollView(
-            //     child: Column(
-            //       children: [
-            //         CircleAvatar(
-            //           backgroundColor: Colors.black,
-            //           radius: 60,
-            //           child: Image.network(
-            //             user.photoURL,
-            //             errorBuilder: (context, error, stackTrace) =>
-            //                 Text('image not found'),
-            //           ),
-            //         ),
-            //         Center(
-            //           child: Text(
-            //             'Email: ${user?.email ?? 'Email not found'}',
-            //             style: TextStyle(color: Colors.white),
-            //           ),
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            //   // child:  Text(
-            //   //     user?.email ?? 'No name',
-            //   //     style: TextStyle(color: Colors.amberAccent),
-            //   //     ),
-            // ),
-          ],
-        ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 193, 146, 6),
+        mini: true,
+        backgroundColor: const Color.fromARGB(175, 255, 193, 7),
         child: const Icon(
           Icons.arrow_back,
           color: Colors.white,
@@ -86,5 +155,29 @@ class UserScreen extends ConsumerWidget {
         },
       ),
     );
+  }
+}
+
+class UserImage extends StatelessWidget {
+  final String? imageUrl;
+  final String defaultAssetImage;
+
+  const UserImage({
+    super.key,
+    required this.imageUrl,
+    required this.defaultAssetImage,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return imageUrl != null
+        ? FadeInImage(
+            placeholder: AssetImage(defaultAssetImage),
+            image: NetworkImage(imageUrl!),
+            fit: BoxFit.cover)
+        : Image.asset(
+            defaultAssetImage,
+            fit: BoxFit.cover,
+          );
   }
 }

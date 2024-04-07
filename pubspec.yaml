@@ -52,6 +52,8 @@ dependencies:
   riverpod_annotation: ^2.3.5
   riverpod_generator: ^2.4.0
   provider: ^6.1.2
+  cloud_firestore: ^4.16.0
+  webview_flutter: ^4.7.0
 
 dev_dependencies:
   flutter_test:
@@ -95,10 +97,12 @@ flutter:
      - assets/logo_smol.png
      - assets/arrow.png
      - assets/taj.jpg
-     - assets/left.png
-     - assets/right.png
-     - assets/home_button_yellow.png
-
+     - assets/rectangle_32.png
+     - assets/guess_the_location.jpg
+     - assets/nearby_screen.png
+     - assets/guesser_map_view.png
+     - assets/chatgpt.png
+     - assets/tick.png
      
   #   - images/a_dot_ham.jpeg
 

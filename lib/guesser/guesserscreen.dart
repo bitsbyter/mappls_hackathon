@@ -12,6 +12,7 @@ import 'package:mappls_hackathon/custom_loader.dart';
 import 'package:mappls_hackathon/home/homescreen.dart';
 import 'package:mappls_hackathon/logic.dart';
 import 'package:flutter_google_street_view/flutter_google_street_view.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class GuesserScreen extends ConsumerStatefulWidget {
   GuesserScreen({Key? key}) : super(key: key);
@@ -21,6 +22,8 @@ class GuesserScreen extends ConsumerStatefulWidget {
 
 class _GuesserScreenState extends ConsumerState<GuesserScreen> {
   Uint8List? _bluePoint;
+  final webController = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.disabled);
   @override
   void initState() {
     super.initState();
@@ -64,34 +67,46 @@ class _GuesserScreenState extends ConsumerState<GuesserScreen> {
                             child: SafeArea(
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(30),
-                                child: FlutterGoogleStreetView(
-                                  // initPos: LatLng(37.769263, -122.450727),
-                                  initPos: LatLng(ref.read(LatitudeProvider),
-                                      ref.read(LongitudeProvider)),
-                                  initSource: StreetViewSource.outdoor,
-                                  initBearing: 30,
-                                  // markers: <Marker>[
-                                  //   // Marker(
-                                  //   //   icon: _bluePoint == null
-                                  //   //       ? BitmapDescriptor.defaultMarker
-                                  //   //       : BitmapDescriptor.fromBytes(_bluePoint!),
-                                  //   //   markerId: MarkerId("0"),
-                                  //   //   position: SAN_FRAN,
-                                  //   //   onTap: () {
-                                  //   //     if (_bluePoint == null)
-                                  //   //       DefaultAssetBundle.of(context)
-                                  //   //           .load("assets/images/ic_dot.png")
-                                  //   //           .then((data) {
-                                  //   //         setState(() {
-                                  //   //           _bluePoint = data.buffer.asUint8List();
-                                  //   //         });
-                                  //   //       });
-                                  //   //     else
-                                  //   //       setState(() => _bluePoint = null);
-                                  //   //   },
-                                  //   // )
-                                  // ].toSet(),
-                                ),
+                                child: WebViewWidget(
+                                    controller: webController
+                                      ..loadRequest(Uri.https(
+                                        "realview.mappls.com",
+                                        "realview_widget/${ref.read(GuesserProvider).map['cat']}",
+                                        {
+                                          "access_token":
+                                              "5fb7616f-3353-430b-b7bc-3a58cf171490",
+                                        },
+                                      ))
+                                    // "?access_token=${ref.read(accessTokenProvider)}&minDistance=1&maxDistance=500&arrow=true&map=true&zoomControls=true&controls=true&mapWidth=200&mapHeight=200",
+                                    ),
+                                // child: FlutterGoogleStreetView(
+                                //   // initPos: LatLng(37.769263, -122.450727),
+                                //   initPos: LatLng(ref.read(LatitudeProvider),
+                                //       ref.read(LongitudeProvider)),
+                                //   initSource: StreetViewSource.outdoor,
+                                //   initBearing: 30,
+                                //   // markers: <Marker>[
+                                //   //   // Marker(
+                                //   //   //   icon: _bluePoint == null
+                                //   //   //       ? BitmapDescriptor.defaultMarker
+                                //   //   //       : BitmapDescriptor.fromBytes(_bluePoint!),
+                                //   //   //   markerId: MarkerId("0"),
+                                //   //   //   position: SAN_FRAN,
+                                //   //   //   onTap: () {
+                                //   //   //     if (_bluePoint == null)
+                                //   //   //       DefaultAssetBundle.of(context)
+                                //   //   //           .load("assets/images/ic_dot.png")
+                                //   //   //           .then((data) {
+                                //   //   //         setState(() {
+                                //   //   //           _bluePoint = data.buffer.asUint8List();
+                                //   //   //         });
+                                //   //   //       });
+                                //   //   //     else
+                                //   //   //       setState(() => _bluePoint = null);
+                                //   //   //   },
+                                //   //   // )
+                                //   // ].toSet(),
+                                // ),
                               ),
                             ),
                           ),
@@ -172,7 +187,7 @@ class _GuesserScreenState extends ConsumerState<GuesserScreen> {
                                 // SizedBox(height: MediaQuery.of(context).size.height / 4),
                                 GestureDetector(
                                   onTap: () {
-                                   
+                                    // ref.read(logicProvider).setLoading();
                                     context.go('/home/guesser/mapview');
                                   },
                                   child: Container(
@@ -243,5 +258,10 @@ class _GuesserScreenState extends ConsumerState<GuesserScreen> {
                 ),
               )
             : CustomLoader());
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
