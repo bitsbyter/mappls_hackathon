@@ -56,10 +56,10 @@ const Geoguesser = () => {
 
       <div className='map-box w-4/5 h-5/6 rounded-2xl m-2 bg-black flex justify-center relative'>
         {showMap ? <Answermap /> : null}
-        {/* {!isRunning ?   <StreetViewMap /> : null} */}
-        <StreetViewMap />
+        
+        {/* <StreetViewMap /> */}
         {showScoreCard ? <ScoreCard /> : null}
-        {/* <ScoreCard /> */}
+        
         
       </div>
 

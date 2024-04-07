@@ -26,38 +26,40 @@ async function main() {
     const UserScoreSchema = new mongoose.Schema({
       userEmail: String,
       totalScore: Number,
-       NTCBCH: Number,
-       NTCLAK: Number,
-       NTCWLS: Number,
-       NTCFAL: Number,
-       NTCHLS: Number,
-       NTCISL: Number,
-       NTCNPK: Number,
-       PLPHIN: Number,
-       PLPCHU: Number,
-       HISFRT: Number,
-       HISMUS: Number,
-       HISMON: Number,
-       PREHRG: Number,
-       NOPHRG: Number,
-       FODCON: Number,
-       FODIND: Number,
-       FODCOF: Number,
-       FODNGT: Number,
-       FODPUB: Number,
-       RCNART: Number,
-       RCNCLB: Number,
-       RCNPCB: Number,
-       RCNTHT: Number,
-       RCNAUS: Number,
-       RCNCMP: Number,
-       RCNCSN: Number,
-       RCNGHT: Number,
-       EVTDAN: Number,
-       EVTFOD: Number,
-       EVTCMD: Number,
-       EVTMUS: Number,
-       EVTTHT: Number
+      Category:{
+      NTCBCH: { type: Number, default: 0 },
+      NTCLAK: { type: Number, default: 0 },
+      NTCWLS: { type: Number, default: 0 },
+      NTCFAL: { type: Number, default: 0 },
+      NTCHLS: { type: Number, default: 0 },
+      NTCISL: { type: Number, default: 0 },
+      NTCNPK: { type: Number, default: 0 },
+      PLPHIN: { type: Number, default: 0 },
+      PLPCHU: { type: Number, default: 0 },
+      HISFRT: { type: Number, default: 0 },
+      HISMUS: { type: Number, default: 0 },
+      HISMON: { type: Number, default: 0 },
+      PREHRG: { type: Number, default: 0 },
+      NOPHRG: { type: Number, default: 0 },
+      FODCON: { type: Number, default: 0 },
+      FODIND: { type: Number, default: 0 },
+      FODCOF: { type: Number, default: 0 },
+      FODNGT: { type: Number, default: 0 },
+      FODPUB: { type: Number, default: 0 },
+      RCNART: { type: Number, default: 0 },
+      RCNCLB: { type: Number, default: 0 },
+      RCNPCB: { type: Number, default: 0 },
+      RCNTHT: { type: Number, default: 0 },
+      RCNAUS: { type: Number, default: 0 },
+      RCNCMP: { type: Number, default: 0 },
+      RCNCSN: { type: Number, default: 0 },
+      RCNGHT: { type: Number, default: 0 },
+      EVTDAN: { type: Number, default: 0 },
+      EVTFOD: { type: Number, default: 0 },
+      EVTCMD: { type: Number, default: 0 },
+      EVTMUS: { type: Number, default: 0 },
+      EVTTHT: { type: Number, default: 0 }
+      }
     });
   
     const UserScore = mongoose.model("UserScore", UserScoreSchema);
@@ -74,7 +76,7 @@ async function main() {
           const newUserScore = new UserScore({
             userEmail: user.email,
             totalScore: points,
-            ...category.reduce((acc, curr) => ({ ...acc, [curr]: points }), {})
+            Category: getCategoryWithDefaultValues(category, points)
           });
     
           await newUserScore.save();
@@ -84,14 +86,14 @@ async function main() {
           updatedScores.totalScore += points;
     
           category.forEach(cat => {
-            if (updatedScores.hasOwnProperty(cat)) {
-              updatedScores[cat] += points;
+            if (updatedScores.Category.hasOwnProperty(cat)) {
+              updatedScores.Category[cat] += points;
             } else {
-              updatedScores[cat] = points;
+              updatedScores.Category[cat] = points;
             }
           });
     
-          await UserScore.updateOne({ userEmail: user.email }, updatedScores);
+          await UserScore.updateOne({ userEmail: user.email }, { $set: updatedScores });
         }
     
         res.status(200).json({ success: true });
@@ -100,6 +102,7 @@ async function main() {
         res.status(500).json({ success: false, error: "Error saving user score" });
       }
     });
+    
     
     
 app.get("/fetchData",async(req,res)=>{
@@ -111,7 +114,18 @@ app.get("/fetchData",async(req,res)=>{
       console.log(error)
     }
 })
-
+app.get("/userData",async(req,res)=>{
+  const email=req.query.email
+  console.log(email)
+  
+  try{
+    const particularUserData=await UserScore.find({userEmail:email})
+  
+    res.send(particularUserData[0])
+  }catch(error){
+    console.log(error)
+  }
+})
 app.get("/",async(req,res)=>{
   console.log("I have been Called");
      const lat=parseFloat(req.query.lat);
@@ -133,30 +147,30 @@ app.get("/",async(req,res)=>{
   
 })
 
-// app.get("/textSearch",async(req,res)=>{
-//   const location=req.query.randomLocation;
-//   console.log(location)
-//   const baseUrl="https://atlas.mappls.com/api/places/textsearch/json"
-//   const bearerToken="15f2adc8-03c1-44b0-a4b3-80aa30e75476"
-//   try{
-//     const response=await axios.get(`${baseUrl}`,{
-//       params:{
-//           query:`${location}`,
-//           region:"IND"
-//       },
-//       headers: {
-//         'Authorization': `bearer ${bearerToken}`,
-//         'Content-Type': 'application/json'
-//     }
-//     })
-//     const targetPlace=(response.data.suggestedLocations[0])
-//     console.log(targetPlace)
-//     res.send(targetPlace)
+app.get("/textSearch",async(req,res)=>{
+  const location=req.query.randomLocation;
+  console.log(location)
+  const baseUrl="https://atlas.mappls.com/api/places/textsearch/json"
+  const bearerToken="15f2adc8-03c1-44b0-a4b3-80aa30e75476"
+  try{
+    const response=await axios.get(`${baseUrl}`,{
+      params:{
+          query:`${location}`,
+          region:"IND"
+      },
+      headers: {
+        'Authorization': `bearer ${bearerToken}`,
+        'Content-Type': 'application/json'
+    }
+    })
+    const targetPlace=(response.data.suggestedLocations[0])
+    console.log(targetPlace)
+    res.send(targetPlace)
 
-// }catch(error){
-//     console.log(error)
-// }
-// })
+}catch(error){
+    console.log(error)
+}
+})
 app.get("/testing",(req,res)=>{
   res.send("Hello there test successful")
 })

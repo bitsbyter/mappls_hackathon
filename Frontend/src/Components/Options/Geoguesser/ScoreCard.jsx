@@ -27,13 +27,12 @@ const ScoreCard=()=>{
     const [points,setPoints]=useState(null);
    useEffect(() => {
     const fetchData = async () => {
-        const long=questionObject.longitude;
-        const lat=questionObject.latitude;        
+        const eloc=questionObject.eLoc
         const baseUrl = "https://apis.mappls.com/advancedmaps/v1";
         const MapplsApiKEy = "b977a114567d823ff35753212dec68cb";
 
         try {
-            const response = await axios.get(`${baseUrl}/${MapplsApiKEy}/distance_matrix/walking/${long},${lat};${userLong},${userLat}`);
+            const response = await axios.get(`${baseUrl}/${MapplsApiKEy}/distance_matrix/walking/${eloc};${userLong},${userLat}`);
             const distance = response.data.results.distances[0][1]/1000;
             console.log(questionObject)
             console.log(distance)

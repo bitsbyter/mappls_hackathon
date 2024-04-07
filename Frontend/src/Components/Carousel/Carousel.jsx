@@ -11,37 +11,6 @@ import CarouselData from '../../../CarouselData'
 
 
 
-// async function generateText(prompt) {
-//   try {
-//     const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-//       model: 'gpt-3.5-turbo', // You can change the model to the one you prefer
-//       prompt: prompt,
-//       max_tokens: 100, // Maximum number of tokens (words) to generate
-//       temperature: 0.7, // Controls the randomness of the generated text (0.0 - 1.0)
-//       n: 1, // Number of completions to generate
-//       stop: '\n', // Stop generation at a newline character
-//     }, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': 'Bearer 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', // Replace 'YOUR_API_KEY' with your actual OpenAI API key
-//       },
-//     });
-
-//     if (response.data && response.data.choices && response.data.choices.length > 0) {
-//       return response.data.choices[0].text.trim();
-//     } else {
-//       return 'No response received from the API.';
-//     }
-//   } catch (error) {
-//     console.error('Error generating text:', error.message);
-//     return null;
-//   }
-// }
-
-
-
-
-
 const Carousel = () => {
    const carouselData=useSelector((store)=>store.carouselData);  //Onkar yeh raha tera data saara carousel ke liye 10 items hai pls isko carousel mei feed karke carousel bana de
   //  console.log(CarouselData);
@@ -53,18 +22,6 @@ const Carousel = () => {
     curr : 1,
     nxt : 2
   })
-useEffect(()=>{
-  const placeAddress=data[index.curr].placeAddress;
-  const placeName=data[index.curr].placeName;
-  console.log(placeName)
-
-  const getData=async()=>{
-    const prompt = `Tell me interesting facts about where ${placeName} the address is ${placeAddress}`;
-  const generatedText = await generateText(prompt);
-  console.log('Generated Text:', generatedText);
-  }
-  getData();
-},[index.curr])
 
 
   const previous = () => {
