@@ -98,7 +98,7 @@ const Carousel = () => {
 
           <div className='z-10 scale-125 w-2/5 h-80 justify-center items-center m-2 rounded-3xl flex bg-black shadow-sm shadow-[#FBBC05]'>
               <div className='carousel-image w-3/5 h-4/5 rounded-lg m-4 flex justify-center items-center'> 
-              {/* <img className='h-full rounded-3xl' src={qutub} alt="" /> */}
+              
               </div>
               <div className='w-2/5 h-4/5 rounded-lg flex flex-col justify-center items-center'>
                 <div className='carousel-text flex flex-col justify-center items-center'>

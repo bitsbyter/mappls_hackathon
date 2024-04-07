@@ -7,7 +7,7 @@ import StreetViewMap from '../../GoogleStreetView/StreetView.jsx';
 import logo from '../../../assets/Images/logo.png';
 import ScoreCard from './ScoreCard.jsx';
 import home from '../../../assets/Images/home.png'
-
+import MapWidget from '../../GoogleStreetView/MapplsLiveWidget.jsx';
 function Answermap() {
   return (
     <>
