@@ -77,6 +77,7 @@ const Options = () => {
 }, [questionObject, dispatch]);
 
 const [isProfile , setIsProfile] = useState('hidden')
+const [isSearch , setSearch] = useState('hidden')
 
 const showProfile = () => {
   isProfile == 'hidden' ? setIsProfile('flex') : setIsProfile('hidden')
@@ -85,9 +86,13 @@ const showProfile = () => {
 const closeProfile = () => {
   isProfile == 'flex' ? setIsProfile('hidden') : setIsProfile('flex')
 }
-  const handleSearchClick=()=>{
-    console.log("I was CLicked")
-  }
+
+const showSearch = () => {
+  isSearch == 'hidden' ? setSearch('flex') : setSearch('hidden')
+}
+// const hideSearch = () => {
+//   isSearch ? setSearch('hidden') : setSearch('flex')
+// }
 
   return (
     <>  
@@ -95,8 +100,9 @@ const closeProfile = () => {
       <img className='w-full h-full ' src={BackgroundImage} alt="" />
     </div>
 
-    <div className='fixed w-full h-24 flex justify-end'>
-      <CiSearch className='h-12 w-12 m-2'/>
+    <div className='fixed w-full h-24 flex justify-end items-center pr-4'>
+      <CiSearch onClick={showSearch} className='h-12 w-12 m-2 '/>
+      <input className={`border-[#FBBC05] border-4 w-64 rounded-xl h-10 ${isSearch}`} type="text" />
       <RiMenu4Fill onClick={showProfile} className='h-12 w-12 m-2'/>
     </div>
     <div className='absolute z-10 right-20 top-20'>
