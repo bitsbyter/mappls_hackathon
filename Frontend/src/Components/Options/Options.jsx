@@ -65,7 +65,7 @@ const Options = () => {
       </div>
 
       <div className='mt-1/2 w-full h-3/4 flex flex-col sm:flex-row justify-center items-center'> 
-         <span className='options-button flex justify-center items-center rounded-md m-2 w-60 h-16 xl:w-72 xl:h-20 bg-black'>
+         <span className='options-button flex justify-center items-center rounded-md m-2 w-auto h-16 xl:w-96 xl:h-20 bg-black'>
           <img className='h-8 w-8 m-2 xl:h-12 xl:w-12' src={geoguess} alt="" />
           <Link className='m-2 text-2xl xl:text-3xl monseratt' to={'/geoguesser'}>Guess The Location</Link>
          </span>

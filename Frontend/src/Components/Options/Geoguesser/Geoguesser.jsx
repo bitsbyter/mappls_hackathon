@@ -11,7 +11,7 @@ import home from '../../../assets/Images/home.png'
 function Answermap() {
   return (
     <>
-      <div className='answer-map w-3/4 h-3/4 rounded-2xl absolute z-10 flex flex-col justify-center items-center bg-black pb-4 mt-2'>
+      <div className='answer-map w-3/4 h-3/4 rounded-2xl absolute z-10 flex flex-col justify-center items-center bg-black pb-4 mt-2 mr-10'>
 
           <div className='w-full h-12 flex justify-center items-center'>
             <p className='text-[#FBBC05] monseratt font-semibold text-lg'>Place your Marker</p>
@@ -84,14 +84,14 @@ const Geoguesser = () => {
             </div>
 
             <div className='w-full h-1/3 flex flex-col items-center justify-center'>
-              {!showMap ? <button onClick={toggleMap} className='w-2/3 lg:w-48 xl:w-60 h-auto rounded-3xl text-md mb-4 bg-[#FBBC05] text-black shadow-md shadow-[#FBBC05] monseratt p-2 font-bold'>Show Map</button> : <button onClick={toggleMap} className='w-32 lg:w-48 xl:w-60 h-auto rounded-3xl text-md mb-4 bg-[#FBBC05] text-black shadow-md shadow-[#FBBC05] monseratt font-bold p-2'>Hide Map</button>}
+              {!showMap ? <button onClick={toggleMap} className='w-2/3 lg:w-48 xl:w-60 h-auto rounded-3xl lg:text-2xl mb-4 bg-[#FBBC05] text-black shadow-md shadow-[#FBBC05] monseratt p-2 font-bold'>Show Map</button> : <button onClick={toggleMap} className='w-32 lg:w-48 xl:w-60 h-auto rounded-3xl text-md mb-4 bg-[#FBBC05] text-black shadow-md shadow-[#FBBC05] monseratt font-bold p-2'>Hide Map</button>}
               <button onClick={handleShowScoreCard} className='w-2/3 lg:w-48 lg:text-2xl xl:w-60 xl:text-3xl h-12 rounded-3xl mb-4 bg-[#FBBC05] text-black text-xl font-bold shadow-md shadow-[#FBBC05] monseratt'>Submit</button>
             </div>
 
           </div>
         </div>
       </div>
-      
+
     </>
   );
 }
