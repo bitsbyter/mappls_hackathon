@@ -5,8 +5,8 @@ import BackgroundImage from '../../assets/Images/background.png'
 import home from '../../assets/Images/home.png'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { NearByActions } from '../../Store/NearBySlice';
 import CarouselData from '../../../CarouselData'
 
 
@@ -14,7 +14,7 @@ import CarouselData from '../../../CarouselData'
 const Carousel = () => {
    const carouselData=useSelector((store)=>store.carouselData);  //Onkar yeh raha tera data saara carousel ke liye 10 items hai pls isko carousel mei feed karke carousel bana de
   //  console.log(CarouselData);
-
+  const dispatch=useDispatch();
   const [data,setData] = useState(CarouselData)
 
   const [index , setIndex] = useState({
@@ -58,7 +58,11 @@ const Carousel = () => {
       nxt: index.nxt - 1
   })}
   }
+ 
 
+  const handleSetplace=async()=>{
+    dispatch(NearByActions.setNearByPlace(data[index.curr]));
+  }
   return (
     <>
     <div className='background bg-[#FBBC05] w-screen h-screen bg-cover bg-center fixed -z-50'>
@@ -92,7 +96,7 @@ const Carousel = () => {
                     {/* Lorem id w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn qo nqoif3qn  */}
                     </span>
                 </div>
-                <button className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-6 font-bold monseratt'>Explore</button>
+                <button className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-6 font-bold monseratt' >Explore</button>
               </div>
           </div>
 
@@ -115,7 +119,7 @@ const Carousel = () => {
                     {/* Lorem ipsum dolor sit amet consectetur adipisicing elita dad w b ejbn nfonf onfoq noiwfoiqnofinqof iifnoiq no oqn qoif nqoifn nqoif3qn  */}
                   </span>
                 </div>
-                <Link to={'/routingMap'} className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-10 font-bold monseratt flex justify-center items-center'>Explore</Link>
+                <Link to={'/routingMap'} onClick={handleSetplace} className='carousel-btn rounded-lg w-20 h-8 bg-[#FBBC05] text-black mt-10 font-bold monseratt flex justify-center items-center'>Explore</Link>
               </div>
           </div>
 

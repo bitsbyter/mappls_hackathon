@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import BackgroundImage from '../assets/Images/background.png'
 import home from '../assets/Images/home.png'
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const RoutingMap = () => {
+  const nearByPlace=useSelector((store)=>store.nearByPlace)
+  const userCoords=useSelector((store)=>store.userCoords)
   useEffect(() => {
     function initializeMap() {
-      const map = new mappls.Map("map", { center: [28.545, 77.545], zoom: 12 });
+      const map = new mappls.Map("map", { center: [userCoords.lat,userCoords.long], zoom: 12 });
       return map;
     }
 
@@ -17,7 +20,7 @@ const RoutingMap = () => {
           divWidth: '350px',  
           divHeight:'400px',
           isDraggable: false,
-          end: { label: 'India Gate', geoposition: "28.612964,77.229463" },
+          end: { label: 'India Gate', geoposition: `${nearByPlace.eloc}` },
           Profile: ['driving', 'biking', 'walking']
         }
         mappls.direction(direction_option, function (data) {

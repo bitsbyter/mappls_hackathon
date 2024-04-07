@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 // import store from './Store/store.js'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from './Components/Login-Register/Login.jsx';
-import Register from './Components/Login-Register/Register.jsx';
 import App from './Components/App.jsx'
 import Options from './Components/Options/Options.jsx'
 import Geoguesser from './Components/Options/Geoguesser/Geoguesser.jsx'
@@ -24,10 +23,6 @@ const router=createBrowserRouter([
   {
     path:"/login",
     element:<Login/>
-  },
-  {
-    path:"/register",
-    element:<Register/>
   },
   {
     path:"/options",

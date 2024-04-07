@@ -7,7 +7,7 @@ const ScoreBoard=async=()=>{
    useEffect(()=>{
      const getScoreBoardData=async()=>{
         try{
-          const result=await axios.get("http://localhost:3000/fetchData")
+          const result=await axios.get("https://mappls-hackathon-backend.vercel.app/fetchData")
            dispatch(leaderActions.setLeaderBoardData(result.data))
         }catch(err){
           console.log(err)

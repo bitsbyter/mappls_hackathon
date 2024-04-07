@@ -20,7 +20,8 @@ const store=configureStore({
       nearbyChoice:NearByChoice.reducer,
       routingPlace:RoutingPlace.reducer,
       scoreBoard:LeaderBoardSlice.reducer,
-      userCategoryData:UserCategoryDataSlice.reducer
+      userCategoryData:UserCategoryDataSlice.reducer,
+      nearbyPlace:NearByChoice.reducer
     }
 });
 

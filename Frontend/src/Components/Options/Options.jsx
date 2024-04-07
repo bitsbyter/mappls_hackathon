@@ -20,7 +20,7 @@ import { userCategoryActions } from '../../Store/CurrentUserPointsPrefSlice.js'
 
 const textSearch=async(location)=>{
       try{
-       const response=await axios.get("http://localhost:3000/textSearch",{
+       const response=await axios.get("https://mappls-hackathon-backend.vercel.app/textSearch",{
         params:{
           randomLocation:location
         }
@@ -35,7 +35,7 @@ const textSearch=async(location)=>{
 
   const getUserPreferences=async(email)=>{
        try{
-          const response=await axios.get("http://localhost:3000/userData",{
+          const response=await axios.get("https://mappls-hackathon-backend.vercel.app/userData",{
             params:{
               email:email
             }
@@ -126,7 +126,7 @@ const closeProfile = () => {
 
     {/* hamburger */}
 
-    <div className={`slide_in rounded-2xl h-screen w-80 bg-black absolute right-0 top-0 flex-col items-center ${isProfile}`}>
+    <div className={`slide_in rounded-2xl h-screen w-1/4 bg-black absolute right-0 top-0 flex-col items-center ${isProfile}`}>
 
       <div className='w-4/5 border-b-2 border-[#FBBC05] h-48 flex'>
 
@@ -134,8 +134,8 @@ const closeProfile = () => {
           <PiUserCircle className='w-24 h-24'/>   
         </div>
         <div className='w-2/3 flex justify-center items-center flex-col relative'>
-          <p className='text-[#FBBC05] monseratt text-2xl'>Hi , User</p>
-          <p className='text-[#FBBC05] monseratt text-2xl'>email</p>
+          <p className='text-[#FBBC05] monseratt text-2xl'>Hi , {activeUser.name}</p>
+          
 
           <button onClick={closeProfile} className='absolute top-0 right-0
            text-xl tracking-widest text-[#FBBC05]'>X</button>

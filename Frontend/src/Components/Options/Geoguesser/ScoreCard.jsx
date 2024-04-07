@@ -3,21 +3,10 @@ import { useState } from "react";
 import { useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { GrTrophy } from "react-icons/gr";
 
 const ScoreCard=()=>{
     const questionObject=useSelector((store)=>store.askedPlace)
-    const randomObject={
-        type: 'POI',
-        placeAddress: 'Taj Road, Taj Ganj, Agra, Uttar Pradesh, 282001',
-        eLoc: '2T7S17',
-        placeName: 'Taj Mahal',
-        alternateName: '',
-        keywords: [ 'RCNCLB' ],
-        distance: 0,
-        orderIndex: 1,
-        suggester: 'placeName'
-      }
+    
     const userAnswer=useSelector((store)=>store.userAnswerCoords);
      const activeUser=useSelector((store)=>store.activeUser);
      
@@ -59,10 +48,10 @@ const ScoreCard=()=>{
  
     const handleClick=async()=>{
         try{
-            const result=await axios.post("http://localhost:3000/ScoreBoard",{
+            const result=await axios.post("https://mappls-hackathon-backend.vercel.app/ScoreBoard",{
                 points:points,
                 user:activeUser,
-                category:randomObject.keywords
+                category:questionObject.keywords
               })
               console.log(result.data)
         }catch(error){
