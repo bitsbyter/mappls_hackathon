@@ -197,6 +197,10 @@ class _GuesserCardState extends ConsumerState<GuesserCard> {
                                               .read(scoreProvider)
                                               .addUpdateScores();
                                           print(ref.read(scoreProvider).map);
+                                          ref.read(scoreProvider).personalise(
+                                              ref
+                                                  .read(logicProvider.notifier)
+                                                  .state);
                                           ref.refresh(executeGameLogicProvider);
                                           context.go('/home/guesser');
                                         },

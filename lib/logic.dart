@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -66,7 +67,9 @@ class logic extends ChangeNotifier {
       required this.long2,
       required this.lat2,
       required this.status,
-      required this.searchLocation});
+      required this.searchLocation,
+      required this.personalise,
+      required this.personalisedList});
   double lat;
   double long;
   double radius;
@@ -76,6 +79,8 @@ class logic extends ChangeNotifier {
   double long2;
   String status;
   String searchLocation = '';
+  bool personalise;
+  List<String> personalisedList;
   List<String> pointsOfInterest = [
     "NTCBCH",
     "NTCLAK",
@@ -265,13 +270,20 @@ class logic extends ChangeNotifier {
   Future<List<dynamic>> executeNearbyLogic(String token) async {
     int randomIndex = Random().nextInt(pointsOfInterest.length - 1);
     // String poi =  pointsOfInterest[randomIndex];
-    String poi = pointsOfInterest.join(';');
+    String poi =
+        personalise ? personalisedList.join(';') : pointsOfInterest.join(';');
     // print(poi);
     // status = 'loading';
     // notifyListeners();
     status = 'loading';
     notifyListeners();
-    List<dynamic> map = await nearby_api(poi, lat, long, radius, token);
+    List<dynamic> map = await nearby_api(
+      poi,
+      lat,
+      long,
+      radius,
+      token,
+    );
 
     status = 'loaded';
 
@@ -332,7 +344,9 @@ final logicProvider = StateProvider<logic>((ref) => logic(
     long2: 77.549033,
     lat2: 24.779478,
     status: 'loaded',
-    searchLocation: ''));
+    searchLocation: '',
+    personalise: false,
+    personalisedList: []));
 
 final executeSearchButtonLogicProvider = FutureProvider<void>((ref) async {
   // ref.read(logicProvider).setLoading();
@@ -604,6 +618,24 @@ class ScoreHandler {
       Map<String, dynamic> map =
           Map.fromIterable(elocs, key: (item) => item, value: (item) => 0);
       this.map = map;
+    }
+  }
+
+  void personalise(logic Logic) {
+    if (map['total'] >= 10000) {
+      List<String> add = [];
+      Logic.personalise = true;
+      map.forEach((k, v) {
+        if (k == 'total')
+          ;
+        else if (v >= (.1 * map['total'])) {
+          add.add(k);
+        }
+      }
+      );
+      Logic.personalisedList=add;
+    } else {
+      Logic.personalise = false;
     }
   }
 }

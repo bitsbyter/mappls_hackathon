@@ -79,7 +79,7 @@ Future<String> chat_gpt_api(String place) async {
   print("THIS DEVIL API IS RUNNING!!!!!!!!!!!");
   final dio = Dio();
   dio.options.headers["X-RapidAPI-Key"] =
-      '5fffd4f6d3msh29b72709d71695bp1b20cbjsneb2bd33d1be4';
+      'a68d64b393mshf8d601eea9e5565p12e674jsnb2b42bde54a3';
   dio.options.headers["X-RapidAPI-Host"] = 'chatgpt-42.p.rapidapi.com';
   dio.options.headers["content-length"] = 237;
   dio.options.headers["content-type"] = 'application/json';

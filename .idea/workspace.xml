@@ -5,54 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd142b2e-d024-4a28-9645-10d807ec260c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mappls_hackathon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mappls_hackathon.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/bg1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bg1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/button.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/globe.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/globe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/google_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/google_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/home_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/home_button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/home_button_yellow.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/home_button_yellow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/homr_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/homr_button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/left.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/lines.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/lines.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/logo_big.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/logo_big.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/logo_small.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/logo_small.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/logo_smallish.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/logo_smallish.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/logo_smol.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/logo_smol.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/menu_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/menu_button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/pin.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/pin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/pin2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/pin2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/right.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/search_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/search_button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/symbols/custom-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/symbols/custom-icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/taj.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/taj.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controllers/text_search_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controllers/text_search_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controllers/text_search_controller.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controllers/text_search_controller.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/custom_loader.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/custom_loader.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/guesser/guesserscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/guesser/guesserscreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/guesser/guesserscreen2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/guesser/guesserscreen2.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/guesser/guesserscreen3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/guesser/guesserscreen3.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/home/homescreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home/homescreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/home/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home/search.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/home/userscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home/userscreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/homescreen.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/logic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/logic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/loginscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/loginscreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/nearby/nearbyscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nearby/nearbyscreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/repo/text_search_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/repo/text_search_repo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/repo/text_search_repo.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/repo/text_search_repo.g.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/apiservice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/apiservice.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/apiservice_data_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/apiservice_data_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/userscreen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
