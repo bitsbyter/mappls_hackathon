@@ -113,10 +113,10 @@ class logic extends ChangeNotifier {
   List<String> touristPlacesInIndia = [
     // "Colva Beach"
     'Amer Fort',
-    "Taj Mahal",
+    // "Taj Mahal",
     "Cafe Grub Up",
-    "Gateway Of India",
-    
+    // "Gateway Of India",
+
     // "BITS Pilani"
     //     // "Qutub Minar",
     //     "Gateway of India",
@@ -284,8 +284,7 @@ class logic extends ChangeNotifier {
     print('this api running bitch');
     status = 'loading';
     notifyListeners();
-    double dist =
-        await distance_matrix_api(lat1, long1, lat2, long2) ?? 0;
+    double dist = await distance_matrix_api(lat1, long1, lat2, long2) ?? 0;
     status = 'loaded';
     notifyListeners();
     print(dist);
@@ -296,7 +295,7 @@ class logic extends ChangeNotifier {
     status = 'loading';
     notifyListeners();
     String token = await auth_token_api();
-    
+
     status = 'loaded';
     notifyListeners();
     return token;
@@ -342,8 +341,8 @@ final executeSearchButtonLogicProvider = FutureProvider<void>((ref) async {
           {"lat": 24.779478, "lng": 77.549033};
   ref.read(LongitudeProvider.notifier).state = coords['lng'] ?? 77.549033;
   ref.read(LatitudeProvider.notifier).state = coords['lat'] ?? 24.779478;
-  ref.read(logicProvider.notifier).state.lat=coords['lat'] ?? 24.779478;
-  ref.read(logicProvider.notifier).state.long=coords['lng'] ?? 77.549033;
+  ref.read(logicProvider.notifier).state.lat = coords['lat'] ?? 24.779478;
+  ref.read(logicProvider.notifier).state.long = coords['lng'] ?? 77.549033;
   // ref.read(logicProvider).setLoaded();
 });
 
@@ -366,9 +365,8 @@ final executeGameLogicProvider = FutureProvider<void>((ref) async {
   print(coords);
   ref.read(LongitudeProvider.notifier).state = coords['lng'] ?? 77.549033;
   ref.read(LatitudeProvider.notifier).state = coords['lat'] ?? 24.779478;
-   print(ref.read(LongitudeProvider));
+  print(ref.read(LongitudeProvider));
   print(ref.read(LatitudeProvider));
-  
 
   // ref.read(scoreProvider.notifier).state.value =
   //     (ref.read(DistanceProvider) / 1000).toInt() >= 400
@@ -382,8 +380,6 @@ final executeGameLogicProvider = FutureProvider<void>((ref) async {
   // await ref.read(scoreProvider).addUpdateScores();
   // print(ref.read(scoreProvider).map);
   // ref.read(logicProvider.notifier).state.status = 'loaded';
-  
- 
 
   // return ref.watch(logicProvider).executeGameLogic();
 });
@@ -471,7 +467,8 @@ final executeAuthentication = FutureProvider<void>((ref) async {
 final executeCalculateDistanceProvider = FutureProvider<void>((ref) async {
   ref.read(DistanceProvider.notifier).state = await ref
           .read(logicProvider)
-          .calculateDistance(ref.read(AuthTokenProvider))??0;
+          .calculateDistance(ref.read(AuthTokenProvider)) ??
+      0;
 });
 
 final executeChatGPTProvider = FutureProvider<void>((ref) async {
@@ -554,13 +551,16 @@ class ScoreHandler {
         final userData = userDoc.data();
         // Map<String, dynamic> scores = {};
 
-        if (userData != null && userData.containsKey('scores')) {
-          // scores = Map<String, dynamic>.from(userData['scores']);
-        }
-        int currentValue = map.containsKey(field) ? map[field] as int : 0;
-        map[field] = currentValue + value;
-        currentValue = map.containsKey('total') ? map['total'] as int : 0;
-        map[field] = currentValue + value;
+        // if (userData != null && userData.containsKey('scores')) {
+        //   // scores = Map<String, dynamic>.from(userData['scores']);
+        // }
+        map = userData?['scores'];
+        int cur = map[field];
+        cur += value;
+        map[field] = cur;
+        cur = map['total'];
+        cur += value;
+        map['total'] = cur;
 
         await userRef.set({'scores': map});
       } else {

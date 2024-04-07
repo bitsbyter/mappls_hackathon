@@ -23,7 +23,7 @@ class GuesserScreen extends ConsumerStatefulWidget {
 class _GuesserScreenState extends ConsumerState<GuesserScreen> {
   Uint8List? _bluePoint;
   final webController = WebViewController()
-    ..setJavaScriptMode(JavaScriptMode.disabled);
+    ..setJavaScriptMode(JavaScriptMode.unrestricted);
   @override
   void initState() {
     super.initState();
@@ -65,16 +65,25 @@ class _GuesserScreenState extends ConsumerState<GuesserScreen> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 30, vertical: 20),
                             child: SafeArea(
-                              child: ClipRRect(
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: (MediaQuery.of(context).size.width - 28) *
+                              (2 / 3),
+                                child: ClipRRect(
                                 borderRadius: BorderRadius.circular(30),
                                 child: WebViewWidget(
                                     controller: webController
                                       ..loadRequest(Uri.https(
                                         "realview.mappls.com",
-                                        "realview_widget/${ref.read(GuesserProvider).map['cat']}",
+                                        "realview_widget/${ref.read(GuesserProvider).map['eLoc']}",
                                         {
                                           "access_token":
                                               "5fb7616f-3353-430b-b7bc-3a58cf171490",
+                                              "map":"false",
+                                              "zoomControls":"true",
+                                              "arrow":"false",
+                                              "mapHeight":"200"
+                                              // "map"
                                         },
                                       ))
                                     // "?access_token=${ref.read(accessTokenProvider)}&minDistance=1&maxDistance=500&arrow=true&map=true&zoomControls=true&controls=true&mapWidth=200&mapHeight=200",
@@ -107,7 +116,7 @@ class _GuesserScreenState extends ConsumerState<GuesserScreen> {
                                 //   //   // )
                                 //   // ].toSet(),
                                 // ),
-                              ),
+                              ),),
                             ),
                           ),
                         ),

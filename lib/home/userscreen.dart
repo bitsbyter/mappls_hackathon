@@ -15,6 +15,8 @@ class UserScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(authStateProvider).value;
     final totalScore = ref.watch(userTotalScoreProvider);
+    var values = ref.watch(scoreProvider).map.values;
+    int result = values.reduce((sum, element) => sum + element);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(

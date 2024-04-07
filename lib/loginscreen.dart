@@ -119,6 +119,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     user?.email ?? 'guest';
                                 // ref.read(scoreProvider).fetchScore();
                                 print(ref.read(scoreProvider).id);
+                                ref.read(scoreProvider).fetchScore();
 
                                 //                     ref.read(userTotalScoreProvider.notifier).state =
                                 // (await fetchUserScore(user?.email ?? 'guest')) ?? 0;
