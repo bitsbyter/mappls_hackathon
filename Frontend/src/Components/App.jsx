@@ -4,11 +4,17 @@ import { CoordActions } from '../Store/userCoordsSlice';
 import BackgroundImage from '../assets/Images/background.png'
 import Login from './Login-Register/Login';
 import { Landscape } from './Login-Register/Landscape';
-
+import axios from "axios"
+import { leaderActions } from '../Store/LeaderBoard';
 function  App() {
+
   const [coords,setCoords]=useState({lat:"",long:""});
   const dispatch=useDispatch();
   useEffect(() => {
+
+   
+
+
     async function getUserCoords(){
       const successCallback = (position) => {
         const { latitude, longitude } = position.coords;
@@ -35,7 +41,7 @@ function  App() {
         console.error('Geolocation is not supported by this browser.');
       }
     };
-  
+   
     getUserCoords();
   }, []);
 
