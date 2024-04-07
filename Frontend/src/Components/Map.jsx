@@ -8,11 +8,15 @@ const Map=()=>{
   const [answerCoords,setAnswerCoords]=useState({lat:"",lng:""});
   const dispatch=useDispatch();
   const baseUrlReverseGeo="https://apis.mappls.com/advancedmaps/v1"
-  const ApiKey='542dbb0ec43d4e94a956e1e2cbc7f4ff'
+  const ApiKey='03b8c5a2d87f2e38e4622cab60cfb7aa'
   useEffect(() => {
     function renderMap() {
       const map = new mappls.Map('map', {zoom:3});
       map.addListener("click", function(e) {   
+        var marker = new mappls.Marker({
+          map: map,
+          position: {"lat":e.lngLat.lat,"lng":e.lngLat.lng}
+          });
         const answerLat = e.lngLat.lat;
         const answerLng = e.lngLat.lng;
         setAnswerCoords({ lat: answerLat, lng: answerLng });

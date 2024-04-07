@@ -8,6 +8,22 @@ import Locations from '../../Locations'
 import geoguess from '../../assets/Images/geo-guess.png'
 import locator from '../../assets/Images/locator.png'
 import { useState,useEffect } from 'react'
+import axios from "axios"
+
+// const textSearch=async(location)=>{
+//       try{
+//        const response=await axios.get("http://localhost:3000/textSearch",{
+//         params:{
+//           randomLocation:location
+//         }
+//        })
+//        console.log(response.data)
+//        return response.data;
+//       }catch(error){
+//     console.log(error)
+//   }
+  
+// }
 
 const Options = () => {
   const [questionObject,setQuestionObject]=useState(null);
@@ -17,10 +33,12 @@ const Options = () => {
         try {
             const size = Locations.length;
             const number = Math.floor(Math.random() * size);
-            const randomLocation = Locations[number];
-            setQuestionObject(randomLocation);
-            console.log(randomLocation);
-            dispatch(QuestionAction.setQuestionedPlace(randomLocation));
+            // const randomLocation = Locations[number];
+            const questionLocation=Locations[number];
+            // const questionLocation=await textSearch(randomLocation.location);  <- This works using the textsearch api
+            console.log(questionLocation)
+            setQuestionObject(questionLocation);
+             dispatch(QuestionAction.setQuestionedPlace(questionLocation))
         } catch (error) {
             console.log(error);
         }
@@ -49,7 +67,7 @@ const Options = () => {
       <div className='mt-1/2 w-full h-3/4 flex flex-col sm:flex-row justify-center items-center'> 
          <span className='options-button flex justify-center items-center rounded-md m-2 w-60 h-16 xl:w-72 xl:h-20 bg-black'>
           <img className='h-8 w-8 m-2 xl:h-12 xl:w-12' src={geoguess} alt="" />
-          <Link className='m-2 text-2xl xl:text-3xl monseratt' to={'/geoguesser'}>Geoguesser</Link>
+          <Link className='m-2 text-2xl xl:text-3xl monseratt' to={'/geoguesser'}>Guess The Location</Link>
          </span>
          <span className='options-button flex justify-center items-center rounded-md m-2 w-60 h-16 xl:w-72 xl:h-20 bg-black'>
           <img className='h-8 w-8 m-2 xl:h-12 xl:w-12' src={locator} alt="" />

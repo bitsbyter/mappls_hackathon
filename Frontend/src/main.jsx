@@ -15,7 +15,7 @@ import './index.css'
 import store from './Store/store.js';
 import Carousel from './Components/Carousel/Carousel.jsx';
 import RoutingMap from './Components/RoutingMap.jsx';
-
+import MapWidget from './Components/GoogleStreetView/MapplsLiveWidget.jsx';
 const router=createBrowserRouter([
   {
     path:"/",
@@ -56,6 +56,10 @@ const router=createBrowserRouter([
   {
    path:"/routingMap",
    element:<RoutingMap/>
+  },
+  {
+    path:"/mapWidget",
+    element:<MapWidget/>
   }
 ])
 

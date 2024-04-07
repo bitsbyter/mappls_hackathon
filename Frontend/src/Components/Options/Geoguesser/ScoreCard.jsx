@@ -3,11 +3,24 @@ import { useState } from "react";
 import { useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { GrTrophy } from "react-icons/gr";
 
 const ScoreCard=()=>{
     const questionObject=useSelector((store)=>store.askedPlace)
+    const randomObject={
+        type: 'POI',
+        placeAddress: 'Taj Road, Taj Ganj, Agra, Uttar Pradesh, 282001',
+        eLoc: '2T7S17',
+        placeName: 'Taj Mahal',
+        alternateName: '',
+        keywords: [ 'RCNCLB' ],
+        distance: 0,
+        orderIndex: 1,
+        suggester: 'placeName'
+      }
     const userAnswer=useSelector((store)=>store.userAnswerCoords);
-    console.log(userAnswer)
+     const activeUser=useSelector((store)=>store.activeUser);
+     
     const userLat=userAnswer.answerCoords.lat;
     const userLong=userAnswer.answerCoords.lng;
     
@@ -33,7 +46,6 @@ const ScoreCard=()=>{
               }else{
                   setPoints(100);
               }
-              console.log(points)
         } catch (err) {
             console.log(err);
         }
@@ -46,7 +58,18 @@ const ScoreCard=()=>{
     
 }, [userLat, userLong]);
  
-    
+    const handleClick=async()=>{
+        try{
+            const result=await axios.post("http://localhost:3000/ScoreBoard",{
+                points:points,
+                user:activeUser,
+                category:randomObject.keywords
+              })
+              console.log(result.data)
+        }catch(error){
+           console.log(error)
+        }
+    }
    return (
    <>   
     <div className="z-20 absolute top-1/3 h-44 w-96 flex flex-col justify-between items-center border bg-black rounded-xl">
@@ -57,7 +80,7 @@ const ScoreCard=()=>{
           <div className="h-full bg-[#FBBC05]" style={{ width: `${points/10}%` , borderRadius: '100' }} />
         </div>
 
-        <Link to={'/options'} className="bg-[#FBBC05] w-24 h-8 flex rounded-xl m-2 justify-center items-center monseratt">Next</Link>
+        <Link to={'/options'} onClick={handleClick} className="bg-[#FBBC05] w-24 h-8 flex rounded-xl m-2 justify-center items-center monseratt">Next</Link>
     </div>
    </>
    )

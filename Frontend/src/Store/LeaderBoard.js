@@ -5,7 +5,11 @@ const LeaderBoardSlice=createSlice({
     name:"scoreBoard",
     initialState:[],
     reducers:{
-    
+        setLeaderBoardData:(state,action)=>{
+            const data=action.payload;
+            console.log(data)
+            return data;
+        }
     }
 })
 

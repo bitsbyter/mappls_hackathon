@@ -26,11 +26,11 @@ function LocationType() {
 
   return (
     <div className="dropdown">
-      <select className='bg-[#FBBC05] rounded-md text-white w-auto' value={locationType} onChange={handleChange} >
+      <select className='bg-[#FBBC05] rounded-md text-black montserat font-bold w-auto' value={locationType} onChange={handleChange} >
         <option className=' monseratt text-center' value="all-locations">All Locations</option>
-        <option className='bg-[#FBBC05] text-white monseratt text-center' value="landscapes">Landcapes</option>
-        <option className='bg-[#FBBC05] text-white monseratt text-center' value="cafe">Cafe</option>
-        <option className='bg-[#FBBC05] text-white monseratt text-center' value="famous-locations">Famous Locations</option>
+        <option className='bg-[#FBBC05] text-black monseratt text-center' value="landscapes">Landcapes</option>
+        <option className='bg-[#FBBC05] text-black monseratt text-center' value="cafe">Cafe</option>
+        <option className='bg-[#FBBC05] text-black monseratt text-center' value="famous-locations">Famous Locations</option>
       </select>
     </div>
   );
@@ -83,7 +83,7 @@ const Nearme = () => {
 
         <div className='w-screen h-screen flex justify-center items-center flex-col'>
 
-          <div className='w-2/3 lg:w-1/3 h-auto rounded-xl flex flex-col justify-between items-center bg-black/70 monseratt'>
+          <div className='w-2/3 lg:w-2/3 h-2/5 rounded-xl flex flex-col justify-between items-center bg-black/70 monseratt'>
             <img className='w-48 h-8 sm:h-12 sm:w-64 m-6' src={logo} alt="" />
             <span className='monseratt text-xs sm:text-lg'>{`Explore the loactions near you`}</span>
             <span className='monseratt text-xs sm:text-lg'>{`Please select your radius`}</span>
