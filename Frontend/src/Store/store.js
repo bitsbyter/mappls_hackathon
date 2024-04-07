@@ -8,6 +8,7 @@ import userRadiusSlice from "./userRadiusSlice";
 import NearByChoice from "./UserChoiceSlice";
 import RoutingPlace from "./RoutingPlace";
 import LeaderBoardSlice from "./LeaderBoard";
+import UserCategoryDataSlice from "./CurrentUserPointsPrefSlice";
 const store=configureStore({
     reducer:{
       activeUser:ActiveUserSlice.reducer,
@@ -19,6 +20,7 @@ const store=configureStore({
       nearbyChoice:NearByChoice.reducer,
       routingPlace:RoutingPlace.reducer,
       scoreBoard:LeaderBoardSlice.reducer,
+      userCategoryData:UserCategoryDataSlice.reducer
     }
 });
 

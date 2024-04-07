@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { QuestionAction } from '../../Store/AskedPlaceSlice.js'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import BackgroundImage from '../../assets/Images/background.png'
 import logo from '../../assets/Images/logo.png'
 import Locations from '../../Locations'
@@ -9,33 +9,53 @@ import geoguess from '../../assets/Images/geo-guess.png'
 import locator from '../../assets/Images/locator.png'
 import { useState,useEffect } from 'react'
 import axios from "axios"
+import { userCategoryActions } from '../../Store/CurrentUserPointsPrefSlice.js'
 
-// const textSearch=async(location)=>{
-//       try{
-//        const response=await axios.get("http://localhost:3000/textSearch",{
-//         params:{
-//           randomLocation:location
-//         }
-//        })
-//        console.log(response.data)
-//        return response.data;
-//       }catch(error){
-//     console.log(error)
-//   }
+const textSearch=async(location)=>{
+      try{
+       const response=await axios.get("http://localhost:3000/textSearch",{
+        params:{
+          randomLocation:location
+        }
+       })
+       console.log(response.data)
+       return response.data;
+      }catch(error){
+    console.log(error)
+  }
   
-// }
+}
 
+  const getUserPreferences=async(email)=>{
+       try{
+          const response=await axios.get("http://localhost:3000/userData",{
+            params:{
+              email:email
+            }
+          })
+          
+          const favouriteCategory=response.data.Category;
+          const filteredCategories = Object.keys(favouriteCategory).filter(category => favouriteCategory[category] > 500);
+          return filteredCategories;
+       }catch(error){
+          console.log(error)
+       }
+    }
 const Options = () => {
   const [questionObject,setQuestionObject]=useState(null);
   const dispatch=useDispatch();
+  const activeUser=useSelector((store)=>store.activeUser)
+  console.log(activeUser)
   useEffect(() => {
     const setQuestion = async () => {
         try {
             const size = Locations.length;
             const number = Math.floor(Math.random() * size);
-            // const randomLocation = Locations[number];
-            const questionLocation=Locations[number];
-            // const questionLocation=await textSearch(randomLocation.location);  <- This works using the textsearch api
+            const randomLocation = Locations[number];
+            // const questionLocation=Locations[number];
+            const questionLocation=await textSearch(randomLocation.location);  //<- This works using the textsearch api
+             const filterCategory=await getUserPreferences(activeUser.email);
+             dispatch(userCategoryActions.setUserCategoryData(filterCategory))
             console.log(questionLocation)
             setQuestionObject(questionLocation);
              dispatch(QuestionAction.setQuestionedPlace(questionLocation))
