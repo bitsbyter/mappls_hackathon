@@ -26,7 +26,6 @@ function Answermap() {
 }
 
 const Geoguesser = () => {
-  const navigate=useNavigate();
   const [isRunning, setisRunning] = useState(true);
   const [showMap, setShowMap] = useState(false);
   const [showScoreCard, setShowScoreCard] = useState(false);

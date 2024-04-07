@@ -7,7 +7,7 @@ import AskedPlace from "./AskedPlaceSlice";
 import userRadiusSlice from "./userRadiusSlice";
 import NearByChoice from "./UserChoiceSlice";
 import RoutingPlace from "./RoutingPlace";
-
+import LeaderBoardSlice from "./LeaderBoard";
 const store=configureStore({
     reducer:{
       activeUser:ActiveUserSlice.reducer,
@@ -17,7 +17,8 @@ const store=configureStore({
       askedPlace:AskedPlace.reducer,
       userRadius:userRadiusSlice.reducer,
       nearbyChoice:NearByChoice.reducer,
-      routingPlace:RoutingPlace.reducer
+      routingPlace:RoutingPlace.reducer,
+      scoreBoard:LeaderBoardSlice.reducer,
     }
 });
 
