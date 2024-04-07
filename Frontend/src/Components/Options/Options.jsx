@@ -9,6 +9,11 @@ import geoguess from '../../assets/Images/geo-guess.png'
 import locator from '../../assets/Images/locator.png'
 import { useState,useEffect } from 'react'
 import axios from "axios"
+import { CiSearch } from "react-icons/ci";
+import { RiMenu4Fill } from "react-icons/ri";
+import { CiUser } from "react-icons/ci";
+import { GrCaretNext } from "react-icons/gr";
+import { PiUserCircle } from "react-icons/pi";
 
 // const textSearch=async(location)=>{
 //       try{
@@ -49,12 +54,25 @@ const Options = () => {
     }
 }, [questionObject, dispatch]);
 
+const [isProfile , setIsProfile] = useState('hidden')
 
+const showProfile = () => {
+  isProfile == 'hidden' ? setIsProfile('flex') : setIsProfile('hidden')
+}
+
+const closeProfile = () => {
+  isProfile == 'flex' ? setIsProfile('hidden') : setIsProfile('flex')
+}
 
   return (
     <>  
     <div className='background bg-[#FBBC05] w-screen h-screen bg-cover bg-center fixed -z-50'>
-      <img className='w-full h-full ' src={BackgroundImage} alt="" />
+      <img className='w-full h-full' src={BackgroundImage} alt="" />
+    </div>
+
+    <div className='fixed w-full h-24 flex justify-end'>
+      <CiSearch className='h-12 w-12 m-2'/>
+      <RiMenu4Fill onClick={showProfile} className='h-12 w-12 m-2'/>
     </div>
 
     <div className='w-screen h-screen flex flex-col bg-transparent/45'>
@@ -75,6 +93,45 @@ const Options = () => {
          </span>
       </div>
       
+    </div>
+
+    {/* hamburger */}
+
+    <div className={`slide_in rounded-2xl h-screen w-80 bg-black absolute right-0 top-0 flex-col items-center ${isProfile}`}>
+
+      <div className='w-4/5 border-b-2 border-[#FBBC05] h-48 flex'>
+
+        <div className=' w-1/3 flex justify-center items-center'>
+          <PiUserCircle className='w-24 h-24'/>   
+        </div>
+        <div className='w-2/3 flex justify-center items-center flex-col relative'>
+          <p className='text-[#FBBC05] monseratt text-2xl'>Hi , User</p>
+          <p className='text-[#FBBC05] monseratt text-2xl'>email</p>
+
+          <button onClick={closeProfile} className='absolute top-0 right-0
+           text-xl tracking-widest text-[#FBBC05]'>X</button>
+        </div>
+        
+      </div>
+
+      <div className='w-4/5 border-b-2 flex justify-around items-center border-[#FBBC05] h-28'>
+        <p className='text-2xl monseratt text-[#FBBC05]'>
+        Profile 
+        </p>
+        <GrCaretNext />
+        </div>
+      <div className='w-4/5 border-b-2 flex justify-around items-center border-[#FBBC05] h-28'>
+      <p className='text-2xl monseratt text-[#FBBC05]'>
+        Settings
+        </p>
+        <GrCaretNext />
+      </div>
+      <div className='w-4/5 border-b-2 flex justify-around items-center border-[#FBBC05] h-28'>
+      <p className='text-2xl monseratt text-[#FBBC05]'>
+        Leaderboard 
+        </p>
+        <GrCaretNext />
+      </div>
     </div>
     </>
   )
