@@ -10,6 +10,11 @@ import geoguess from '../../assets/Images/geo-guess.png'
 import locator from '../../assets/Images/locator.png'
 import { useState,useEffect } from 'react'
 import axios from "axios"
+import { CiSearch } from "react-icons/ci";
+import { RiMenu4Fill } from "react-icons/ri";
+import { CiUser } from "react-icons/ci";
+import { GrCaretNext } from "react-icons/gr";
+import { PiUserCircle } from "react-icons/pi";
 import { userCategoryActions } from '../../Store/CurrentUserPointsPrefSlice.js'
 
 
@@ -71,6 +76,15 @@ const Options = () => {
     }
 }, [questionObject, dispatch]);
 
+const [isProfile , setIsProfile] = useState('hidden')
+
+const showProfile = () => {
+  isProfile == 'hidden' ? setIsProfile('flex') : setIsProfile('hidden')
+}
+
+const closeProfile = () => {
+  isProfile == 'flex' ? setIsProfile('hidden') : setIsProfile('flex')
+}
   const handleSearchClick=()=>{
     console.log("I was CLicked")
   }
@@ -80,8 +94,13 @@ const Options = () => {
     <div className='background bg-[#FBBC05] w-screen h-screen bg-cover bg-center fixed -z-50'>
       <img className='w-full h-full ' src={BackgroundImage} alt="" />
     </div>
+
+    <div className='fixed w-full h-24 flex justify-end'>
+      <CiSearch className='h-12 w-12 m-2'/>
+      <RiMenu4Fill onClick={showProfile} className='h-12 w-12 m-2'/>
+    </div>
     <div className='absolute z-10 right-20 top-20'>
-    <IoSearchSharp  onClick={handleSearchClick}/>
+    {/* <IoSearchSharp  onClick={handleSearchClick}/> */}
     
       </div>
     <div className='w-screen h-screen flex flex-col bg-transparent/45'>
@@ -93,7 +112,7 @@ const Options = () => {
       </div>
       
       <div className='mt-1/2 w-full h-3/4 flex flex-col sm:flex-row justify-center items-center'> 
-         <span className='options-button flex justify-center items-center rounded-md m-2 w-60 h-16 xl:w-72 xl:h-20 bg-black'>
+         <span className='options-button flex justify-center items-center rounded-md m-2 w-auto h-16 xl:w-96 xl:h-20 bg-black'>
           <img className='h-8 w-8 m-2 xl:h-12 xl:w-12' src={geoguess} alt="" />
           <Link className='m-2 text-2xl xl:text-3xl monseratt' to={'/geoguesser'}>Guess The Location</Link>
          </span>
@@ -103,6 +122,45 @@ const Options = () => {
          </span>
       </div>
       
+    </div>
+
+    {/* hamburger */}
+
+    <div className={`slide_in rounded-2xl h-screen w-80 bg-black absolute right-0 top-0 flex-col items-center ${isProfile}`}>
+
+      <div className='w-4/5 border-b-2 border-[#FBBC05] h-48 flex'>
+
+        <div className=' w-1/3 flex justify-center items-center'>
+          <PiUserCircle className='w-24 h-24'/>   
+        </div>
+        <div className='w-2/3 flex justify-center items-center flex-col relative'>
+          <p className='text-[#FBBC05] monseratt text-2xl'>Hi , User</p>
+          <p className='text-[#FBBC05] monseratt text-2xl'>email</p>
+
+          <button onClick={closeProfile} className='absolute top-0 right-0
+           text-xl tracking-widest text-[#FBBC05]'>X</button>
+        </div>
+        
+      </div>
+
+      <div className='w-4/5 border-b-2 flex justify-around items-center border-[#FBBC05] h-28'>
+        <p className='text-2xl monseratt text-[#FBBC05]'>
+        Profile 
+        </p>
+        <GrCaretNext />
+        </div>
+      <div className='w-4/5 border-b-2 flex justify-around items-center border-[#FBBC05] h-28'>
+      <p className='text-2xl monseratt text-[#FBBC05]'>
+        Settings
+        </p>
+        <GrCaretNext />
+      </div>
+      <div className='w-4/5 border-b-2 flex justify-around items-center border-[#FBBC05] h-28'>
+      <p className='text-2xl monseratt text-[#FBBC05]'>
+        Leaderboard 
+        </p>
+        <GrCaretNext />
+      </div>
     </div>
     </>
   )
