@@ -100,7 +100,7 @@ const closeProfile = () => {
       <RiMenu4Fill onClick={showProfile} className='h-12 w-12 m-2'/>
     </div>
     <div className='absolute z-10 right-20 top-20'>
-    <IoSearchSharp  onClick={handleSearchClick}/>
+    {/* <IoSearchSharp  onClick={handleSearchClick}/> */}
     
       </div>
     <div className='w-screen h-screen flex flex-col bg-transparent/45'>
