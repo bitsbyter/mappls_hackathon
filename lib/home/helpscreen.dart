@@ -80,7 +80,7 @@ class HelpScreen extends ConsumerWidget {
                           ],
                         ),
                         SizedBox(
-                          height: 250,
+                          height: 200,
                           child: Row(
                             children: [
                               Image.asset('assets/guess_the_location.jpg'),
@@ -96,7 +96,7 @@ class HelpScreen extends ConsumerWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 250,
+                          height: 200,
                           child: Row(
                             children: [
                               Image.asset('assets/guesser_map_view.png'),
@@ -132,7 +132,7 @@ class HelpScreen extends ConsumerWidget {
                           ],
                         ),
                         SizedBox(
-                            height: 250,
+                            height: 200,
                             child: Row(
                               children: [
                                 Image.asset('assets/nearby_screen.png'),
